@@ -41,9 +41,24 @@ const NavBar = () => {
         >
           Workshops
         </Link>
-        <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
+        <Link
+          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
+          to="/courses"
+        >
           Courses
-        </h1>
+        </Link>
+        <Link
+          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
+          to="/allevents"
+        >
+          Cultural events
+        </Link>
+        <Link
+          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
+          to="/allevents"
+        >
+          Our events
+        </Link>
         <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
           News
         </h1>
@@ -53,6 +68,7 @@ const NavBar = () => {
         >
           About us
         </Link>
+
         <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
           Team members
         </h1>

@@ -1,7 +1,9 @@
 import React from "react";
 import NavBar from "../../NavigationBar/NavBar";
+import { useTranslation } from "react-i18next";
 
 function Mainbody() {
+  const { t } = useTranslation();
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Video */}
@@ -28,9 +30,9 @@ function Mainbody() {
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col gap-5 items-center justify-center h-full text-white">
-        <h1 className="text-5xl font-bold">Hello Naghmeh</h1>
-        <h1 className="text-5xl font-bold">This is a sample text</h1>
-        <h1 className="text-5xl font-bold">We can simply change it!</h1>
+        <h1 className="text-2xl lg:text-5xl font-bold">{t("welcome")}</h1>
+        <h1 className="text-2xl lg:text-5xl font-bold">{t("sampleText")}</h1>
+        <h1 className="text-2xl lg:text-5xl font-bold">{t("changeText")}</h1>
       </div>
     </div>
   );

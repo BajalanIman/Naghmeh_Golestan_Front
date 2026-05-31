@@ -4,7 +4,7 @@ import React from "react";
 const NewsletterSubscription = () => {
   return (
     <div className="w-full lg:h-[700px] flex flex-col lg:flex-row pt-12 lg:pt-0 px-6 lg:px-0">
-      <div className="w-full lg:w-1/2 bg-[#ffdf52] h-full px-10 py-12 lg:pb-0">
+      <div className="w-full lg:w-1/2 bg-[#ECEAD3] h-full px-10 py-12 lg:pb-0">
         <div className="flex gap-6 ">
           <div className="flex flex-col">
             <h1 className="text-4xl font-bold text-violet-900 mb-1">
@@ -23,7 +23,7 @@ const NewsletterSubscription = () => {
         <div className="flex flex-col">
           <input
             placeholder="Your email address"
-            className="bg-[#ffdf52] border border-violet-900 rounded-3xl h-12 w-96 pl-4"
+            className="bg-[#ECEAD3] border border-violet-900 rounded-3xl h-12 w-72 lg:w-96 pl-4"
           />
           <span className="text-[11px] pl-8 mt-3 text-violet-900">
             I would like to receive your newsletter

@@ -16,9 +16,17 @@ const home = () => {
       <SmallInformation />
       <Imagegallery />
       <div className="px-6 lg:px-12 py-12 w-full flex flex-col lg:flex-row lg:justify-between">
-        <InfoBox bgcolor={"#dbe0e5"} />
-        <InfoBox bgcolor={"#ffe0c1"} />
-        <InfoBox bgcolor={"#f8d41b"} />
+        <InfoBox
+          image={
+            "https://static.vecteezy.com/system/resources/thumbnails/039/593/345/small_2x/ai-generated-young-women-in-traditional-clothing-celebrate-a-colorful-cultural-parade-generated-by-ai-free-photo.jpg"
+          }
+        />
+        <InfoBox
+          image={
+            "https://img.freepik.com/premium-photo/cultural-exchange-event-where-people-share-traditi_1148322-51124.jpg"
+          }
+        />
+        <InfoBox image={"https://wallpaperaccess.com/full/2633589.jpg"} />
       </div>
       <Mainworkshop />
       <TextAndImage

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <h1 className="text-2xl font-bold text-[#F8D41B]">Golestan</h1>
+          <h1 className="text-2xl font-bold text-[#ECEAD3]">Golestan</h1>
           <p className="text-sm text-gray-300 mt-4 leading-relaxed">
             Explore history, culture, and stories that shaped the Middle East.
             Many modern and new experiences.
@@ -18,10 +18,10 @@ const Footer = () => {
         <div>
           <h2 className="text-lg font-semibold mb-4">Explore</h2>
           <ul className="space-y-2 text-gray-300">
-            <li className="hover:text-[#F8D41B] cursor-pointer">Exhibitions</li>
-            <li className="hover:text-[#F8D41B] cursor-pointer">Events</li>
-            <li className="hover:text-[#F8D41B] cursor-pointer">Workshops</li>
-            <li className="hover:text-[#F8D41B] cursor-pointer">Collections</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Exhibitions</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Events</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Workshops</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Collections</li>
           </ul>
         </div>
 
@@ -29,12 +29,12 @@ const Footer = () => {
         <div>
           <h2 className="text-lg font-semibold mb-4">Support</h2>
           <ul className="space-y-2 text-gray-300">
-            <li className="hover:text-[#F8D41B] cursor-pointer">Help Center</li>
-            <li className="hover:text-[#F8D41B] cursor-pointer">Contact Us</li>
-            <li className="hover:text-[#F8D41B] cursor-pointer">
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Help Center</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Contact Us</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">
               Privacy Policy
             </li>
-            <li className="hover:text-[#F8D41B] cursor-pointer">Terms</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">Terms</li>
           </ul>
         </div>
 
@@ -51,7 +51,7 @@ const Footer = () => {
               placeholder="Your email"
               className="w-full px-3 py-2 rounded-md text-black outline-none"
             />
-            <button className="bg-[#F8D41B] text-black px-4 py-2 rounded-md font-semibold hover:bg-yellow-300 transition">
+            <button className="bg-[#ECEAD3] text-black px-4 py-2 rounded-md font-semibold hover:bg-yellow-100 transition">
               Subscribe
             </button>
           </div>

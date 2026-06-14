@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const NavBar = () => {
+  const { t } = useTranslation();
+
   const [localUser, setLocalUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -39,38 +41,38 @@ const NavBar = () => {
           className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
           to="/workshops"
         >
-          Workshops
+          {t("workshops")}
         </Link>
         <Link
           className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
           to="/courses"
         >
-          Courses
+          {t("courses")}
         </Link>
         <Link
-          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          to="/allevents"
+          className="font-bold cursor-pointer from-neutral-800 max-w-32 pt-2 text-[#ECEAD3] hover:text-yellow-200"
+          // to="/allevents"
         >
-          Cultural events
+          {t("culturalEvents")}
         </Link>
         <Link
-          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          to="/allevents"
+          className="font-bold cursor-pointer from-neutral-800 max-w-32 pt-2 text-[#ECEAD3] hover:text-yellow-200"
+          // to="/allevents"
         >
-          Our events
+          {t("ourEvents")}
         </Link>
         <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
-          News
+          {t("news")}
         </h1>
         <Link
           className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          to="/aboutus"
+          // to="/aboutus"
         >
-          About us
+          {t("aboutUs")}
         </Link>
 
         <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
-          Team members
+          {t("teamMembers")}
         </h1>
       </div>
       <div className="flex gap-8">
@@ -108,7 +110,7 @@ const NavBar = () => {
 
           {!localUser ? (
             <Link
-              to="/login"
+              // to="/login"
               className="bg-[#ECEAD3] w-20 h-10 pt-1 pl-4 border rounded-md text-cyan-900 hover:bg-yellow-200"
             >
               Login

@@ -1,7 +1,7 @@
 const AllEventsData = [
   {
     id: 13,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation: "sed diam nonumy eirmod tempor invidunt ut",
     date: "2026-01-01",
     image:
@@ -10,7 +10,7 @@ const AllEventsData = [
   },
   {
     id: 14,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation: "sed diam nonumy eirmod tempor invidunt ut labore et",
     date: "2026-01-07",
     detail: "...",
@@ -20,7 +20,7 @@ const AllEventsData = [
   },
   {
     id: 1,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation: "sed diam nonumy eirmod tempor invidunt ut labore et",
     date: "2026-01-01",
     image:
@@ -29,7 +29,7 @@ const AllEventsData = [
   },
   {
     id: 2,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-07",
@@ -38,7 +38,7 @@ const AllEventsData = [
   },
   {
     id: 3,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-01",
@@ -47,7 +47,7 @@ const AllEventsData = [
   },
   {
     id: 4,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-04-01",
@@ -56,7 +56,7 @@ const AllEventsData = [
   },
   {
     id: 5,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-04-07",
@@ -65,7 +65,7 @@ const AllEventsData = [
   },
   {
     id: 6,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-04-01",
@@ -75,7 +75,7 @@ const AllEventsData = [
 
   {
     id: 7,
-    title: "Workshop Three",
+    title: "Course Three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2027-03-10",
@@ -85,7 +85,7 @@ const AllEventsData = [
   },
   {
     id: 8,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-09-07",
@@ -94,7 +94,7 @@ const AllEventsData = [
   },
   {
     id: 9,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-09-01",
@@ -104,7 +104,7 @@ const AllEventsData = [
 
   {
     id: 10,
-    title: "Workshop Three",
+    title: "Course Three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2027-09-10",
@@ -113,7 +113,7 @@ const AllEventsData = [
   },
   {
     id: 11,
-    title: "Workshop Three",
+    title: "Course Three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2027-09-18",

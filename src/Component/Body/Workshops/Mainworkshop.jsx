@@ -1,22 +1,27 @@
-const Mainworkshop = () => {
+import { Link } from "react-router-dom";
+const Mainworkshop = ({
+  HomepageMainWorkshopTitle,
+  HomepageMainWorkshopText,
+  ContinueReading,
+}) => {
   return (
     <div className="bg-white flex flex-col md:h-80 px-6 sm:px-0 relative md:overflow-hidden">
       {/* DATE CARD */}
       <div
         className="
           relative
-          rounded-lg
+          lg:rounded-lg
           w-full mr-24 mt-4
           h-56
           md:mt-0
           md:absolute md:top-0 md:left-24
           md:w-72 md:h-72
-           shadow-black shadow-lg
+           shadow-black lg:shadow-lg
         "
       >
         <img
           src="https://wallpaperaccess.com/full/1315404.jpg"
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-cover rounded-t-lg lg:rounded-lg"
         />
         <div className="absolute inset-0 bg-black/50  rounded-lg"></div>
         <div className="absolute inset-0 w-full h-full flex justify-center items-center flex-col">
@@ -41,20 +46,19 @@ const Mainworkshop = () => {
         {/* text */}
         <div className="w-full md:w-2/3 flex flex-col gap-3 md:gap-4 px-4 md:pr-8 pt-6 pb-6 lg:pb-0 md:pt-5">
           <h1 className="font-bold text-violet-900 text-xl md:text-2xl">
-            Lorem ipsum dolor sit amet
+            {HomepageMainWorkshopTitle}
           </h1>
 
           <span className="text-violet-900 text-sm md:text-xl leading-relaxed">
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. [...]
+            {HomepageMainWorkshopText?.length > 400
+              ? `${HomepageMainWorkshopText.slice(0, 400)}...`
+              : HomepageMainWorkshopText}
           </span>
-
-          <span className="text-violet-900 font-bold text-sm md:text-base">
-            Continue reading
-          </span>
+          <Link to="/workshops">
+            <span className="text-violet-900 font-bold text-sm md:text-base">
+              {ContinueReading}
+            </span>
+          </Link>
         </div>
       </div>
     </div>

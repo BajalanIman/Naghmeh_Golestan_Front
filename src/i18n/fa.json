@@ -1,5 +1,27 @@
 {
+  "workshops": "کارگاه‌ها",
+  "courses": "دوره‌ها",
+  "culturalEvents": "رویدادهای فرهنگی",
+  "ourEvents": "رویدادهای ما",
+  "news": "اخبار",
+  "aboutUs": "درباره ما",
+  "teamMembers": "اعضای تیم",
   "welcome": " سلام نغمه",
   "sampleText": "این یک متن نمونه است",
-  "changeText": "ما به سادگی می‌توانیم آن را تغییر دهیم"
+  "changeText": "ما به سادگی می‌توانیم آن را تغییر دهیم",
+  "aboutUsTitle": "Über uns",
+  "aboutUsText": "",
+  "homePageInfoBoxTitleOne": "",
+  "homePageInfoBoxTitleTwo": "",
+  "homePageInfoBoxTitleThree": "",
+  "homePageInfoBoxTextOne": "",
+  "homePageInfoBoxTextTwo": "",
+  "homePageInfoBoxTextThree": "",
+  "HomepageMainWorkshopTitle": "",
+  "HomepageMainWorkshopText": "",
+  "ContinueReading": "ادامه متن",
+  "HomepageMissionTitle": "",
+  "HomepageMissionText": "",
+  "HomepageOurProgramsTitle": "",
+  "HomepageOurProgramsText": ""
 }

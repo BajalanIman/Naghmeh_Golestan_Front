@@ -1,17 +1,21 @@
 const workshopsData = [
   {
     id: 13,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-01",
     image:
       "https://tse1.mm.bing.net/th/id/OIP.aDd3-jW1u27KYgCyEppengHaEK?pid=Api&P=0&h=180",
     location: "Pankow, Berlin",
+    paragraphOne: "",
+    paragraphtwo: "",
+    paragraphThree: "",
+    paragraphFour: "",
   },
   {
     id: 14,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-07",
@@ -22,7 +26,7 @@ const workshopsData = [
   },
   {
     id: 1,
-    title: "Workshop One",
+    title: "Course three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-01",
@@ -32,7 +36,7 @@ const workshopsData = [
   },
   {
     id: 2,
-    title: "Workshop Two",
+    title: "Course four",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-07",
@@ -41,7 +45,7 @@ const workshopsData = [
   },
   {
     id: 3,
-    title: "Workshop One",
+    title: "Course five",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-01-01",
@@ -50,7 +54,7 @@ const workshopsData = [
   },
   {
     id: 4,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-04-01",
@@ -59,7 +63,7 @@ const workshopsData = [
   },
   {
     id: 5,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-04-07",
@@ -68,7 +72,7 @@ const workshopsData = [
   },
   {
     id: 6,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-04-01",
@@ -78,7 +82,7 @@ const workshopsData = [
 
   {
     id: 7,
-    title: "Workshop Three",
+    title: "Course Three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2027-03-10",
@@ -88,7 +92,7 @@ const workshopsData = [
   },
   {
     id: 8,
-    title: "Workshop Two",
+    title: "Course Two",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-09-07",
@@ -97,7 +101,7 @@ const workshopsData = [
   },
   {
     id: 9,
-    title: "Workshop One",
+    title: "Course One",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2026-09-01",
@@ -107,7 +111,7 @@ const workshopsData = [
 
   {
     id: 10,
-    title: "Workshop Three",
+    title: "Course Three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2027-09-10",
@@ -116,7 +120,7 @@ const workshopsData = [
   },
   {
     id: 11,
-    title: "Workshop Three",
+    title: "Course Three",
     workshopExplanation:
       "sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet. sed diam voluptua. Lorem ipsum dolor sit amet",
     date: "2027-09-18",

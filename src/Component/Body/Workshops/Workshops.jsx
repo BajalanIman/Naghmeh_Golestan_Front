@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import WorkshopsImage from "../../../../public/WorkshopsImage.png";
 import { useTranslation } from "react-i18next";
+import DonationSection from "../Home/DonationSection";
 
 const Workshops = () => {
   const { t } = useTranslation();
@@ -84,7 +85,48 @@ const Workshops = () => {
           ContinueReading={t("ContinueReading")}
         />
       </div>
-
+      {/* Only to show in netlify */}
+      {/* <div className="flex flex-col lg:grid lg:grid-cols-3 gap-3 lg:gap-6 pl-4 bg-white py-12">
+        <Otherworkshops
+          key={45}
+          id={45}
+          title={"Workshop one"}
+          explanation={
+            "Wenn Sie schon mal eine neue Maus, einen Drucker oder ein anderes Peripheriegerät zu Ihrem Computer hinzugefügt..."
+          }
+          date={"12.12.2026"}
+          image={
+            "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+          }
+          paragraphs={"workshop.paragraphs"}
+        />
+        <Otherworkshops
+          key={46}
+          id={46}
+          title={"Workshop two"}
+          explanation={
+            "Wenn Sie schon mal eine neue Maus, einen Drucker oder ein anderes Peripheriegerät zu Ihrem Computer hinzugefügt..."
+          }
+          date={"12.12.2026"}
+          image={
+            "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+          }
+          paragraphs={"workshop.paragraphs"}
+        />
+        <Otherworkshops
+          key={47}
+          id={47}
+          title={"Workshop three"}
+          explanation={
+            "Wenn Sie schon mal eine neue Maus, einen Drucker oder ein anderes Peripheriegerät zu Ihrem Computer hinzugefügt..."
+          }
+          date={"12.12.2026"}
+          image={
+            "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+          }
+          paragraphs={"workshop.paragraphs"}
+        />
+      </div> */}
       {/* WORKSHOPS LIST */}
       <div className="w-full bg-white flex flex-col py-8 px-6 gap-4">
         {Object.entries(grouped).map(([year, months]) => (
@@ -143,9 +185,9 @@ const Workshops = () => {
           </div>
         ))}
       </div>
-
+      <DonationSection />
       {/* FOOTER */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

@@ -8,12 +8,13 @@ import Mainworkshop from "./../Workshops/Mainworkshop";
 import NewsletterSubscription from "./NewsletterSubscription";
 import TextAndImage from "./TextAndImage";
 import { useTranslation } from "react-i18next";
+import DonationSection from "./DonationSection";
 
 const home = () => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div className="">
       <Mainbody />
       <Linktonews />
       <SmallInformation
@@ -62,7 +63,8 @@ const home = () => {
           "https://4kwallpapers.com/images/wallpapers/mushroom-forest-3840x2160-10854.jpg"
         }
       />
-      {/* <Footer /> */}
+      <DonationSection />
+      <Footer />
     </div>
   );
 };

@@ -19,14 +19,15 @@ const visitingTeachers = [
     id: 3,
     name: "Sample Person",
     role: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
-    image: "https://i.pravatar.cc/300?img=47",
+    image:
+      "https://img.freepik.com/premium-vector/vector-illustration-person-casual-wear_1189095-213.jpg",
     bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
   },
 ];
 
 export default function VisitingTeachers() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-20">

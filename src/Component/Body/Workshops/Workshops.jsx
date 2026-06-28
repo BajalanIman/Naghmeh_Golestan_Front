@@ -60,14 +60,16 @@ const Workshops = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col justify-center bg-gradient-to-b from-indigo-700 via-red-500 to-purple-500">
+    <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
       {/* NAVBAR */}
-      <div className="mx-auto lg:w-[1200px]">
-        <NavBar />
+      <div className=" w-full bg-[#186f77] ">
+        <div className="mx-auto lg:w-[1200px]">
+          <NavBar />
+        </div>
       </div>
 
       {/* HERO IMAGE */}
-      <div className="relative flex justify-center items-center h-64 lg:h-96">
+      <div className="relative flex justify-center items-center h-64 lg:h-96 pt-6">
         <img
           className="w-3/4 absolute lg:mt-40 rounded-lg lg:shadow-lg shadow-black"
           src="https://i.etsystatic.com/44190086/r/il/003dc0/5358431678/il_fullxfull.5358431678_4d25.jpg"
@@ -75,7 +77,7 @@ const Workshops = () => {
         />
       </div>
 
-      <div className="lg:h-72 bg-slate-100 w-full"></div>
+      <div className="lg:h-72 w-full"></div>
 
       {/* MAIN WORKSHOP */}
       <div className="w-full">
@@ -128,7 +130,7 @@ const Workshops = () => {
         />
       </div> */}
       {/* WORKSHOPS LIST */}
-      <div className="w-full bg-white flex flex-col py-8 px-6 gap-4">
+      <div className="w-full flex flex-col py-8 px-6 gap-4">
         {Object.entries(grouped).map(([year, months]) => (
           <div key={year}>
             {/* YEAR TITLE */}
@@ -155,7 +157,7 @@ const Workshops = () => {
                     }}
                     className="w-full mb-5 mt-12 gap-3 flex justify-center items-center"
                   >
-                    <h3 className="text-4xl font-bold text-gray-700 cursor-pointer">
+                    <h3 className="text-4xl font-bold text-[#1B6269] cursor-pointer">
                       Workshops in{" "}
                       {new Date(0, month).toLocaleString("default", {
                         month: "long",

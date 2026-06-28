@@ -93,10 +93,12 @@ const Courses = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col justify-center bg-gradient-to-b from-indigo-700 via-red-500 to-purple-500">
+    <div className="w-full h-full flex flex-col justify-center">
       {/* NAVBAR */}
-      <div className="mx-auto lg:w-[1200px]">
-        <NavBar />
+      <div className=" w-full bg-[#186f77] ">
+        <div className="mx-auto lg:w-[1200px]">
+          <NavBar />
+        </div>
       </div>
       {/* Only for netlify */}
       {/* <div className="flex flex-col lg:grid lg:grid-cols-3 gap-3 lg:gap-6 pl-4 bg-white py-12">

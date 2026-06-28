@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import GolestanLogo from "../Logo/GolestanLogo";
 
 const NavBar = () => {
   const { t } = useTranslation();
+  const navStyle =
+    "font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200";
 
   const [localUser, setLocalUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -27,73 +30,46 @@ const NavBar = () => {
     <div className="flex invisible lg:visible py-12 px-2 lg:px-0 relative justify-between bg-black bg-opacity-0 ">
       <div className="flex justify-between gap-8">
         <Link to="/">
-          <img
-            width="40"
-            height="30"
-            src="https://kultur-atelier.de/wp-content/uploads/2024/11/cropped-KulturAtelier-300x300-removebg-preview-png.webp"
-            className="cursor-pointer"
-            alt=""
-            srcSet="https://kultur-atelier.de/wp-content/uploads/2024/11/cropped-KulturAtelier-300x300-removebg-preview-png.webp 300w, https://kultur-atelier.de/wp-content/uploads/2024/11/cropped-KulturAtelier-300x300-removebg-preview-150x150.webp 150w, https://kultur-atelier.de/wp-content/uploads/2024/11/cropped-KulturAtelier-300x300-removebg-preview-100x100.webp 100w"
-            sizes="(max-width: 300px) 100vw, 300px"
-          ></img>
+          <GolestanLogo
+            width={50}
+            height={50}
+            colorOne={"#ECEAD3"}
+            colorTwo={"#186f77"}
+          />
         </Link>
-        <Link
-          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          to="/workshops"
-        >
+        <Link className={navStyle} to="/workshops">
           {t("workshops")}
         </Link>
-        <Link
-          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          to="/courses"
-        >
+        <Link className={navStyle} to="/courses">
           {t("courses")}
         </Link>
         <Link
-          className="font-bold cursor-pointer from-neutral-800 max-w-32 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          // to="/allevents"
+          className={navStyle} // to="/allevents"
         >
           {t("culturalEvents")}
         </Link>
         <Link
-          className="font-bold cursor-pointer from-neutral-800 max-w-32 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          // to="/allevents"
+          className={navStyle} // to="/allevents"
         >
           {t("ourEvents")}
         </Link>
-        <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
-          {t("news")}
-        </h1>
-        <Link
-          className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          to="/aboutus"
-        >
+        <h1 className={navStyle}>{t("news")}</h1>
+        <Link className={navStyle} to="/aboutus">
           {t("aboutUs")}
         </Link>
         <Link to="/team">
-          <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
-            {t("teamMembers")}
-          </h1>
+          <h1 className={navStyle}>{t("teamMembers")}</h1>
         </Link>
       </div>
       <div className="flex gap-8">
         <div className="flex gap-2s">
-          <span
-            onClick={() => i18n.changeLanguage("en")}
-            className="font-bold cursor-pointer from-neutral-800 pt-2 pr-1 text-[#ECEAD3] hover:text-yellow-200"
-          >
+          <span onClick={() => i18n.changeLanguage("en")} className={navStyle}>
             EN |
           </span>
-          <span
-            onClick={() => i18n.changeLanguage("de")}
-            className="font-bold cursor-pointer from-neutral-800 pt-2 pr-1  text-[#ECEAD3] hover:text-yellow-200"
-          >
+          <span onClick={() => i18n.changeLanguage("de")} className={navStyle}>
             DE |
           </span>
-          <span
-            onClick={() => i18n.changeLanguage("fa")}
-            className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          >
+          <span onClick={() => i18n.changeLanguage("fa")} className={navStyle}>
             FR
           </span>
         </div>

@@ -5,14 +5,17 @@ import VisitingTeachers from "./VisitingTeachers";
 
 const Aboutus = () => {
   return (
-    <div className=" w-[full] lg:w-[100%] h-full flex flex-col justify-center bg-gradient-to-b from-indigo-700 via-red-500 to-purple-500">
-      <div className=" px-2 lg:w-[1200px] ">
-        <NavBar />
+    <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
+      {/* NAVBAR */}
+      <div className=" w-full bg-[#186f77] ">
+        <div className="mx-auto lg:w-[1200px]">
+          <NavBar />
+        </div>
       </div>
 
-      <div className="bg-white w-full">
+      <div className="w-full">
         {/* HERO */}
-        <section className="py-12 bg-stone-50 text-center">
+        <section className="py-12 text-center">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-stone-900">
               Golestan Cultural Hub
@@ -60,7 +63,7 @@ const Aboutus = () => {
         </div>
 
         {/* PROBLEM SECTION */}
-        <section className="py-24 bg-stone-50">
+        <section className="py-24">
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
             <img
               className="rounded-2xl shadow-md object-cover w-full order-2 lg:order-1"
@@ -70,7 +73,7 @@ const Aboutus = () => {
 
             <div className="order-1 lg:order-2">
               <h2 className="text-2xl font-semibold text-stone-900 mb-6">
-                What we want to prevent
+                What we want to prevent?
               </h2>
 
               <p className="text-stone-600 leading-relaxed">
@@ -89,7 +92,7 @@ const Aboutus = () => {
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
             <div>
               <h2 className="text-2xl font-semibold text-stone-900 mb-6">
-                What our goal is
+                What our goal is?
               </h2>
 
               <p className="text-stone-600 leading-relaxed">
@@ -113,9 +116,9 @@ const Aboutus = () => {
         <VisitingTeachers />
 
         {/* LOCATION */}
-        <section className="py-24 bg-stone-50">
+        <section className="py-24">
           <div className="max-w-6xl mx-auto px-6 text-center mb-10">
-            <h2 className="text-3xl font-semibold text-stone-900">
+            <h2 className="text-3xl font-serif font-semibold text-stone-900">
               Our Location
             </h2>
 

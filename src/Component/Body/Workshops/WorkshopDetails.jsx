@@ -186,15 +186,15 @@ const WorkshopDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-b from-indigo-700 via-purple-600 to-purple-500">
-        <div className="mx-auto max-w-[1200px] px-4">
+    <div className="w-full h-full flex flex-col justify-center  text-[#1B6269] bg-[#F1EFEE]">
+      <div className=" w-full bg-[#186f77] ">
+        <div className="mx-auto lg:w-[1200px]">
           <NavBar />
         </div>
       </div>
 
       <div className="max-w-[1000px] mx-auto px-4 py-10">
-        <h1 className="text-3xl lg:text-5xl font-bold text-center text-violet-900 mb-8">
+        <h1 className="text-3xl lg:text-5xl font-bold text-center  mb-8">
           {workshop.title}
         </h1>
 
@@ -215,30 +215,24 @@ const WorkshopDetails = () => {
           </p>
         </div>
 
-        <div className="space-y-10 text-lg leading-8 text-gray-700">
+        <div className="space-y-10 text-lg leading-8 ">
           <div>
-            <h3 className="text-2xl font-bold text-violet-900 mb-2">
-              About this workshop
-            </h3>
+            <h3 className="text-2xl font-bold ">About this workshop</h3>
             <p>{workshop.paragraphs?.[0]}</p>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-violet-900 mb-2">
-              Aim of this workshop
-            </h3>
+            <h3 className="text-2xl font-bold mb-2">Aim of this workshop</h3>
             <p>{workshop.paragraphs?.[1]}</p>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-violet-900 mb-2">
-              Examples and content
-            </h3>
+            <h3 className="text-2xl font-bold mb-2">Examples and content</h3>
             <p>{workshop.paragraphs?.[2]}</p>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-violet-900 mb-2">Summary</h3>
+            <h3 className="text-2xl font-bold mb-2">Summary</h3>
             <p>{workshop.paragraphs?.[3]}</p>
           </div>
         </div>
@@ -246,7 +240,7 @@ const WorkshopDetails = () => {
       {/* ENROLMENT FORM */}
       <div className="max-w-[1000px] mx-auto px-4 pb-16">
         <div className="bg-white rounded-xl shadow-lg p-6 lg:p-10">
-          <h2 className="text-2xl lg:text-3xl font-bold text-violet-900 mb-6 text-center">
+          <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center">
             Enrol in this Workshop
           </h2>
 
@@ -283,7 +277,7 @@ const WorkshopDetails = () => {
 
             <button
               type="submit"
-              className="lg:col-span-2 bg-violet-700 hover:bg-violet-800 text-white font-semibold py-3 rounded-lg transition"
+              className="lg:col-span-2 bg-[#1B6269] hover:bg-violet-800 text-white font-semibold py-3 rounded-lg transition"
             >
               Enrol Now
             </button>

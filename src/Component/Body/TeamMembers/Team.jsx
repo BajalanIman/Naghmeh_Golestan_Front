@@ -35,12 +35,14 @@ const teamMembers = [
 
 export default function TeamSection() {
   return (
-    <div className="w-full h-full flex flex-col justify-center bg-gradient-to-b from-indigo-700 via-red-500 to-purple-500">
+    <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
       {/* NAVBAR */}
-      <div className="mx-auto lg:w-[1200px]">
-        <NavBar />
+      <div className=" w-full bg-[#186f77] ">
+        <div className="mx-auto lg:w-[1200px]">
+          <NavBar />
+        </div>
       </div>
-      <section className="bg-stone-50 py-20">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-20">

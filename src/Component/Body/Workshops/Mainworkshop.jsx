@@ -24,7 +24,7 @@ const Mainworkshop = ({
           className="w-full h-full object-cover rounded-t-lg lg:rounded-lg"
         />
         <div className="absolute inset-0 bg-black/50  rounded-lg"></div>
-        <div className="absolute inset-0 w-full h-full flex justify-center items-center flex-col">
+        <div className="absolute inset-0 w-full h-full flex justify-center items-center flex-col text-[#ECEAD3]">
           {/* text-[#ECEAD3] */}
 
           <h1 className=" font-sans text-sm md:text-xl">May</h1>
@@ -37,12 +37,12 @@ const Mainworkshop = ({
       <div className="hidden md:block h-24 md:h-1/6"></div>
 
       {/* CONTENT */}
-      <div className="bg-[#E4F8F7] flex flex-col md:flex-row flex-1">
+      <div className="text-[#ECEAD3] bg-[#1B6269] flex flex-col md:flex-row flex-1">
         {/* left spacer only desktop */}
         <div className="hidden md:block md:w-1/3"></div>
 
         {/* text */}
-        <div className="w-full md:w-2/3 flex flex-col gap-3 md:gap-4 px-4 md:pr-8 pt-6 pb-6 lg:pb-0 md:pt-5">
+        <div className="w-full md:w-2/3 flex flex-col gap-3 md:gap-4 px-4 md:pr-8 pt-6 pb-6 lg:pb-0 md:pt-5 ">
           <h1 className="font-bold text-xl md:text-2xl">
             {HomepageMainWorkshopTitle}
           </h1>
@@ -53,7 +53,7 @@ const Mainworkshop = ({
               : HomepageMainWorkshopText}
           </span>
           <Link to="/workshops">
-            <span className="font-bold text-sm md:text-base">
+            <span className="font-bold text-sm md:text-base hover:underline">
               {ContinueReading}
             </span>
           </Link>

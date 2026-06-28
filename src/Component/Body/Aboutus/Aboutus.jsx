@@ -13,7 +13,7 @@ const Aboutus = () => {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full pt-12">
         {/* HERO */}
         <section className="py-12 text-center">
           <div className="max-w-4xl mx-auto px-6">
@@ -30,7 +30,7 @@ const Aboutus = () => {
         </section>
 
         {/* FOUNDING IDEA */}
-        <section className="py-24">
+        <section className="lg:py-24 py-8">
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
             <div>
               <h2 className="text-2xl font-semibold text-stone-900 mb-6">
@@ -63,7 +63,7 @@ const Aboutus = () => {
         </div>
 
         {/* PROBLEM SECTION */}
-        <section className="py-24">
+        <section className="lg:py-24 py-8">
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
             <img
               className="rounded-2xl shadow-md object-cover w-full order-2 lg:order-1"
@@ -88,7 +88,7 @@ const Aboutus = () => {
         </section>
 
         {/* GOAL SECTION */}
-        <section className="py-24">
+        <section className="lg:py-24 py-8">
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
             <div>
               <h2 className="text-2xl font-semibold text-stone-900 mb-6">
@@ -116,7 +116,7 @@ const Aboutus = () => {
         <VisitingTeachers />
 
         {/* LOCATION */}
-        <section className="py-24">
+        <section className="lg:py-24 py-8">
           <div className="max-w-6xl mx-auto px-6 text-center mb-10">
             <h2 className="text-3xl font-serif font-semibold text-stone-900">
               Our Location

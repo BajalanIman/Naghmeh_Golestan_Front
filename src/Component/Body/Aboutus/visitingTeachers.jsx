@@ -27,7 +27,7 @@ const visitingTeachers = [
 
 export default function VisitingTeachers() {
   return (
-    <section className="py-24">
+    <section className="py-8 lg:py-24">
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-20">

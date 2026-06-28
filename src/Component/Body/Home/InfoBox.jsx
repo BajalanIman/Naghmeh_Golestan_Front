@@ -14,38 +14,39 @@ const InfoBox = ({
     <div className="relative w-full lg:w-[370px] h-[380px]  mb-8 lg:mb-0 rounded-md">
       <img src={image} className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/50 "></div>
-      <div className="absolute inset-0 text-xl text-[#fafafa] gap-1 flex flex-col px-4 py-4">
+      <div className="absolute inset-0 text-xl text-[#1B6269] gap-1 flex flex-col px-4 py-4">
         {homePageInfoBoxTitleOne && (
-          <p className="text-3xl font-bold mb-8 text-[#ECEAD3]">
+          // text-[#ECEAD3]
+          <p className="text-3xl font-bold mb-8 text-[#1B6269]">
             {homePageInfoBoxTitleOne}
           </p>
         )}
         {homePageInfoBoxTitleTwo && (
-          <p className="text-3xl font-bold mb-8 text-[#ECEAD3]">
+          <p className="text-3xl font-bold mb-8 text-[#1B6269]">
             {homePageInfoBoxTitleTwo}
           </p>
         )}
         {homePageInfoBoxTitleThree && (
-          <p className="text-3xl font-bold mb-8 text-[#ECEAD3]">
+          <p className="text-3xl font-bold mb-8 text-[#1B6269]">
             {homePageInfoBoxTitleThree}
           </p>
         )}
         {homePageInfoBoxTextOne && (
-          <p className="text-[#ECEAD3]">
+          <p className="text-[#1B6269]">
             {homePageInfoBoxTextOne?.length > 85
               ? `${homePageInfoBoxTextOne.slice(0, 85)}...`
               : homePageInfoBoxTextOne}
           </p>
         )}
         {homePageInfoBoxTextTwo && (
-          <p className="text-[#ECEAD3]">
+          <p className="text-[#1B6269]">
             {homePageInfoBoxTextTwo?.length > 85
               ? `${homePageInfoBoxTextTwo.slice(0, 85)}...`
               : homePageInfoBoxTextTwo}
           </p>
         )}
         {homePageInfoBoxTextThree && (
-          <p className="text-[#ECEAD3]">
+          <p className="text-[#1B6269]">
             {homePageInfoBoxTextThree?.length > 85
               ? `${homePageInfoBoxTextThree.slice(0, 85)}...`
               : homePageInfoBoxTextThree}
@@ -64,8 +65,8 @@ const InfoBox = ({
           <p className="text-sm">Location: Pankow, Berlin</p>
         </div>
         <div className=" flex gap-3 mt-6">
-          <p className="text-xl font-bold  text-[#ECEAD3]"> More details</p>
-          <ExternalLink color="#ECEAD3" />
+          <p className="text-xl font-bold  text-[#1B6269]"> More details</p>
+          <ExternalLink color="#1B6269" />
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@ function Imagegallery() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-4 lg:h-screen bg-white relative">
+    <div className="flex flex-col items-center justify-center w-full mt-4 lg:h-screen relative">
       {/* Image */}
       <div className="relative w-[90%] lg:w-[80%] max-w-4xl">
         <img

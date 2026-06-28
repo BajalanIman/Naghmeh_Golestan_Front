@@ -6,7 +6,7 @@ const TextAndImage = ({
   image,
 }) => {
   return (
-    <div className="lg:px-12 lg:py-20 pt-6 px-6 py-10 flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center bg-green-50">
+    <div className="lg:px-12 lg:py-20 pt-6 px-6 py-10 flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center">
       <div>
         <p className="text-2xl font-bold mb-6  tex-neutral-700  ">
           {HomepageTextAndImageTitle}

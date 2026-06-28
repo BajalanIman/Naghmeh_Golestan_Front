@@ -7,11 +7,11 @@ const DonationSection = () => {
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-20">
-      <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+      <div className="border-gray-300 border rounded-3xl shadow-xl overflow-hidden">
         <div className="grid lg:grid-cols-2">
           {/* Left Side */}
-          <div className="bg-[#0A5F91] text-white p-10">
-            <span className="inline-block bg-white/20 px-4 py-2 rounded-full text-sm mb-6">
+          <div className="bg-[#BCDEDC] p-10">
+            <span className="inline-block bg-[#E4F8F7] px-4 py-2 rounded-full text-sm mb-6">
               Support Our Mission
             </span>
 
@@ -19,7 +19,7 @@ const DonationSection = () => {
               Help Us Keep Culture Accessible
             </h2>
 
-            <p className="text-violet-100 leading-8">
+            <p className="leading-8">
               Your contribution helps us organize cultural events, workshops,
               exhibitions, and community programs for people of all ages and
               backgrounds.
@@ -34,10 +34,8 @@ const DonationSection = () => {
           </div>
 
           {/* Right Side */}
-          <div className="p-10">
-            <h3 className="text-2xl font-bold text-[#0A5F91] mb-6">
-              Make a Donation
-            </h3>
+          <div className="p-10 bg-[#E4F8F7]">
+            <h3 className="text-2xl font-bold mb-6">Make a Donation</h3>
 
             <label className="block text-sm font-medium mb-3">
               Choose an Amount
@@ -51,8 +49,8 @@ const DonationSection = () => {
                   onClick={() => setAmount(value)}
                   className={`rounded-xl border p-4 font-semibold transition ${
                     amount === value
-                      ? "bg-[#0A5F91] text-white border-violet-300"
-                      : "border-gray-300"
+                      ? "bg-[#1B6269] text-white border-[#0f4146]"
+                      : "border-[#1B6269]"
                   }`}
                 >
                   €{value}
@@ -93,11 +91,11 @@ const DonationSection = () => {
               </div>
             </div>
 
-            <button className="w-full bg-[#0A5F91] hover:bg-[#0a344c] text-white font-semibold py-4 rounded-xl transition">
+            <button className="w-full bg-[#1B6269] hover:bg-[#0a344c] text-white font-semibold py-4 rounded-xl transition">
               Donate €{amount}
             </button>
 
-            <p className="text-center text-sm text-gray-500 mt-4">
+            <p className="text-center text-sm mt-4">
               Secure payment processing.
             </p>
           </div>

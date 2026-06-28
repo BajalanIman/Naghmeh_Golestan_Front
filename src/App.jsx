@@ -9,6 +9,7 @@ import Aboutus from "./Component/Body/Aboutus/Aboutus";
 import AllEvents from "./Component/Body/Events/AllEvents";
 import Courses from "./Component/Body/courses/Courses";
 import CourseDetails from "./Component/Body/courses/CourseDetails";
+import Team from "./Component/Body/TeamMembers/Team";
 
 function App() {
   return (
@@ -19,11 +20,11 @@ function App() {
         <Route path="/singUp" index element={<SingUp />} />
         <Route path="/workshops" element={<Workshops />} />
         <Route path="/workshops/:id" element={<WorkshopDetails />} />
-
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/aboutus" index element={<Aboutus />} />
         <Route path="/allevents" index element={<AllEvents />} />
+        <Route path="/team" index element={<Team />} />
       </Routes>
     </Router>
   );

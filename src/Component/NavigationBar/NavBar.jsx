@@ -66,14 +66,15 @@ const NavBar = () => {
         </h1>
         <Link
           className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200"
-          // to="/aboutus"
+          to="/aboutus"
         >
           {t("aboutUs")}
         </Link>
-
-        <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
-          {t("teamMembers")}
-        </h1>
+        <Link to="/team">
+          <h1 className="font-bold cursor-pointer from-neutral-800 pt-2 text-[#ECEAD3] hover:text-yellow-200">
+            {t("teamMembers")}
+          </h1>
+        </Link>
       </div>
       <div className="flex gap-8">
         <div className="flex gap-2s">

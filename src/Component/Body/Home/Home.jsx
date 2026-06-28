@@ -14,7 +14,7 @@ const home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="">
+    <div className="bg-[#F1EFEE] text-[#1B6269]">
       <Mainbody />
       <Linktonews />
       <SmallInformation

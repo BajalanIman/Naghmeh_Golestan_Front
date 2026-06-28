@@ -5,7 +5,7 @@ const Mainworkshop = ({
   ContinueReading,
 }) => {
   return (
-    <div className="bg-white flex flex-col md:h-80 px-6 sm:px-0 relative md:overflow-hidden">
+    <div className="bg-[#F1EFEE] flex flex-col md:h-80 px-6 sm:px-0 relative md:overflow-hidden">
       {/* DATE CARD */}
       <div
         className="
@@ -25,13 +25,11 @@ const Mainworkshop = ({
         />
         <div className="absolute inset-0 bg-black/50  rounded-lg"></div>
         <div className="absolute inset-0 w-full h-full flex justify-center items-center flex-col">
-          <h1 className="text-[#ECEAD3] font-sans text-sm md:text-xl">May</h1>
+          {/* text-[#ECEAD3] */}
 
-          <h1 className="text-[#ECEAD3] font-sans font-bold text-4xl md:text-8xl">
-            27
-          </h1>
-
-          <h1 className="text-[#ECEAD3] font-sans text-sm md:text-xl">2026</h1>
+          <h1 className=" font-sans text-sm md:text-xl">May</h1>
+          <h1 className=" font-sans font-bold text-4xl md:text-8xl">27</h1>
+          <h1 className=" font-sans text-sm md:text-xl">2026</h1>
         </div>
       </div>
 
@@ -39,23 +37,23 @@ const Mainworkshop = ({
       <div className="hidden md:block h-24 md:h-1/6"></div>
 
       {/* CONTENT */}
-      <div className="bg-[#ECEAD3] flex flex-col md:flex-row flex-1">
+      <div className="bg-[#E4F8F7] flex flex-col md:flex-row flex-1">
         {/* left spacer only desktop */}
         <div className="hidden md:block md:w-1/3"></div>
 
         {/* text */}
         <div className="w-full md:w-2/3 flex flex-col gap-3 md:gap-4 px-4 md:pr-8 pt-6 pb-6 lg:pb-0 md:pt-5">
-          <h1 className="font-bold text-violet-900 text-xl md:text-2xl">
+          <h1 className="font-bold text-xl md:text-2xl">
             {HomepageMainWorkshopTitle}
           </h1>
 
-          <span className="text-violet-900 text-sm md:text-xl leading-relaxed">
+          <span className="text-sm md:text-xl leading-relaxed">
             {HomepageMainWorkshopText?.length > 400
               ? `${HomepageMainWorkshopText.slice(0, 400)}...`
               : HomepageMainWorkshopText}
           </span>
           <Link to="/workshops">
-            <span className="text-violet-900 font-bold text-sm md:text-base">
+            <span className="font-bold text-sm md:text-base">
               {ContinueReading}
             </span>
           </Link>

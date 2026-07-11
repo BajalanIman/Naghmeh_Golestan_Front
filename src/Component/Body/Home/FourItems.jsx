@@ -17,7 +17,7 @@ const FourItems = () => {
         Connect with our diverse culture!
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer">
+        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer bg-[#BCDEDC]">
           <img
             src={Literature}
             alt={Literature}
@@ -33,7 +33,7 @@ const FourItems = () => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer">
+        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer bg-[#BCDEDC]">
           <img
             src={Music}
             alt={Music}
@@ -48,7 +48,7 @@ const FourItems = () => {
             <h2 className="text-xl font-bold text-[#1B6269]">Music</h2>
           </div>
         </div>
-        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer">
+        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer bg-[#BCDEDC]">
           <img
             src={Film}
             alt={Film}
@@ -63,7 +63,7 @@ const FourItems = () => {
             <h2 className="text-xl font-bold text-[#1B6269]">Film</h2>
           </div>
         </div>
-        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer">
+        <div className="relative overflow-hidden flex justify-center items-center rounded-lg h-[380px] group cursor-pointer bg-[#BCDEDC]">
           <img
             src={Kunst}
             alt={Kunst}

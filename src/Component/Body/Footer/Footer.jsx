@@ -21,12 +21,18 @@ const Footer = () => {
           <ul className="space-y-2">
             {/* <li className="hover:text-[#ECEAD3] cursor-pointer">Exhibitions</li> */}
             <Link to="/workshops">
-              <li className="hover:text-[#ECEAD3] cursor-pointer">Workshops</li>
+              <li className="hover:text-[#ECEAD3] cursor-pointer mb-2">
+                Workshops
+              </li>
             </Link>
             <Link to="/courses">
               <li className="hover:text-[#ECEAD3] cursor-pointer">Courses</li>
             </Link>
-            <li className="hover:text-[#ECEAD3] cursor-pointer">Events</li>
+            <Link to="/ourEvents">
+              <li className="hover:text-[#ECEAD3] cursor-pointer mt-2">
+                Events
+              </li>
+            </Link>
             <li className="hover:text-[#ECEAD3] cursor-pointer">News</li>
           </ul>
         </div>
@@ -35,12 +41,26 @@ const Footer = () => {
         <div className="text-[#E4F8F7]">
           <h2 className="text-lg font-semibold mb-4">Support</h2>
           <ul className="space-y-2">
-            <li className="hover:text-[#ECEAD3] cursor-pointer">Help Center</li>
-            <li className="hover:text-[#ECEAD3] cursor-pointer">Contact Us</li>
-            <li className="hover:text-[#ECEAD3] cursor-pointer">
-              Privacy Policy
-            </li>
-            <li className="hover:text-[#E4F8F7] cursor-pointer">Terms</li>
+            <Link to="/helpCenter">
+              <li className="hover:text-[#ECEAD3] cursor-pointer">
+                Help Center
+              </li>
+            </Link>
+            <Link to="/contactUs">
+              <li className="hover:text-[#ECEAD3] cursor-pointer mt-2">
+                Contact Us
+              </li>
+            </Link>
+            <Link to="/privacyPolicy">
+              <li className="hover:text-[#ECEAD3] cursor-pointer mt-2">
+                Privacy Policy
+              </li>
+            </Link>
+            <Link to="/terms">
+              <li className="hover:text-[#E4F8F7] cursor-pointer mt-2">
+                Terms
+              </li>
+            </Link>
           </ul>
         </div>
 

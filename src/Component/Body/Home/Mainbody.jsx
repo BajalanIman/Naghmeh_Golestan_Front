@@ -29,8 +29,8 @@ function Mainbody() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col lg:gap-5 items-center justify-center h-full text-[#ECEAD3]">
-        <h1 className="text-2xl lg:text-5xl font-bold">{t("welcome")}</h1>
+      <div className="relative z-10 flex flex-col lg:gap-5 text-center items-center justify-center h-full text-[#ECEAD3]">
+        <h1 className="text-2xl lg:text-5xl font-bold ">{t("welcome")}</h1>
         <h1 className="text-2xl lg:text-5xl font-bold">{t("sampleText")}</h1>
         <h1 className="text-2xl lg:text-5xl font-bold">{t("changeText")}</h1>
       </div>

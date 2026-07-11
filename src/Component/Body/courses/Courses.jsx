@@ -93,7 +93,7 @@ const Courses = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col justify-center">
+    <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
       {/* NAVBAR */}
       <div className=" w-full bg-[#186f77] ">
         <div className="mx-auto lg:w-[1200px]">
@@ -143,7 +143,7 @@ const Courses = () => {
         />
       </div> */}
       {/* WORKSHOPS LIST */}
-      <div className="w-full bg-white flex flex-col py-2 px-6 gap-4">
+      <div className="w-full flex flex-col mt-12 lg:mt-0 py-2 px-6 gap-4">
         {Object.entries(grouped).map(([year, months]) => (
           <div key={year}>
             {/* YEAR TITLE */}

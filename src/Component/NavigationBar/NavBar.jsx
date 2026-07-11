@@ -47,22 +47,19 @@ const NavBar = () => {
           <Link className={navStyle} to="/courses">
             {t("courses")}
           </Link>
-          <Link
-            className={navStyle} // to="/allevents"
-          >
-            {t("culturalEvents")}
-          </Link>
-          <Link
-            className={navStyle} // to="/allevents"
-          >
+          {/* <Link className={navStyle}>{t("culturalEvents")}</Link> */}
+          <Link className={navStyle} to="/ourEvents">
             {t("ourEvents")}
           </Link>
-          <h1 className={navStyle}>{t("news")}</h1>
+          {/* <h1 className={navStyle}>{t("news")}</h1> */}
           <Link className={navStyle} to="/aboutus">
             {t("aboutUs")}
           </Link>
           <Link to="/team">
             <h1 className={navStyle}>{t("teamMembers")}</h1>
+          </Link>
+          <Link to="/joinUs" onClick={closeMenu}>
+            <h1 className={navStyle}>Join Us</h1>
           </Link>
         </div>
         <div className="flex gap-8">
@@ -162,9 +159,11 @@ const NavBar = () => {
                 {t("courses")}
               </Link>
 
-              <Link onClick={closeMenu}>{t("culturalEvents")}</Link>
+              {/* <Link onClick={closeMenu}>{t("culturalEvents")}</Link> */}
 
-              <Link onClick={closeMenu}>{t("ourEvents")}</Link>
+              <Link to="/ourEvents" onClick={closeMenu}>
+                {t("ourEvents")}
+              </Link>
 
               <Link to="/aboutus" onClick={closeMenu}>
                 {t("aboutUs")}
@@ -173,8 +172,10 @@ const NavBar = () => {
               <Link to="/team" onClick={closeMenu}>
                 {t("teamMembers")}
               </Link>
-
-              <span>{t("news")}</span>
+              <Link to="/joinUs" onClick={closeMenu}>
+                Join Us
+              </Link>
+              {/* <span>{t("news")}</span> */}
 
               {/* Languages */}
               <div className="flex gap-5 mt-6">

@@ -69,9 +69,9 @@ const Workshops = () => {
       </div>
 
       {/* HERO IMAGE */}
-      <div className="relative flex justify-center items-center h-64 lg:h-96 pt-6">
+      <div className="relative flex justify-center items-center h-64 lg:h-96 lg:pt-6">
         <img
-          className="w-3/4 absolute lg:mt-40 rounded-lg lg:shadow-lg shadow-black"
+          className="lg:w-3/4 absolute mt-32 lg:mt-40 lg:rounded-lg lg:shadow-lg shadow-black"
           src="https://i.etsystatic.com/44190086/r/il/003dc0/5358431678/il_fullxfull.5358431678_4d25.jpg"
           alt=""
         />

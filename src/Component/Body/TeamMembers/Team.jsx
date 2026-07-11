@@ -9,7 +9,7 @@ const teamMembers = [
     name: "Dr. Naghmeh Esmaeilpour",
     role: "Founder & Cultural Educator",
     image:
-      "https://kultur-atelier.de/wp-content/uploads/2022/05/Naghme-final-png.webp",
+      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761121/Naghme-final-png_yvtc0i.webp",
     bio: "Naghmeh Esmaeilpour is an Iranian doctoral student who has been studying at Humboldt University in Berlin since September 2015 as part of the PhD-Net program. She completed her undergraduate studies in 2006 with a Bachelor's degree in English Language and Literature. She then pursued a Master's degree in English Language and Literature, which she completed in 2011. As part of the PhD-Net program, she was a visiting scholar at Harvard University for a semester in 2016. In 2017, she received a scholarship to participate in the Harvard Institute of World Literature Summer School. Since August 2017, she has been a recipient of a scholarship from the Friedrich Ebert Foundation.",
     expertise: ["English Language", "Arab History", "Cultural Studies"],
   },
@@ -18,7 +18,7 @@ const teamMembers = [
     name: "Dr. Pegah Khadish",
     role: "Artistic director",
     image:
-      "https://kultur-atelier.de/wp-content/uploads/2024/10/Pegah-768x503.webp",
+      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761178/Pegah-768x503_uzn3lr.webp",
     bio: "Pegah Khadish has completed training in Persian language and literature. She completed her PhD at the University of Tehran (2005). Her doctoral thesis was on the morphology of Persian folk tales, which was written under the supervision of Prof. Ulrich Marzloph at the University of Göttingen. This dissertation was published in 2008 and was selected as the top cultural research of the year in Iran. She worked as an assistant professor for about 15 years at the Dehkhoda Lexicon Institute and the International Center for Persian Studies at the University of Tehran. Her main research area is Iranian myths and narratives. She has published nine books so far, most of them on Persian folk literature and narrative elements, two of which are considered textbooks. She has been a member of the ISFNR (The International Society for Folk Narrative Research) since 2017. She is currently working on a voluntary basis on cataloging some unknown Persian manuscripts in the Berlin State Library.",
     expertise: ["Persian language and literature"],
   },
@@ -27,7 +27,7 @@ const teamMembers = [
     name: "Sanaz pahlevan",
     role: "Teacher and artifact artist",
     image:
-      "https://kultur-atelier.de/wp-content/uploads/2022/05/Pegah-1-768x503.webp",
+      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761228/Pegah-1-768x503_buyxm0.webp",
     bio: "Sanaz Pahlavi was born in November 1982. She initially studied family psychology and later earned a bachelor's degree in primary school teaching. During her studies, she developed a strong interest in crafts such as doll making, origami, collage, and embroidery (on fabric and leather). Believing in teaching children concepts through art and crafts, she obtained certifications from practical craft schools. She worked as a primary school teacher in Iran for approximately six years, teaching children theater and small decorative crafts for about three years. Later, after immigrating to Germany, she used her talent to teach third-grade children how to make decorative crafts for their families as Christmas gifts at school. Through KulturAtelier, I host a virtual workshop on small decorative crafts, which was well-received by 10 participants, despite being virtual due to the COVID-19 pandemic.",
     expertise: ["Teaching"],
   },

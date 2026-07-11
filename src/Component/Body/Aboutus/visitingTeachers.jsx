@@ -4,7 +4,7 @@ const visitingTeachers = [
     name: "Prof. Dr. Asef Bayat",
     role: "Professor of Sociology (Guest Lecturer)",
     image:
-      "https://cdn.nawaat.org/wp-content/uploads/2019/02/Asef-Bayat-2-680px.jpg",
+      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761614/Asef-Bayat-2-680px_cms2bw.jpg",
     bio: "He currently holds the Catherine and Bruce Bastian Chair in Global and Transnational Studies in the Department of Sociology at the University of Illinois Urbana-Champaign. Bayat's works focuses on social movements and social change, religion and public life, and urban space and politics and contemporary Middle Eastern societies. Prior to his tenure at Illinois, Bayat was a faculty member at the American University in Cairo and served as the director of the International Institute for the Study of Islam in the Modern World (ISIM) at Leiden University, The Netherlands, where he also held the chair of Society and Culture of the Modern Middle East. Additionally, he has held visiting positions at the University of California, Berkeley; Columbia University; the University of Oxford; and Brown University.",
   },
   {
@@ -12,7 +12,7 @@ const visitingTeachers = [
     name: "Prof. Dr. Nasser Kanani",
     role: "Surface Engineering (Guest Lecturer)",
     image:
-      "https://iranjournal.org/wp-content/uploads/2020/05/Prof-Nasser-Kanani-.jpg",
+      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761643/Prof-Nasser-Kanani-_ugc2dz.jpg",
     bio: "EDITOR Professor Dr.-Ing. Dr. habil. Wet Kanani TU and TFH Berlin, visiting professorship at MIT, the University of Florida in Gainesville, and Zakaraya University in Turkey; between 1993 and 2005 Head of the Materials Science Department at Atotech Deutschland GmbH in Berlin. During this time, he led a team of scientists and engineers on the qualification of electroplated metallic coatings.",
   },
   {

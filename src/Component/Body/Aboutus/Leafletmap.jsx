@@ -5,7 +5,7 @@ import GolestanLogo from "../../Logo/GolestanLogo";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 const Leafletmap = () => {
-  const center = [52.5697, 13.4019];
+  const center = [52.565648528991005, 13.412039548127355];
 
   const icon = L.divIcon({
     html: renderToStaticMarkup(
@@ -32,9 +32,36 @@ const Leafletmap = () => {
       />
       <Marker position={center} icon={icon}>
         <Popup>
-          <p>Location: Pankow, Berlin</p>
-          <p>Email: naghmeh@gmail.com</p>
-          <p>Phone: +4900000000</p>
+          <p>
+            <a
+              href={`https://www.google.com/maps?q=${center[0]},${center[1]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#186f77] underline"
+            >
+              Kunst-Stoffe- Materialmarkt Pankow <br />
+              Berliner Str. 17, 13189 Berlin
+            </a>
+          </p>
+          <p>
+            Email:{" "}
+            <a
+              href="mailto:kontakt@kultur-atelier.de"
+              className="hover:text-[#186f77] underline"
+            >
+              kontakt@kultur-atelier.de
+            </a>
+          </p>
+
+          <p>
+            Phone:{" "}
+            <a
+              href="tel:+4915904973362"
+              className="hover:text-[#186f77] underline"
+            >
+              +49 15904973362
+            </a>
+          </p>
         </Popup>
       </Marker>
     </MapContainer>

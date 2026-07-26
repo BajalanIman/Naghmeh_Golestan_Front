@@ -1,5 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ErrorBoundary from "../src/Component/ErrorBoundary/ErrorBoundary";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import ScrollToTop from "./Component/ScrollToTop/ScrollToTop";
 import Home from "./Component/Body/Home/Home";
 import Login from "./Component/NavigationBar/Login";
@@ -18,6 +20,17 @@ import Terms from "./Component/Body/Footer/Terms";
 import JoinUs from "./Component/NavigationBar/JoinUs";
 
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const currentLanguage = i18n.resolvedLanguage || i18n.language;
+    const isPersian = currentLanguage?.startsWith("fa");
+
+    document.documentElement.setAttribute("dir", isPersian ? "rtl" : "ltr");
+
+    document.documentElement.setAttribute("lang", currentLanguage || "en");
+  }, [i18n.language, i18n.resolvedLanguage]);
+
   return (
     <Router>
       <ScrollToTop />

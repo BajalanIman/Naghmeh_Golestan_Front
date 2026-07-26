@@ -59,7 +59,7 @@ const NavBar = () => {
             <h1 className={navStyle}>{t("teamMembers")}</h1>
           </Link>
           <Link to="/joinUs" onClick={closeMenu}>
-            <h1 className={navStyle}>Join Us</h1>
+            <h1 className={navStyle}>{t("joinus_title")}</h1>
           </Link>
         </div>
         <div className="flex gap-8">

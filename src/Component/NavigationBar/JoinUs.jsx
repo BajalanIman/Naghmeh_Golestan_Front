@@ -3,32 +3,32 @@ import { Palette, BookOpen, Music, Users, Send } from "lucide-react";
 import NavBar from "./NavBar";
 import DonationSection from "../Body/Home/DonationSection";
 import Footer from "../Body/Footer/Footer";
+import { useTranslation } from "react-i18next";
 
 const JoinUs = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   const opportunities = [
     {
       icon: <Palette size={35} />,
-      title: "Artists & Creators",
-      description:
-        "Share your artistic skills through exhibitions, creative workshops, and cultural projects.",
+      title: t("joinus_artists_creators_title"),
+      description: t("joinus_artists_creators_description"),
     },
     {
       icon: <BookOpen size={35} />,
-      title: "Teachers & Speakers",
-      description:
-        "Offer courses, lectures, or educational workshops about Middle Eastern culture.",
+      title: t("joinus_teachers_speakers_title"),
+      description: t("joinus_teachers_speakers_description"),
     },
     {
       icon: <Music size={35} />,
-      title: "Performers",
-      description:
-        "Musicians, dancers, and performers are welcome to participate in our cultural events.",
+      title: t("joinus_performers_title"),
+      description: t("joinus_performers_description"),
     },
     {
       icon: <Users size={35} />,
-      title: "Volunteers & Partners",
-      description:
-        "Support our events and help us build cultural connections within the community.",
+      title: t("joinus_volunteers_partners_title"),
+      description: t("joinus_volunteers_partners_description"),
     },
   ];
 
@@ -52,7 +52,7 @@ const JoinUs = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <h1 className="absolute text-[#ECEAD3] text-4xl lg:text-6xl font-bold">
-          Join Us
+          {t("joinus_title")}
         </h1>
       </div>
 
@@ -60,15 +60,11 @@ const JoinUs = () => {
       <div className="max-w-6xl mx-auto px-6 py-16 w-full">
         <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 text-center">
           <h2 className="text-4xl font-bold text-[#186f77] mb-5">
-            Become Part of Our Cultural Community
+            {t("joinus_community_title")}
           </h2>
 
           <p className="text-gray-600 leading-8 max-w-4xl mx-auto">
-            We invite passionate individuals who want to share their knowledge,
-            creativity, and experiences related to Middle Eastern culture.
-            Whether you are an artist, educator, researcher, performer, or
-            simply someone with a meaningful idea, we would love to hear from
-            you.
+            {t("joinus_community_description")}
           </p>
         </div>
 
@@ -97,27 +93,31 @@ const JoinUs = () => {
 
         <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 mt-12">
           <h2 className="text-3xl font-bold text-[#186f77] mb-8">
-            Tell Us About Yourself
+            {t("joinus_about_yourself_form_title")}
           </h2>
 
           <form className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block font-medium mb-2">Full Name</label>
+                <label className="block font-medium mb-2">
+                  {t("joinus_full_name_label")}
+                </label>
 
                 <input
                   type="text"
-                  placeholder="Your name"
+                  placeholder={t("joinus_full_name_label")}
                   className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-[#186f77] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block font-medium mb-2">Email Address</label>
+                <label className="block font-medium mb-2">
+                  {t("joinus_email_address_label")}
+                </label>
 
                 <input
                   type="email"
-                  placeholder="Your email"
+                  placeholder={t("joinus_email_address_label")}
                   className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-[#186f77] outline-none"
                 />
               </div>
@@ -125,21 +125,25 @@ const JoinUs = () => {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block font-medium mb-2">Phone Number</label>
+                <label className="block font-medium mb-2">
+                  {t("joinus_phone_number_label")}
+                </label>
 
                 <input
                   type="text"
-                  placeholder="Your phone number"
+                  placeholder={t("joinus_phone_number_placeholder")}
                   className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-[#186f77] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block font-medium mb-2">City / Country</label>
+                <label className="block font-medium mb-2">
+                  {t("joinus_city_country_label")}
+                </label>
 
                 <input
                   type="text"
-                  placeholder="Where are you located?"
+                  placeholder={t("joinus_city_country_placeholder")}
                   className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-[#186f77] outline-none"
                 />
               </div>
@@ -147,11 +151,11 @@ const JoinUs = () => {
 
             <div>
               <label className="block font-medium mb-2">
-                Area of Contribution
+                {t("joinus_contribution_area_label")}
               </label>
 
               <select className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-[#186f77] outline-none">
-                <option>Select an option</option>
+                <option> {t("joinus_contribution_area_placeholder")}</option>
 
                 <option>Workshop Instructor</option>
 
@@ -168,23 +172,25 @@ const JoinUs = () => {
             </div>
 
             <div>
-              <label className="block font-medium mb-2">About Yourself</label>
+              <label className="block font-medium mb-2">
+                {t("joinus_about_yourself_label")}
+              </label>
 
               <textarea
                 rows="5"
-                placeholder="Tell us about yourself, your background, skills, and experience..."
+                placeholder={t("joinus_about_yourself_placeholder")}
                 className="w-full border rounded-lg p-3 resize-none focus:ring-2 focus:ring-[#186f77] outline-none"
               />
             </div>
 
             <div>
               <label className="block font-medium mb-2">
-                Your Idea or Message
+                {t("joinus_idea_message_label")}
               </label>
 
               <textarea
                 rows="5"
-                placeholder="How would you like to contribute?"
+                placeholder={t("joinus_idea_message")}
                 className="w-full border rounded-lg p-3 resize-none focus:ring-2 focus:ring-[#186f77] outline-none"
               />
             </div>
@@ -194,7 +200,7 @@ const JoinUs = () => {
               className="w-full flex justify-center items-center gap-3 bg-[#186f77] hover:bg-[#27b4c1] text-white py-4 rounded-xl font-semibold transition"
             >
               <Send size={20} />
-              Submit Application
+              {t("joinus_submit_application")}
             </button>
           </form>
         </div>

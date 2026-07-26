@@ -1,6 +1,11 @@
 import { useState } from "react";
+import GolestanIcon from "../../../../public/Golestan_Logo_KulutrHub_farbe.svg";
+import { useTranslation } from "react-i18next";
 
 const DonationSection = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   const [amount, setAmount] = useState(25);
 
   const presetAmounts = [10, 25, 50, 100];
@@ -12,33 +17,28 @@ const DonationSection = () => {
           {/* Left Side */}
           <div className="bg-[#BCDEDC] p-10">
             <span className="inline-block bg-[#E4F8F7] px-4 py-2 rounded-full text-sm mb-6">
-              Support Our Mission
+              {t("donation_support_mission_title")}
             </span>
 
             <h2 className="text-4xl font-bold mb-6">
-              Help Us Keep Culture Accessible
+              {t("donation_accessible_culture_title")}
             </h2>
 
-            <p className="leading-8">
-              Your contribution helps us organize cultural events, workshops,
-              exhibitions, and community programs for people of all ages and
-              backgrounds.
-            </p>
+            <p className="leading-8">{t("donation_description")}</p>
 
-            <div className="mt-10 space-y-4">
-              <div>🎨 Support creative workshops</div>
-              <div>📚 Fund educational programs</div>
-              <div>🌍 Promote cultural diversity</div>
-              <div>🤝 Strengthen community connections</div>
+            <div className="mt-10 px-10 py-10 flex justify-center">
+              <img src={GolestanIcon} />
             </div>
           </div>
 
           {/* Right Side */}
           <div className="p-10 bg-[#E4F8F7]">
-            <h3 className="text-2xl font-bold mb-6">Make a Donation</h3>
+            <h3 className="text-2xl font-bold mb-6">
+              {t("donation_form_title")}
+            </h3>
 
             <label className="block text-sm font-medium mb-3">
-              Choose an Amount
+              {t("donation_choose_amount_label")}
             </label>
 
             <div className="grid grid-cols-2 gap-3 mb-6">
@@ -57,32 +57,36 @@ const DonationSection = () => {
                 </button>
               ))}
             </div>
+
             <label className="block text-sm font-medium mb-3">
-              Another Amount
+              {t("donation_another_amount_label")}
             </label>
+
             <input
               type="number"
               min="1"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className="w-full border rounded-xl p-4 mb-6"
-              placeholder="Custom Amount"
+              placeholder={t("donation_another_amount_label")}
             />
 
             <input
               type="text"
-              placeholder="Name (optional)"
+              placeholder={t("donation_name_label")}
               className="w-full border rounded-xl p-4 mb-4"
             />
 
             <input
               type="email"
-              placeholder="Email (optional)"
+              placeholder={t("donation_email_label")}
               className="w-full border rounded-xl p-4 mb-6"
             />
 
             <div className="mb-6">
-              <label className="block font-medium mb-3">Payment Method</label>
+              <label className="block font-medium mb-3">
+                {t("donation_payment_method_label")}
+              </label>
 
               <div className="flex gap-3">
                 <button type="button" className="border rounded-xl px-5 py-3">
@@ -92,11 +96,11 @@ const DonationSection = () => {
             </div>
 
             <button className="w-full bg-[#1B6269] hover:bg-[#0a344c] text-white font-semibold py-4 rounded-xl transition">
-              Donate €{amount}
+              {t("donation_submit_button")} €{amount}
             </button>
 
             <p className="text-center text-sm mt-4">
-              Secure payment processing.
+              {t("donation_secure_payment_text")}
             </p>
           </div>
         </div>

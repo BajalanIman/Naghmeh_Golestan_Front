@@ -1,64 +1,77 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-[#1B6269] text[#1B6269]">
       {/* Top section */}
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="text-[#E4F8F7]">
-          <h1 className="text-2xl font-bold">Golestan Cultural Hun</h1>
+          <h1 className="text-2xl font-bold">
+            {t("footer_cultural_hub_title")}
+          </h1>
           <p className="text-sm mt-4 leading-relaxed">
-            Explore history, culture, and stories that shaped the Middle East.
-            Many modern and new experiences.
+            {t("footer_cultural_hub_description")}
           </p>
         </div>
 
         {/* Links */}
         <div className="text-[#E4F8F7]">
-          <h2 className="text-lg font-semibold mb-4">Explore</h2>
+          <h2 className="text-lg font-semibold mb-4">
+            {t("footer_explore_title")}
+          </h2>
           <ul className="space-y-2">
             {/* <li className="hover:text-[#ECEAD3] cursor-pointer">Exhibitions</li> */}
             <Link to="/workshops">
               <li className="hover:text-[#ECEAD3] cursor-pointer mb-2">
-                Workshops
+                {t("footer_workshops_link")}
               </li>
             </Link>
             <Link to="/courses">
-              <li className="hover:text-[#ECEAD3] cursor-pointer">Courses</li>
+              <li className="hover:text-[#ECEAD3] cursor-pointer">
+                {t("footer_courses_link")}
+              </li>
             </Link>
             <Link to="/ourEvents">
               <li className="hover:text-[#ECEAD3] cursor-pointer mt-2">
-                Events
+                {t("footer_events_link")}
               </li>
             </Link>
-            <li className="hover:text-[#ECEAD3] cursor-pointer">News</li>
+            <li className="hover:text-[#ECEAD3] cursor-pointer">
+              {t("footer_news_link")}
+            </li>
           </ul>
         </div>
 
         {/* Support */}
         <div className="text-[#E4F8F7]">
-          <h2 className="text-lg font-semibold mb-4">Support</h2>
+          <h2 className="text-lg font-semibold mb-4">
+            {t("footer_support_title")}
+          </h2>
           <ul className="space-y-2">
             <Link to="/helpCenter">
               <li className="hover:text-[#ECEAD3] cursor-pointer">
-                Help Center
+                {t("footer_faq_link")}
               </li>
             </Link>
             <Link to="/contactUs">
               <li className="hover:text-[#ECEAD3] cursor-pointer mt-2">
-                Contact Us
+                {t("footer_contact_us_link")}
               </li>
             </Link>
             <Link to="/privacyPolicy">
               <li className="hover:text-[#ECEAD3] cursor-pointer mt-2">
-                Privacy Policy
+                {t("footer_privacy_policy_link")}
               </li>
             </Link>
             <Link to="/terms">
               <li className="hover:text-[#E4F8F7] cursor-pointer mt-2">
-                Terms
+                {t("footer_terms_link")}
               </li>
             </Link>
           </ul>
@@ -67,20 +80,20 @@ const Footer = () => {
         {/* Newsletter */}
         <div>
           <h2 className="text-lg text-[#E4F8F7] font-semibold mb-4">
-            Newsletter
+            {t("footer_newsletter_title")}
           </h2>
           <p className="text-sm text-[#E4F8F7] mb-4">
-            Get updates about exhibitions and events.
+            {t("footer_newsletter_description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="email"
-              placeholder="Your email"
+              placeholder={t("footer_email_placeholder")}
               className="w-full px-3 py-2 rounded-md outline-none"
             />
             <button className="bg-[#E4F8F7] px-4 py-2 rounded-md font-semibold hover:bg-yellow-100 transition">
-              Subscribe
+              {t("footer_subscribe_button")}
             </button>
           </div>
         </div>
@@ -88,7 +101,7 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-white/20 py-4 text-center text-sm text-[#E4F8F7]">
-        © {new Date().getFullYear()} Golestan. All rights reserved.
+        {t("footer_copyright")}
       </div>
     </footer>
   );

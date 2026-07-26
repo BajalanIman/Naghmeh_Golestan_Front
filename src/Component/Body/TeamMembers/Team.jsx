@@ -1,39 +1,146 @@
 // import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
 import NavBar from "../../NavigationBar/NavBar";
+import VisitingTeachers from "./visitingTeachers";
 import Footer from "../Footer/Footer";
-
-const teamMembers = [
-  {
-    id: 1,
-    name: "Dr. Naghmeh Esmaeilpour",
-    role: "Founder & Cultural Educator",
-    image:
-      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761121/Naghme-final-png_yvtc0i.webp",
-    bio: "Naghmeh Esmaeilpour is an Iranian doctoral student who has been studying at Humboldt University in Berlin since September 2015 as part of the PhD-Net program. She completed her undergraduate studies in 2006 with a Bachelor's degree in English Language and Literature. She then pursued a Master's degree in English Language and Literature, which she completed in 2011. As part of the PhD-Net program, she was a visiting scholar at Harvard University for a semester in 2016. In 2017, she received a scholarship to participate in the Harvard Institute of World Literature Summer School. Since August 2017, she has been a recipient of a scholarship from the Friedrich Ebert Foundation.",
-    expertise: ["English Language", "Arab History", "Cultural Studies"],
-  },
-  {
-    id: 2,
-    name: "Dr. Pegah Khadish",
-    role: "Artistic director",
-    image:
-      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761178/Pegah-768x503_uzn3lr.webp",
-    bio: "Pegah Khadish has completed training in Persian language and literature. She completed her PhD at the University of Tehran (2005). Her doctoral thesis was on the morphology of Persian folk tales, which was written under the supervision of Prof. Ulrich Marzloph at the University of Göttingen. This dissertation was published in 2008 and was selected as the top cultural research of the year in Iran. She worked as an assistant professor for about 15 years at the Dehkhoda Lexicon Institute and the International Center for Persian Studies at the University of Tehran. Her main research area is Iranian myths and narratives. She has published nine books so far, most of them on Persian folk literature and narrative elements, two of which are considered textbooks. She has been a member of the ISFNR (The International Society for Folk Narrative Research) since 2017. She is currently working on a voluntary basis on cataloging some unknown Persian manuscripts in the Berlin State Library.",
-    expertise: ["Persian language and literature"],
-  },
-  {
-    id: 3,
-    name: "Sanaz pahlevan",
-    role: "Teacher and artifact artist",
-    image:
-      "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761228/Pegah-1-768x503_buyxm0.webp",
-    bio: "Sanaz Pahlavi was born in November 1982. She initially studied family psychology and later earned a bachelor's degree in primary school teaching. During her studies, she developed a strong interest in crafts such as doll making, origami, collage, and embroidery (on fabric and leather). Believing in teaching children concepts through art and crafts, she obtained certifications from practical craft schools. She worked as a primary school teacher in Iran for approximately six years, teaching children theater and small decorative crafts for about three years. Later, after immigrating to Germany, she used her talent to teach third-grade children how to make decorative crafts for their families as Christmas gifts at school. Through KulturAtelier, I host a virtual workshop on small decorative crafts, which was well-received by 10 participants, despite being virtual due to the COVID-19 pandemic.",
-    expertise: ["Teaching"],
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function TeamSection() {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const teamMembers = [
+    {
+      id: 1,
+      name: t("team_members_naghmeh_name"),
+      role: t("team_members_naghmeh_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761121/Naghme-final-png_yvtc0i.webp",
+      bio: t("team_members_naghmeh_description"),
+      expertise: t("team_members_naghmeh_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 2,
+      name: "Kiarash Moham",
+      role: "Kiarash Moham",
+      image: "",
+      bio: "Kiarash Moham",
+      // expertise: t("team_members_naghmeh_interests", {
+      //   returnObjects: true,
+      // }),
+    },
+    {
+      id: 3,
+      name: "Sara Assadi",
+      role: "Sara Assadi",
+      image: "",
+      bio: "Sara Assadi",
+      // expertise: t("team_members_naghmeh_interests", {
+      //   returnObjects: true,
+      // }),
+    },
+    {
+      id: 4,
+      name: "Nafiseh Mirzaei",
+      role: "Nafiseh Mirzaei",
+      image: "",
+      bio: "Nafiseh Mirzaei",
+      // expertise: t("team_members_naghmeh_interests", {
+      //   returnObjects: true,
+      // }),
+    },
+    {
+      id: 5,
+      name: "Iman Bajalan",
+      role: "Iman Bajalan",
+      image: "",
+      bio: "Iman Bajalan",
+      // expertise: t("team_members_naghmeh_interests", {
+      //   returnObjects: true,
+      // }),
+    },
+  ];
+
+  const teachersInstructors = [
+    {
+      id: 1,
+      name: t("team_members_pegah_khadish_name"),
+      role: t("team_members_pegah_khadish_role"),
+      image: "",
+      bio: t("team_members_pegah_khadish_description"),
+      expertise: t("team_members_pegah_khadish_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 2,
+      name: t("team_members_sanaz_pahlevan_name"),
+      role: t("team_members_sanaz_pahlevan_role"),
+      image: "",
+      bio: t("team_members_sanaz_pahlevan_description"),
+      expertise: t("team_members_sanaz_pahlevan_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 3,
+      name: t("team_members_zhaleh_ahmadi_iraei_name"),
+      role: t("team_members_zhaleh_ahmadi_iraei_role"),
+      image: "",
+      bio: t("team_members_zhaleh_ahmadi_iraei_description"),
+      expertise: t("team_members_zhaleh_ahmadi_iraei_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 4,
+      name: t("team_members_mahdi_gholi_zadeh_name"),
+      role: t("team_members_mahdi_gholi_zadeh_role"),
+      image: "",
+      bio: t("team_members_mahdi_gholi_zadeh_description"),
+      expertise: t("team_members_mahdi_gholi_zadeh_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 5,
+      name: t("team_members_mitra_nasayehi_name"),
+      role: t("team_members_mitra_nasayehi_role"),
+      image: "",
+      bio: t("team_members_mitra_nasayehi_description"),
+      expertise: t("team_members_mitra_nasayehi_interests", {
+        returnObjects: true,
+      }),
+    },
+  ];
+
+  const visitingTeachers = [
+    {
+      id: 1,
+      name: t("team_members_mohamad_tavakoli_targhi_name"),
+      role: t("team_members_mohamad_tavakoli_targhi_role"),
+      image:
+        "https://tse1.mm.bing.net/th/id/OIP.vCSCGNfHyJmVB7QTMXFFPwAAAA?r=0&pid=Api&h=220&P=0",
+      bio: t("team_members_mohamad_tavakoli_targhi_description"),
+      expertise: t("team_members_mohamad_tavakoli_targhi_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 2,
+      name: t("team_members_asef_bayat_name"),
+      role: t("team_members_asef_bayat_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761614/Asef-Bayat-2-680px_cms2bw.jpg",
+      bio: t("team_members_asef_bayat_description"),
+      expertise: t("team_members_asef_bayat_interests", {
+        returnObjects: true,
+      }),
+    },
+  ];
+
   return (
     <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
       {/* NAVBAR */}
@@ -47,18 +154,22 @@ export default function TeamSection() {
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-20">
             <span className="text-amber-700 uppercase tracking-[0.2em] text-sm font-medium">
-              Our Team
+              {t("team_members_our_team")}
             </span>
 
             <h2 className="mt-4 text-4xl md:text-5xl font-serif text-stone-900">
-              Meet the People Behind the Mission
+              {t("team_members_meet_people")}
             </h2>
 
             <p className="mt-6 text-lg text-stone-600 leading-relaxed">
-              Our team brings together educators, researchers, and cultural
-              practitioners dedicated to sharing the rich history, traditions,
-              and contemporary cultures of the Middle East.
+              {t("team_members_description")}
             </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-stone-900">
+              {t("team_members_organisational_team")}
+            </h2>
           </div>
 
           {/* Members */}
@@ -99,14 +210,15 @@ export default function TeamSection() {
                     </h4>
 
                     <div className="flex flex-wrap gap-3">
-                      {member.expertise.map((item) => (
-                        <span
-                          key={item}
-                          className="px-4 py-2 rounded-full bg-white border border-stone-200 text-sm text-stone-700"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                      {Array.isArray(member.expertise) &&
+                        member.expertise.map((item) => (
+                          <span
+                            key={item}
+                            className="px-4 py-2 rounded-full bg-white border border-stone-200 text-sm text-stone-700"
+                          >
+                            {item}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -115,6 +227,15 @@ export default function TeamSection() {
           </div>
         </div>
       </section>
+      {/* VISITING TEACHERS */}
+      <VisitingTeachers
+        title={t("teachers_instructors_title")}
+        visitingTeachers={teachersInstructors}
+      />
+      <VisitingTeachers
+        title={t("team_members_guests_title")}
+        visitingTeachers={visitingTeachers}
+      />
       <Footer />
     </div>
   );

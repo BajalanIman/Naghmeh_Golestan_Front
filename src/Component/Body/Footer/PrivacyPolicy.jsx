@@ -1,9 +1,12 @@
 import NavBar from "../../NavigationBar/NavBar";
 import DonationSection from "../Home/DonationSection";
 import Footer from "../Footer/Footer";
-import PrivacyPolicyImage from "../../../../public/PrivacyPolicy.png";
+import { useTranslation } from "react-i18next";
 
 const PrivacyPolicy = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   return (
     <div className="w-full min-h-screen bg-[#F1EFEE] flex flex-col">
       {/* Navbar */}
@@ -24,7 +27,7 @@ const PrivacyPolicy = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <h1 className="absolute text-[#ECEAD3] text-4xl lg:text-6xl font-bold">
-          Privacy Policy
+          {t("privacy_policy_title")}
         </h1>
       </div>
 
@@ -33,113 +36,103 @@ const PrivacyPolicy = () => {
         <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 space-y-8">
           <section>
             <h2 className="text-3xl font-bold text-[#186f77] mb-4">
-              Introduction
+              {t("privacy_introduction_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We respect your privacy and are committed to protecting your
-              personal information. This Privacy Policy explains how we collect,
-              use, and protect your information when you visit our website,
-              purchase tickets, or participate in our cultural events.
+              {t("privacy_introduction_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Information We Collect
+              {t("privacy_information_we_collect_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We may collect personal information that you provide directly to
-              us, including:
+              {t("privacy_information_we_collect_description")}
             </p>
 
             <ul className="list-disc ml-6 mt-3 text-gray-600 space-y-2">
-              <li>Name and contact information</li>
-              <li>Email address</li>
-              <li>Ticket booking information</li>
-              <li>Payment-related information</li>
-              <li>Messages submitted through our contact form</li>
+              <li> {t("privacy_information_name_and_contact")}</li>
+              <li> {t("privacy_information_email_address")}</li>
+              <li> {t("privacy_information_ticket_booking")}</li>
+              <li> {t("privacy_information_payment_related")}</li>
+
+              <li>{t("privacy_information_contact_form_messages")}</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              How We Use Your Information
+              {t("privacy_information_use_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              Your information is used to:
+              {t("privacy_information_use_description")}
             </p>
 
             <ul className="list-disc ml-6 mt-3 text-gray-600 space-y-2">
-              <li>Process ticket purchases and reservations</li>
-              <li>Send booking confirmations</li>
-              <li>Respond to your questions and requests</li>
-              <li>Improve our website and services</li>
-              <li>Provide information about our cultural events</li>
+              <li>{t("privacy_information_use_process_purchases")}</li>
+              <li> {t("privacy_information_use_send_confirmations")}</li>
+              <li>{t("privacy_information_use_respond_to_requests")}</li>
+              <li> {t("privacy_information_use_improve_services")}</li>
+              <li>{t("privacy_information_use_event_updates")}</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Data Protection
+              {t("privacy_data_protection_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We take appropriate technical and organizational measures to
-              protect your personal information against unauthorized access,
-              loss, misuse, or disclosure.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-[#186f77] mb-3">Cookies</h2>
-
-            <p className="text-gray-600 leading-8">
-              Our website may use cookies to improve user experience, analyze
-              website traffic, and provide better services. You can control
-              cookie settings through your browser.
+              {t("privacy_data_protection_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Third-Party Services
+              {t("privacy_cookies_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We may use trusted third-party services for payment processing,
-              website analytics, and communication. These services have their
-              own privacy policies and security practices.
+              {t("privacy_cookies_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Your Rights
+              {t("privacy_third_party_services_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              You have the right to request access, correction, deletion, or
-              restriction of your personal data. If you have questions about
-              your information, please contact us.
+              {t("privacy_third_party_services_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Contact Information
+              {t("privacy_your_rights_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              If you have any questions regarding this Privacy Policy, please
-              contact us through our Contact Us page.
+              {t("privacy_your_rights_description")}
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-[#186f77] mb-3">
+              {t("privacy_contact_information_title")}
+            </h2>
+
+            <p className="text-gray-600 leading-8">
+              {t("privacy_contact_information_description")}
             </p>
           </section>
 
           <p className="text-sm text-gray-500 border-t pt-5">
-            Last updated: August 2026
+            {t("privacy_last_updated")}
           </p>
         </div>
       </div>

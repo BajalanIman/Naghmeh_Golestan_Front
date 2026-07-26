@@ -32,7 +32,7 @@ function SignUp() {
       // Save user info (optional: remove password for security)
       localStorage.setItem(
         "marco_user",
-        JSON.stringify({ ...form, password: undefined })
+        JSON.stringify({ ...form, password: undefined }),
       );
 
       // Automatically clear message after 5 seconds
@@ -114,7 +114,7 @@ function SignUp() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+          className="w-full bg-[#276a70] text-[#ECEAD3] p-2 rounded hover:bg-[#3a9ea8]"
         >
           Sign Up
         </button>

@@ -2,8 +2,12 @@ import NavBar from "../../NavigationBar/NavBar";
 import DonationSection from "../Home/DonationSection";
 import Footer from "../Footer/Footer";
 import TermeConditionsImage from "../../../../public/TermeConditionsImage.png";
+import { useTranslation } from "react-i18next";
 
 const Terms = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   return (
     <div className="w-full min-h-screen bg-[#F1EFEE] flex flex-col">
       {/* Navbar */}
@@ -24,7 +28,7 @@ const Terms = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <h1 className="absolute text-[#ECEAD3] text-4xl lg:text-6xl font-bold">
-          Terms & Conditions
+          {t("terms_conditions")}
         </h1>
       </div>
 
@@ -33,125 +37,102 @@ const Terms = () => {
         <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 space-y-8">
           <section>
             <h2 className="text-3xl font-bold text-[#186f77] mb-4">
-              Introduction
+              {t("introduction_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              Welcome to our cultural events platform. By accessing our website,
-              purchasing tickets, or participating in our events, you agree to
-              follow these Terms and Conditions. Please read them carefully
-              before using our services.
+              {t("terms_introduction_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Ticket Purchases
+              {t("terms_ticket_purchases_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              Tickets purchased through our website are valid only for the
-              selected event, date, and time. Customers are responsible for
-              providing accurate information during the booking process.
+              {t("terms_ticket_purchases_description")}
             </p>
 
             <ul className="list-disc ml-6 mt-3 text-gray-600 space-y-2">
-              <li>Tickets cannot be transferred without prior approval.</li>
-              <li>
-                Each ticket holder must present valid booking confirmation at
-                the event entrance.
-              </li>
-              <li>
-                Lost confirmation emails should be reported to our support team.
-              </li>
+              <li>{t("terms_ticket_transfer_policy")}</li>
+              <li>{t("terms_ticket_confirmation_requirement")}</li>
+              <li>{t("terms_lost_confirmation_support")}</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-[#186f77] mb-3">Payments</h2>
+            <h2 className="text-2xl font-bold text-[#186f77] mb-3">
+              {t("terms_payments_title")}
+            </h2>
 
             <p className="text-gray-600 leading-8">
-              All ticket prices are displayed in euros (€). Payment must be
-              completed before tickets are confirmed. Additional charges, such
-              as applicable taxes or service fees, will be displayed during the
-              checkout process.
+              {t("terms_payments_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Refund and Cancellation Policy
+              {t("terms_refund_and_cancellation_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              Refund requests must be submitted according to our cancellation
-              policy. Depending on the event, refunds may only be available
-              before a specific date or within a defined period before the
-              event.
+              {t("terms_refund_and_cancellation_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Event Changes
+              {t("terms_event_changes_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We reserve the right to modify event schedules, locations,
-              speakers, or programs when necessary. In case of major changes,
-              registered participants will be informed as soon as possible.
+              {t("terms_event_changes_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Code of Conduct
+              {t("terms_code_of_conduct_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We aim to create a welcoming and respectful environment for all
-              visitors. Attendees must follow venue rules and respect other
-              participants, artists, organizers, and staff.
+              {t("terms_code_of_conduct_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Intellectual Property
+              {t("terms_intellectual_property_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              All content on this website, including images, text, logos, and
-              event materials, belongs to our organization or its partners and
-              may not be used without permission.
+              {t("terms_intellectual_property_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Limitation of Liability
+              {t("terms_limitation_of_liability_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              We are not responsible for circumstances beyond our control,
-              including technical issues, changes caused by external factors, or
-              interruptions affecting event attendance.
+              {t("terms_limitation_of_liability_description")}
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#186f77] mb-3">
-              Contact Information
+              {t("terms_contact_information_title")}
             </h2>
 
             <p className="text-gray-600 leading-8">
-              If you have any questions regarding these Terms and Conditions,
-              please contact us through our Contact Us page.
+              {t("terms_contact_information_description")}
             </p>
           </section>
 
           <p className="text-sm text-gray-500 border-t pt-5">
-            Last updated: August 2026
+            {t("terms_last_updated")}
           </p>
         </div>
       </div>

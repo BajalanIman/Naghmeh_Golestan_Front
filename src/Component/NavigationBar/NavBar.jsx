@@ -84,7 +84,7 @@ const NavBar = () => {
             </span>
           </div>
           <div className="flex gap-5">
-            {localUser && localUser.role !== "user" ? (
+            {/* {localUser && localUser.role !== "user" ? (
               <Link
                 to="/setting"
                 className="bg-white py-2 px-4 rounded-md hover:bg-gray-300"
@@ -93,11 +93,11 @@ const NavBar = () => {
               </Link>
             ) : (
               ""
-            )}
+            )} */}
 
             {!localUser ? (
               <Link
-                // to="/login"
+                to="/login"
                 className="bg-[#ECEAD3] w-20 h-10 pt-1 pl-4 border rounded-md text-cyan-900 hover:bg-yellow-200"
               >
                 Login
@@ -115,7 +115,7 @@ const NavBar = () => {
                   <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-10">
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                      className="block w-full text-start px-4 py-2 hover:bg-gray-100"
                     >
                       Log out
                     </button>
@@ -187,7 +187,7 @@ const NavBar = () => {
               {/* Login/User */}
               {!localUser ? (
                 <Link
-                  // to="/login"
+                  to="/login"
                   onClick={closeMenu}
                   className="bg-[#ECEAD3] text-cyan-900 px-6 py-2 rounded-md mt-5"
                 >

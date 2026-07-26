@@ -2,8 +2,12 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import NavBar from "../../NavigationBar/NavBar";
 import DonationSection from "../Home/DonationSection";
 import Footer from "./Footer";
+import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   return (
     <div className="w-full min-h-screen bg-[#F1EFEE] flex flex-col">
       {/* Navbar */}
@@ -24,7 +28,7 @@ const ContactUs = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <h1 className="absolute text-[#ECEAD3] text-4xl lg:text-6xl font-bold">
-          Contact Us
+          {t("contact_us_title")}
         </h1>
       </div>
 
@@ -34,14 +38,11 @@ const ContactUs = () => {
           {/* Contact Information */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-[#186f77] mb-6">
-              Get in Touch
+              {t("contact_get_in_touch_title")}
             </h2>
 
             <p className="text-gray-600 leading-7 mb-8">
-              We'd love to hear from you! Whether you have questions about our
-              cultural events, ticket bookings, volunteering opportunities, or
-              partnerships, feel free to contact us using the information below
-              or send us a message through the contact form.
+              {t("contact_get_in_touch_description")}
             </p>
 
             <div className="space-y-6">
@@ -51,7 +52,9 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-lg">Address</h3>
+                  <h3 className="font-semibold text-lg">
+                    {t("contact_address_label")}
+                  </h3>
                   <p className="text-gray-600">
                     Kunst-Stoffe- Materialmarkt Pankow
                     <br />
@@ -66,7 +69,9 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-lg">Email</h3>
+                  <h3 className="font-semibold text-lg">
+                    {t("contact_email_label")}
+                  </h3>
                   <p className="text-gray-600">kontakt@kultur-atelier.de</p>
                 </div>
               </div>
@@ -77,8 +82,12 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-lg">Phone</h3>
-                  <p className="text-gray-600">+49 15904973362</p>
+                  <h3 className="font-semibold text-lg">
+                    {t("contact_phone_label")}
+                  </h3>
+                  <p className="text-gray-600">
+                    +49 15904973362 (Official working hours)
+                  </p>
                 </div>
               </div>
 
@@ -88,9 +97,11 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-lg">Office Hours</h3>
+                  <h3 className="font-semibold text-lg">
+                    {t("contact_office_hours_label")}
+                  </h3>
                   <p className="text-gray-600">
-                    Monday – Friday
+                    Tuesday_Thursday
                     <br />
                     09:00 – 17:00
                   </p>
@@ -102,46 +113,55 @@ const ContactUs = () => {
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-[#186f77] mb-6">
-              Send Us a Message
+              {t("contact_send_message_title")}
             </h2>
 
             <form className="space-y-6">
               <div>
-                <label className="block mb-2 font-medium">Full Name</label>
+                <label className="block mb-2 font-medium">
+                  {" "}
+                  {t("contact_full_name_label")}
+                </label>
 
                 <input
                   type="text"
-                  placeholder="Enter your full name"
+                  placeholder={t("contact_full_name_placeholder")}
                   className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#186f77]"
                 />
               </div>
 
               <div>
-                <label className="block mb-2 font-medium">Email Address</label>
+                <label className="block mb-2 font-medium">
+                  {t("contact_email_address_label")}
+                </label>
 
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t("contact_email_address_placeholder")}
                   className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#186f77]"
                 />
               </div>
 
               <div>
-                <label className="block mb-2 font-medium">Subject</label>
+                <label className="block mb-2 font-medium">
+                  {t("contact_subject_label")}
+                </label>
 
                 <input
                   type="text"
-                  placeholder="Subject"
+                  placeholder={t("contact_subject_label")}
                   className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#186f77]"
                 />
               </div>
 
               <div>
-                <label className="block mb-2 font-medium">Message</label>
+                <label className="block mb-2 font-medium">
+                  {t("contact_message_label")}
+                </label>
 
                 <textarea
                   rows="6"
-                  placeholder="Write your message..."
+                  placeholder={t("contact_write_message")}
                   className="w-full border border-gray-300 rounded-lg p-3 resize-none focus:outline-none focus:ring-2 focus:ring-[#186f77]"
                 ></textarea>
               </div>
@@ -150,13 +170,12 @@ const ContactUs = () => {
                 type="submit"
                 className="w-full bg-[#186f77] hover:bg-[#27b4c1] text-white py-4 rounded-lg font-semibold transition"
               >
-                Send Message
+                {t("contact_send_message")}
               </button>
             </form>
           </div>
         </div>
       </div>
-
       <DonationSection />
       <Footer />
     </div>

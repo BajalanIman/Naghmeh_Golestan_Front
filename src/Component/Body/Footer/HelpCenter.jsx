@@ -9,39 +9,36 @@ import {
 import NavBar from "../../NavigationBar/NavBar";
 import DonationSection from "../Home/DonationSection";
 import Footer from "../Footer/Footer";
-import HelpCenterImage from "../../../../public/HelpCenterImage.jfif";
+import { useTranslation } from "react-i18next";
 
 const HelpCenter = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
   const faqs = [
     {
-      question: "How can I purchase tickets?",
-      answer:
-        "Choose your preferred event, select the number of tickets, and continue to checkout. After successful payment, you will receive your booking confirmation.",
+      question: t("faq_purchase_tickets_question"),
+      answer: t("faq_purchase_tickets_answer"),
     },
     {
-      question: "How many tickets can I buy?",
-      answer:
-        "You can purchase up to 5 tickets per booking. For larger group bookings, please contact us directly.",
+      question: t("faq_ticket_limit_question"),
+      answer: t("faq_ticket_limit_answer"),
     },
     {
-      question: "Can I cancel or refund my ticket?",
-      answer:
-        "Refund policies depend on the event. Please contact our support team at least 48 hours before the event date for cancellation requests.",
+      question: t("faq_cancel_refund_question"),
+      answer: t("faq_cancel_refund_answer"),
     },
     {
-      question: "Where will I receive my ticket?",
-      answer:
-        "Your ticket confirmation will be sent to the email address provided during the booking process.",
+      question: t("faq_ticket_delivery_question"),
+      answer: t("faq_ticket_delivery_answer"),
     },
     {
-      question: "What happens if an event is postponed?",
-      answer:
-        "If an event schedule changes, we will notify all registered attendees through email and provide further instructions.",
+      question: t("faq_event_postponed_question"),
+      answer: t("faq_event_postponed_answer"),
     },
     {
-      question: "How can I contact support?",
-      answer:
-        "You can reach us through our Contact Us page. Our team will respond as soon as possible during business hours.",
+      question: t("faq_contact_support_question"),
+      answer: t("faq_contact_support_answer"),
     },
   ];
 
@@ -58,14 +55,14 @@ const HelpCenter = () => {
       <div className="relative flex items-center justify-center">
         <img
           src="https://res.cloudinary.com/r4pnipqe/image/upload/v1783760353/HelpCenterImage_dlqhle.jpg"
-          alt="Help Center"
+          alt="FAQ"
           className="w-full h-[280px] lg:h-[450px] object-cover"
         />
 
         <div className="absolute inset-0 bg-black/40"></div>
 
         <h1 className="absolute text-[#ECEAD3] text-4xl lg:text-6xl font-bold">
-          Help Center
+          {t("faq_title")}
         </h1>
       </div>
 
@@ -76,13 +73,11 @@ const HelpCenter = () => {
           <HelpCircle className="mx-auto text-[#186f77] mb-4" size={55} />
 
           <h2 className="text-3xl font-bold text-[#186f77] mb-4">
-            How Can We Help You?
+            {t("faq_help_title")}
           </h2>
 
           <p className="text-gray-600 leading-7 max-w-3xl mx-auto">
-            Find answers to the most common questions about ticket purchases,
-            events, payments, and our cultural programs. If you cannot find the
-            answer you need, please contact our support team.
+            {t("faq_description")}
           </p>
         </div>
 
@@ -91,40 +86,48 @@ const HelpCenter = () => {
           <div className="bg-white rounded-xl shadow p-6 text-center">
             <Ticket className="mx-auto text-[#186f77] mb-3" size={35} />
 
-            <h3 className="font-bold text-lg">Tickets</h3>
+            <h3 className="font-bold text-lg">
+              {t("faq_tickets_category_title")}
+            </h3>
 
             <p className="text-gray-600 text-sm mt-2">
-              Booking, purchasing, and ticket information.
+              {t("faq_tickets_category_description")}
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow p-6 text-center">
             <CreditCard className="mx-auto text-[#186f77] mb-3" size={35} />
 
-            <h3 className="font-bold text-lg">Payments</h3>
+            <h3 className="font-bold text-lg">
+              {t("faq_payments_category_title")}
+            </h3>
 
             <p className="text-gray-600 text-sm mt-2">
-              Payment methods and billing questions.
+              {t("faq_payments_category_description")}
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow p-6 text-center">
             <Calendar className="mx-auto text-[#186f77] mb-3" size={35} />
 
-            <h3 className="font-bold text-lg">Events</h3>
+            <h3 className="font-bold text-lg">
+              {t("faq_events_category_title")}
+            </h3>
 
             <p className="text-gray-600 text-sm mt-2">
-              Event dates, schedules, and updates.
+              {t("faq_events_category_description")}
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow p-6 text-center">
             <Users className="mx-auto text-[#186f77] mb-3" size={35} />
 
-            <h3 className="font-bold text-lg">Community</h3>
+            <h3 className="font-bold text-lg">
+              {t("faq_community_category_title")}
+            </h3>
 
             <p className="text-gray-600 text-sm mt-2">
-              Participation and cultural programs.
+              {t("faq_community_category_description")}
             </p>
           </div>
         </div>
@@ -132,7 +135,7 @@ const HelpCenter = () => {
         {/* FAQ */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-[#186f77] mb-8">
-            Frequently Asked Questions
+            {t("faq_title")}
           </h2>
 
           <div className="space-y-5">

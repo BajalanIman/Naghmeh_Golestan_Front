@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import NewsletterSubscription from "../Home/NewsletterSubscription";
 
 const Footer = () => {
   const { i18n } = useTranslation();
@@ -87,14 +88,7 @@ const Footer = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder={t("footer_email_placeholder")}
-              className="w-full px-3 py-2 rounded-md outline-none"
-            />
-            <button className="bg-[#E4F8F7] px-4 py-2 rounded-md font-semibold hover:bg-yellow-100 transition">
-              {t("footer_subscribe_button")}
-            </button>
+            <NewsletterSubscription showFormat={2} />
           </div>
         </div>
       </div>

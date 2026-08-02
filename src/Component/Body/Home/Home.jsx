@@ -64,7 +64,7 @@ const home = () => {
         }
       /> */}
       <FourItems />
-      <NewsletterSubscription />
+      <NewsletterSubscription showFormat={1} />
       <DonationSection />
       <Footer />
     </div>

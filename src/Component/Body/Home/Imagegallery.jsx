@@ -2,14 +2,11 @@ import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import React, { useState } from "react";
 
 const images = [
-  "https://picsum.photos/id/1015/800/500",
-  "https://picsum.photos/id/1016/800/500",
-  "https://picsum.photos/id/1018/800/500",
-  "https://picsum.photos/id/1020/800/500",
-  "https://picsum.photos/id/1024/800/500",
-  "https://picsum.photos/id/1025/800/500",
-  "https://picsum.photos/id/1031/800/500",
-  "https://picsum.photos/id/1033/800/500",
+  "https://res.cloudinary.com/r4pnipqe/image/upload/v1785175234/4_sxgewm.png",
+  "https://res.cloudinary.com/r4pnipqe/image/upload/v1785175238/3_aqgh6l.png",
+  "https://res.cloudinary.com/r4pnipqe/image/upload/v1785175237/1_t5pmeo.png",
+  "https://res.cloudinary.com/r4pnipqe/image/upload/v1785175236/2_q5uoq7.png",
+  "https://res.cloudinary.com/r4pnipqe/image/upload/v1785175235/5_aolh70.png",
 ];
 
 function Imagegallery() {
@@ -26,11 +23,11 @@ function Imagegallery() {
   return (
     <div className="flex flex-col items-center justify-center w-full mt-4 lg:h-screen relative">
       {/* Image */}
-      <div className="relative w-[90%] lg:w-[80%] max-w-4xl">
+      <div className="relative w-[90%] lg:w-[80%] h-[500px] max-w-4xl">
         <img
           src={images[index]}
           alt="slider"
-          className="w-full h-[500px] object-cover rounded-xl shadow-2xl transition-all duration-500"
+          className="w-full h-full object-cover rounded-xl shadow-2xl transition-all duration-500"
         />
 
         {/* Left Button */}
@@ -50,7 +47,7 @@ function Imagegallery() {
         </button>
         {/* Counter */}
         <div className="mt-[-5%] ml-5 absolute">
-          <p className="text-yellow-500 font-bold">
+          <p className="text-gray-50 font-bold">
             {index + 1} / {images.length}
           </p>
         </div>

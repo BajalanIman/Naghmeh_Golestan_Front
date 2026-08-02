@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import { Eye, EyeOff, X } from "lucide-react";
@@ -9,38 +9,77 @@ function Login() {
     email: "",
     password: "",
   });
+
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    if (!message) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage("");
+    const timer = setTimeout(() => {
+      setMessage("");
+    }, 5000);
 
-    try {
-      const res = await axios.post(`${BASE_URL}login`, form);
-      setMessage("Login successful!");
-      setSuccess(true);
+    return () => clearTimeout(timer);
+  }, [message]);
 
-      // ✅ Only store if not already set
-      if (!localStorage.getItem("marco_user")) {
-        localStorage.setItem("marco_user", JSON.stringify(res.data.user));
-      }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-      setTimeout(() => setMessage(""), 5000);
-    } catch (err) {
-      console.error(err);
-      setMessage(err.response?.data?.error || "Login failed.");
-      setSuccess(false);
-      setTimeout(() => setMessage(""), 5000);
+    setForm((previousForm) => ({
+      ...previousForm,
+      [name]: value,
+    }));
+
+    if (message) {
+      setMessage("");
     }
   };
 
-  if (success) return <Navigate to="/" />;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isLoading) return;
+
+    setMessage("");
+    setSuccess(false);
+
+    const loginData = {
+      email: form.email.trim().toLowerCase(),
+      password: form.password,
+    };
+
+    try {
+      setIsLoading(true);
+
+      const response = await axios.post(`${BASE_URL}auth/login`, loginData, {
+        withCredentials: true,
+      });
+
+      localStorage.setItem("marco_user", JSON.stringify(response.data.user));
+
+      setMessage(response.data.message || "Login successful!");
+      setSuccess(true);
+    } catch (error) {
+      console.error("Login error:", error);
+
+      setMessage(
+        error.response?.data?.message ||
+          error.response?.data?.error ||
+          "Login failed.",
+      );
+
+      setSuccess(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (success) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="w-full h-screen flex justify-center items-center flex-col bg-gray-100">
@@ -52,14 +91,18 @@ function Login() {
           <Link style={{ color: "gray" }} to="/">
             <X />
           </Link>
+
           <h2 className="text-xl font-bold text-center">Login</h2>
         </div>
+
         <input
           type="email"
           name="email"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
+          disabled={isLoading}
+          autoComplete="email"
           className="w-full p-2 border rounded"
           required
         />
@@ -71,26 +114,34 @@ function Login() {
             placeholder="Password"
             value={form.password}
             onChange={handleChange}
+            disabled={isLoading}
+            autoComplete="current-password"
             className="w-full p-2 border rounded pr-10"
             required
           />
-          <span
+
+          <button
+            type="button"
             className="absolute right-3 top-2 cursor-pointer"
-            onClick={() => setShowPassword((prev) => !prev)}
+            onClick={() => setShowPassword((previousValue) => !previousValue)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
           >
             {showPassword ? (
               <Eye size={20} color="blue" />
             ) : (
               <EyeOff size={20} color="gray" />
             )}
-          </span>
+          </button>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-[#276a70] text-[#ECEAD3] p-2 rounded hover:bg-[#3a9ea8]"
+          disabled={isLoading}
+          className={`w-full bg-[#276a70] text-[#ECEAD3] p-2 rounded hover:bg-[#3a9ea8] ${
+            isLoading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+          }`}
         >
-          Login
+          {isLoading ? "Logging in..." : "Login"}
         </button>
 
         {message && (
@@ -103,8 +154,10 @@ function Login() {
           </p>
         )}
       </form>
-      <div className="flex gap-1 ">
+
+      <div className="flex gap-1">
         <p>New user?</p>
+
         <Link to="/singup" style={{ color: "blue" }}>
           Click here!
         </Link>

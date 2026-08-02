@@ -45,7 +45,7 @@ const Aboutus = () => {
 
             <img
               className="rounded-2xl shadow-md object-cover w-full"
-              src="https://tse3.mm.bing.net/th/id/OIP.5TtudKzE9U1plOf-kX5XTwHaEJ?pid=Api&P=0&h=180"
+              src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785182988/Aount_Us_jgyvqi.jpg"
               alt="founding"
             />
           </div>
@@ -61,7 +61,7 @@ const Aboutus = () => {
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
             <img
               className="rounded-2xl shadow-md object-cover w-full order-2 lg:order-1"
-              src="https://tse3.mm.bing.net/th/id/OIP.yAtLNdgB7ffiUrd7yUTzXgHaEJ?pid=Api&P=0&h=180"
+              src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785182965/About_us_Founding_idea1_rml0hy.png"
               alt="challenge"
             />
 
@@ -92,7 +92,7 @@ const Aboutus = () => {
 
             <img
               className="rounded-2xl shadow-md object-cover w-full"
-              src="https://tse4.mm.bing.net/th/id/OIP.g_3abvCxo6ztkmXZaJQ91gHaE8?pid=Api&P=0&h=180"
+              src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785182982/About_Us_3_x6nflg.jpg"
               alt="goal"
             />
           </div>

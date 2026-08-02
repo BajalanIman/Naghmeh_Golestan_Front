@@ -76,7 +76,7 @@ const OurEvents = () => {
       <div className="relative flex justify-center items-center">
         <img
           className="w-full h-[300px] lg:h-[700px] object-cover"
-          src="https://www.wien.info/resource/image/428402/Hero-Header/2560/948/eab0532c4ffc86cbe44cb064dc3fe8d5/A23A316517AD476F9290E57B45F94BD6/50876-theater-an-der-wien-buehne.webp"
+          src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785350850/over_event_ib9eqk.png"
           alt="Film Festival"
         />
         <p className="absolute pb-8 text-gray-100 text-4xl font-bold">

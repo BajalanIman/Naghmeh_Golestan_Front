@@ -41,26 +41,26 @@ export default function TeamSection() {
       //   returnObjects: true,
       // }),
     },
-    {
-      id: 4,
-      name: "Nafiseh Mirzaei",
-      role: "Nafiseh Mirzaei",
-      image: "",
-      bio: "Nafiseh Mirzaei",
-      // expertise: t("team_members_naghmeh_interests", {
-      //   returnObjects: true,
-      // }),
-    },
-    {
-      id: 5,
-      name: "Iman Bajalan",
-      role: "Iman Bajalan",
-      image: "",
-      bio: "Iman Bajalan",
-      // expertise: t("team_members_naghmeh_interests", {
-      //   returnObjects: true,
-      // }),
-    },
+    // {
+    //   id: 4,
+    //   name: "Nafiseh Mirzaei",
+    //   role: "Nafiseh Mirzaei",
+    //   image: "",
+    //   bio: "Nafiseh Mirzaei",
+    //   expertise: t("team_members_naghmeh_interests", {
+    //     returnObjects: true,
+    //   }),
+    // },
+    // {
+    //   id: 5,
+    //   name: "Iman Bajalan",
+    //   role: "Iman Bajalan",
+    //   image: "",
+    //   bio: "Iman Bajalan",
+    //   expertise: t("team_members_naghmeh_interests", {
+    //     returnObjects: true,
+    //   }),
+    // },
   ];
 
   const teachersInstructors = [
@@ -68,7 +68,8 @@ export default function TeamSection() {
       id: 1,
       name: t("team_members_pegah_khadish_name"),
       role: t("team_members_pegah_khadish_role"),
-      image: "",
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761178/Pegah-768x503_uzn3lr.webp",
       bio: t("team_members_pegah_khadish_description"),
       expertise: t("team_members_pegah_khadish_interests", {
         returnObjects: true,
@@ -78,7 +79,8 @@ export default function TeamSection() {
       id: 2,
       name: t("team_members_sanaz_pahlevan_name"),
       role: t("team_members_sanaz_pahlevan_role"),
-      image: "",
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1783761228/Pegah-1-768x503_buyxm0.webp",
       bio: t("team_members_sanaz_pahlevan_description"),
       expertise: t("team_members_sanaz_pahlevan_interests", {
         returnObjects: true,
@@ -108,11 +110,23 @@ export default function TeamSection() {
       id: 5,
       name: t("team_members_mitra_nasayehi_name"),
       role: t("team_members_mitra_nasayehi_role"),
-      image: "",
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1785181142/Mitra_mfzkru.png",
       bio: t("team_members_mitra_nasayehi_description"),
       expertise: t("team_members_mitra_nasayehi_interests", {
         returnObjects: true,
       }),
+    },
+    {
+      id: 6,
+      name: "Hana_Kamkar",
+      // role: t("team_members_mitra_nasayehi_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1785446680/Hana_Kamkar.JPG_mpf9hh.jpg",
+      // bio: t("team_members_mitra_nasayehi_description"),
+      // expertise: t("team_members_mitra_nasayehi_interests", {
+      //   returnObjects: true,
+      // }),
     },
   ];
 
@@ -122,7 +136,7 @@ export default function TeamSection() {
       name: t("team_members_mohamad_tavakoli_targhi_name"),
       role: t("team_members_mohamad_tavakoli_targhi_role"),
       image:
-        "https://tse1.mm.bing.net/th/id/OIP.vCSCGNfHyJmVB7QTMXFFPwAAAA?r=0&pid=Api&h=220&P=0",
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1785062674/Prof.Tavakoli-Targhi_Photo-for_the_web_wbkgr4.jpg",
       bio: t("team_members_mohamad_tavakoli_targhi_description"),
       expertise: t("team_members_mohamad_tavakoli_targhi_interests", {
         returnObjects: true,

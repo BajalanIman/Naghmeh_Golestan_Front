@@ -17,7 +17,7 @@ import ContactUs from "./Component/Body/Footer/ContactUs";
 import PrivacyPolicy from "./Component/Body/Footer/PrivacyPolicy";
 import HelpCenter from "./Component/Body/Footer/HelpCenter";
 import Terms from "./Component/Body/Footer/Terms";
-import JoinUs from "./Component/NavigationBar/JoinUs";
+import JoinUs from "./Component/Body/JoinUs/JoinUs";
 
 function App() {
   const { i18n } = useTranslation();

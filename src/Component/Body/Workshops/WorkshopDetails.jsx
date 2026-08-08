@@ -1,35 +1,86 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import NavBar from "../../NavigationBar/NavBar";
-import Footer from "../Footer/Footer";
-import DonationSection from "../Home/DonationSection";
+
+import NavBar from "../../NavigationBar/NavBar.jsx";
+import Footer from "../Footer/Footer.jsx";
+import DonationSection from "../Home/DonationSection.jsx";
+import ActivityBooking from "../../Booking/ActivityBooking.jsx";
+
+import { BASE_URL } from "../../../constants/constants.js";
 
 const WorkshopDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { i18n } = useTranslation();
 
   const [workshop, setWorkshop] = useState(null);
+
   const [loading, setLoading] = useState(true);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const getCurrentLanguage = () => {
+    const currentLanguage = i18n.resolvedLanguage || i18n.language || "en";
+
+    const languageCode = currentLanguage.split("-")[0].toUpperCase();
+
+    return ["EN", "DE", "FA"].includes(languageCode) ? languageCode : "EN";
+  };
+
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchWorkshop = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:8800/api/workshops/${id}?lang=${i18n.language}`,
-        );
+        setLoading(true);
+        setErrorMessage("");
 
-        const data = await res.json();
-        setWorkshop(data);
-      } catch (err) {
-        console.error(err);
+        const response = await fetch(`${BASE_URL}activities/slug/${slug}`, {
+          credentials: "include",
+          signal: controller.signal,
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Workshop not found.");
+        }
+
+        if (data.activity.type !== "WORKSHOP") {
+          throw new Error("The requested activity is not a workshop.");
+        }
+
+        setWorkshop(data.activity);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Workshop details error:", error);
+
+          setErrorMessage(error.message || "Unable to load the workshop.");
+        }
       } finally {
         setLoading(false);
       }
     };
 
     fetchWorkshop();
-  }, [id, i18n.language]);
+
+    return () => controller.abort();
+  }, [slug, i18n.language, i18n.resolvedLanguage]);
+
+  const translation = useMemo(() => {
+    if (!workshop) {
+      return null;
+    }
+
+    const language = getCurrentLanguage();
+
+    return (
+      workshop.translations?.find((item) => item.language === language) ||
+      workshop.translations?.find((item) => item.language === "EN") ||
+      workshop.translations?.[0] ||
+      null
+    );
+  }, [workshop, i18n.language, i18n.resolvedLanguage]);
 
   if (loading) {
     return (
@@ -41,249 +92,160 @@ const WorkshopDetails = () => {
 
   if (!workshop) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        Workshop not found
+      <div className="flex flex-col justify-center items-center h-screen gap-4">
+        <p>Workshop not found</p>
+
+        {errorMessage && <p className="text-red-700">{errorMessage}</p>}
       </div>
-      // Only for netlify
-      // <div className="min-h-screen bg-gray-50">
-      //   <div className="bg-gradient-to-b from-indigo-700 via-purple-600 to-purple-500">
-      //     <div className="mx-auto max-w-[1200px] px-4">
-      //       <NavBar />
-      //     </div>
-      //   </div>
-
-      //   <div className="max-w-[1000px] mx-auto px-4 py-10">
-      //     <h1 className="text-3xl lg:text-5xl font-bold text-center text-violet-900 mb-8">
-      //       Workshop 1
-      //     </h1>
-
-      //     <img
-      //       src="https://www.pchelpsoft.com/pchelpsoft-lp-static/dist/images/pages/fix-windows-issues/team.jpg"
-      //       alt="{workshop.title}"
-      //       className="w-full rounded-xl shadow-lg mb-8"
-      //     />
-
-      //     <div className="flex flex-col lg:flex-row gap-4 justify-center mb-10 text-gray-600">
-      //       <p>
-      //         <strong>Date:</strong>
-      //         {" 22.06.2026"}
-      //       </p>
-
-      //       <p>
-      //         <strong>Location:</strong> Berlin
-      //       </p>
-      //     </div>
-
-      //     <div className="space-y-10 text-lg leading-8 text-gray-700">
-      //       <div>
-      //         <h3 className="text-2xl font-bold text-violet-900 mb-2">
-      //           About this workshop
-      //         </h3>
-      //         <p>
-      //           Wenn Sie schon mal eine neue Maus, einen Drucker oder ein
-      //           anderes Peripheriegerät zu Ihrem Computer hinzugefügt haben,
-      //           wissen Sie, wie zeitaufwändig es sein kann, den richtigen
-      //           Treiber zu finden, damit das Gerät funktioniert. Es ist
-      //           schwierig und oft nervenaufreibend, den richtigen Treiber für
-      //           ein Gerät zu finden.
-      //         </p>
-      //       </div>
-
-      //       <div>
-      //         <h3 className="text-2xl font-bold text-violet-900 mb-2">
-      //           Aim of this workshop
-      //         </h3>
-      //         <p>
-      //           Wenn Sie schon mal eine neue Maus, einen Drucker oder ein
-      //           anderes Peripheriegerät zu Ihrem Computer hinzugefügt haben,
-      //           wissen Sie, wie zeitaufwändig es sein kann, den richtigen
-      //           Treiber zu finden, damit das Gerät funktioniert. Es ist
-      //           schwierig und oft nervenaufreibend, den richtigen Treiber für
-      //           ein Gerät zu finden.
-      //         </p>
-      //       </div>
-
-      //       <div>
-      //         <h3 className="text-2xl font-bold text-violet-900 mb-2">
-      //           Examples and content
-      //         </h3>
-      //         <p>
-      //           Wenn Sie schon mal eine neue Maus, einen Drucker oder ein
-      //           anderes Peripheriegerät zu Ihrem Computer hinzugefügt haben,
-      //           wissen Sie, wie zeitaufwändig es sein kann, den richtigen
-      //           Treiber zu finden, damit das Gerät funktioniert. Es ist
-      //           schwierig und oft nervenaufreibend, den richtigen Treiber für
-      //           ein Gerät zu finden.
-      //         </p>
-      //       </div>
-
-      //       <div>
-      //         <h3 className="text-2xl font-bold text-violet-900 mb-2">
-      //           Summary
-      //         </h3>
-      //         <p>
-      //           Wenn Sie schon mal eine neue Maus, einen Drucker oder ein
-      //           anderes Peripheriegerät zu Ihrem Computer hinzugefügt haben,
-      //           wissen Sie, wie zeitaufwändig es sein kann, den richtigen
-      //           Treiber zu finden, damit das Gerät funktioniert. Es ist
-      //           schwierig und oft nervenaufreibend, den richtigen Treiber für
-      //           ein Gerät zu finden.
-      //         </p>
-      //       </div>
-      //     </div>
-      //   </div>
-      //   {/* ENROLMENT FORM */}
-      //   <div className="max-w-[1000px] mx-auto px-4 pb-16">
-      //     <div className="bg-white rounded-xl shadow-lg p-6 lg:p-10">
-      //       <h2 className="text-2xl lg:text-3xl font-bold text-violet-900 mb-6 text-center">
-      //         Enrol in this Workshop
-      //       </h2>
-
-      //       <form className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      //         <input
-      //           type="text"
-      //           placeholder="Full Name"
-      //           className="border rounded-lg p-3 w-full"
-      //         />
-
-      //         <input
-      //           type="email"
-      //           placeholder="Email"
-      //           className="border rounded-lg p-3 w-full"
-      //         />
-
-      //         <input
-      //           type="tel"
-      //           placeholder="Phone Number"
-      //           className="border rounded-lg p-3 w-full"
-      //         />
-
-      //         <input
-      //           type="number"
-      //           placeholder="Number of Participants"
-      //           className="border rounded-lg p-3 w-full"
-      //         />
-
-      //         <textarea
-      //           placeholder="Message (optional)"
-      //           rows="4"
-      //           className="border rounded-lg p-3 w-full lg:col-span-2"
-      //         />
-
-      //         <button
-      //           type="submit"
-      //           className="lg:col-span-2 bg-violet-700 hover:bg-violet-800 text-white font-semibold py-3 rounded-lg transition"
-      //         >
-      //           Enrol Now
-      //         </button>
-      //       </form>
-      //     </div>
-      //   </div>
-      //   <DonationSection />
-      //   {/* <Footer /> */}
-      // </div>
     );
   }
 
+  const sortedSessions = [...(workshop.sessions || [])].sort(
+    (firstSession, secondSession) =>
+      new Date(firstSession.startAt).getTime() -
+      new Date(secondSession.startAt).getTime(),
+  );
+
+  const normalizedWorkshop = {
+    ...workshop,
+    sessions: sortedSessions,
+  };
+
+  const firstSession = sortedSessions[0] || null;
+
+  const mainImage =
+    workshop.bannerUrl ||
+    workshop.imageUrl ||
+    "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg";
+
+  const formattedPrice = workshop.isFree
+    ? "Free"
+    : new Intl.NumberFormat(i18n.language || "en", {
+        style: "currency",
+        currency: workshop.currency || "EUR",
+      }).format(Number(workshop.price || 0));
+
+  const location =
+    firstSession?.location?.name ||
+    firstSession?.location?.city ||
+    (firstSession?.mode === "ONLINE" ? "Online" : "To be announced");
+
   return (
-    <div className="w-full h-full flex flex-col justify-center  text-[#1B6269] bg-[#F1EFEE]">
-      <div className=" w-full bg-[#186f77] ">
+    <div className="w-full h-full flex flex-col justify-center text-[#1B6269] bg-[#F1EFEE]">
+      <div className="w-full bg-[#186f77]">
         <div className="mx-auto lg:w-[1200px]">
           <NavBar />
         </div>
       </div>
 
       <div className="max-w-[1000px] mx-auto px-4 py-10">
-        <h1 className="text-3xl lg:text-5xl font-bold text-center  mb-8">
-          {workshop.title}
+        <h1 className="text-3xl lg:text-5xl font-bold text-center mb-8">
+          {translation?.title || "Workshop"}
         </h1>
 
         <img
-          src={workshop.image}
-          alt={workshop.title}
+          src={mainImage}
+          alt={translation?.title || "Workshop"}
           className="w-full rounded-xl shadow-lg mb-8"
         />
 
-        <div className="flex flex-col lg:flex-row gap-4 justify-center mb-10 text-gray-600">
+        <div className="flex flex-col lg:flex-row flex-wrap gap-4 justify-center mb-10 text-gray-600">
+          {firstSession && (
+            <p>
+              <strong>Date:</strong>{" "}
+              {new Date(firstSession.startAt).toLocaleString(i18n.language)}
+            </p>
+          )}
+
           <p>
-            <strong>Date:</strong>{" "}
-            {new Date(workshop.date).toLocaleDateString()}
+            <strong>Location:</strong> {location}
           </p>
 
           <p>
-            <strong>Location:</strong> {workshop.location}
+            <strong>Price per Participant:</strong> {formattedPrice}
+          </p>
+
+          <p>
+            <strong>Capacity:</strong> {workshop.capacity ?? "Unlimited"}
           </p>
         </div>
 
-        <div className="space-y-10 text-lg leading-8 ">
-          <div>
-            <h3 className="text-2xl font-bold ">About this workshop</h3>
-            <p>{workshop.paragraphs?.[0]}</p>
-          </div>
+        <div className="space-y-10 text-lg leading-8">
+          {translation?.summary && (
+            <div>
+              <h3 className="text-2xl font-bold mb-2">About this workshop</h3>
 
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Aim of this workshop</h3>
-            <p>{workshop.paragraphs?.[1]}</p>
-          </div>
+              <p>{translation.summary}</p>
+            </div>
+          )}
 
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Examples and content</h3>
-            <p>{workshop.paragraphs?.[2]}</p>
-          </div>
+          {translation?.description && (
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Workshop description</h3>
 
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Summary</h3>
-            <p>{workshop.paragraphs?.[3]}</p>
-          </div>
+              <p className="whitespace-pre-line">{translation.description}</p>
+            </div>
+          )}
+
+          {workshop.instructors?.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Instructors</h3>
+
+              {workshop.instructors.map((instructor) => (
+                <p key={instructor.userId}>
+                  {instructor.user?.firstName} {instructor.user?.lastName}
+                  {instructor.role ? ` – ${instructor.role}` : ""}
+                </p>
+              ))}
+            </div>
+          )}
+
+          {workshop.categories?.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Categories</h3>
+
+              <div className="flex flex-wrap gap-2">
+                {workshop.categories.map((categoryRelation) => {
+                  const category = categoryRelation.category;
+
+                  const categoryTranslation =
+                    category?.translations?.find(
+                      (item) => item.language === getCurrentLanguage(),
+                    ) ||
+                    category?.translations?.find(
+                      (item) => item.language === "EN",
+                    ) ||
+                    category?.translations?.[0];
+
+                  return (
+                    <span
+                      key={categoryRelation.categoryId}
+                      className="border border-[#1B6269] rounded-full px-4 py-1"
+                    >
+                      {categoryTranslation?.name || category?.slug}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      {/* ENROLMENT FORM */}
-      <div className="max-w-[1000px] mx-auto px-4 pb-16">
-        <div className="bg-white rounded-xl shadow-lg p-6 lg:p-10">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center">
-            Enrol in this Workshop
-          </h2>
 
-          <form className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="border rounded-lg p-3 w-full"
-            />
-
-            <input
-              type="email"
-              placeholder="Email"
-              className="border rounded-lg p-3 w-full"
-            />
-
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              className="border rounded-lg p-3 w-full"
-            />
-
-            <input
-              type="number"
-              placeholder="Number of Participants"
-              className="border rounded-lg p-3 w-full"
-            />
-
-            <textarea
-              placeholder="Message (optional)"
-              rows="4"
-              className="border rounded-lg p-3 w-full lg:col-span-2"
-            />
-
-            <button
-              type="submit"
-              className="lg:col-span-2 bg-[#1B6269] hover:bg-violet-800 text-white font-semibold py-3 rounded-lg transition"
-            >
-              Enrol Now
-            </button>
-          </form>
-        </div>
+      {/* Shared Booking Form */}
+      <div className="max-w-[1000px] mx-auto px-4 pb-16 w-full">
+        <ActivityBooking
+          key={workshop.id}
+          activity={normalizedWorkshop}
+          activityLabel="Workshop"
+          sessionMode="SINGLE"
+          title="Enrol in this Workshop"
+          description="Choose the number of participants and complete the booking information."
+          submitLabel={workshop.isFree ? "Enrol Now" : undefined}
+          className="rounded-xl"
+        />
       </div>
+
       <DonationSection />
       <Footer />
     </div>

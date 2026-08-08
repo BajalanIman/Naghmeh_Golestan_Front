@@ -90,7 +90,8 @@ export default function TeamSection() {
       id: 3,
       name: t("team_members_zhaleh_ahmadi_iraei_name"),
       role: t("team_members_zhaleh_ahmadi_iraei_role"),
-      image: "",
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1785702807/Zhale_j3cjob.jpg",
       bio: t("team_members_zhaleh_ahmadi_iraei_description"),
       expertise: t("team_members_zhaleh_ahmadi_iraei_interests", {
         returnObjects: true,
@@ -100,7 +101,8 @@ export default function TeamSection() {
       id: 4,
       name: t("team_members_mahdi_gholi_zadeh_name"),
       role: t("team_members_mahdi_gholi_zadeh_role"),
-      image: "",
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1785702807/Mahdi_Gholizadeh_oz2klc.jpg",
       bio: t("team_members_mahdi_gholi_zadeh_description"),
       expertise: t("team_members_mahdi_gholi_zadeh_interests", {
         returnObjects: true,

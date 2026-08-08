@@ -1,67 +1,200 @@
-import { useState } from "react";
-import NavBar from "../../NavigationBar/NavBar";
-import Footer from "../Footer/Footer";
-import DonationSection from "../Home/DonationSection";
+import { useEffect, useMemo, useState } from "react";
+import NavBar from "../../NavigationBar/NavBar.jsx";
+import Footer from "../Footer/Footer.jsx";
+import DonationSection from "../Home/DonationSection.jsx";
+import ActivityBooking from "../../Booking/ActivityBooking.jsx";
+import { useTranslation } from "react-i18next";
+import { BASE_URL } from "../../../constants/constants.js";
 
 const OurEvents = () => {
-  const movies = [
-    {
-      id: 1,
-      week: 1,
-      title: "Interstellar",
-      description:
-        "A team of astronauts travel through a wormhole in search of a new home for humanity.",
-      image: "https://tse3.mm.bing.net/th/id/OIP.NW6uXltXcyHfy-SvdjIivwHaE8",
-      date: "2026-08-02",
-      time: "19:00",
-      price: 15,
-      totalSeats: 50,
-      bookedSeats: [2, 5, 8, 10, 13],
-    },
-    {
-      id: 2,
-      week: 2,
-      title: "Inception",
-      description:
-        "A skilled thief enters dreams to steal secrets but is given one last impossible mission.",
-      image:
-        "https://tse4.mm.bing.net/th/id/OIP.MQdodyQDqjAJWV9JEzvcPgHaEc?pid=Api&h=220&P=0",
-      date: "2026-08-09",
-      time: "19:00",
-      price: 15,
-      totalSeats: 50,
-      bookedSeats: [1, 3, 7],
-    },
-    {
-      id: 3,
-      week: 3,
-      title: "The Pianist",
-      description: "A moving story about survival during World War II.",
-      image:
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
-      date: "2026-08-16",
-      time: "19:00",
-      price: 15,
-      totalSeats: 50,
-      bookedSeats: [],
-    },
-    {
-      id: 4,
-      week: 4,
-      title: "Parasite",
-      description: "A dark comedy thriller exploring class inequality.",
-      image:
-        "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800",
-      date: "2026-08-23",
-      time: "19:00",
-      price: 15,
-      totalSeats: 50,
-      bookedSeats: [15, 16, 17, 18],
-    },
-  ];
+  const { i18n } = useTranslation();
 
-  const [selectedMovie, setSelectedMovie] = useState(movies[0]);
-  const [ticketCount, setTicketCount] = useState(1);
+  const [events, setEvents] = useState([]);
+  const [selectedEventId, setSelectedEventId] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const getCurrentLanguage = () => {
+    const currentLanguage = i18n.resolvedLanguage || i18n.language || "en";
+
+    const languageCode = currentLanguage.split("-")[0].toUpperCase();
+
+    return ["EN", "DE", "FA"].includes(languageCode) ? languageCode : "EN";
+  };
+
+  const getTranslation = (activity) => {
+    const language = getCurrentLanguage();
+
+    return (
+      activity.translations?.find(
+        (translation) => translation.language === language,
+      ) ||
+      activity.translations?.find(
+        (translation) => translation.language === "EN",
+      ) ||
+      activity.translations?.[0] ||
+      null
+    );
+  };
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchEvents = async () => {
+      try {
+        setLoading(true);
+        setErrorMessage("");
+
+        const response = await fetch(
+          `${BASE_URL}activities?type=EVENT&language=${getCurrentLanguage()}&limit=50`,
+          {
+            credentials: "include",
+            signal: controller.signal,
+          },
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Unable to load events.");
+        }
+
+        const loadedEvents = data.activities || [];
+
+        setEvents(loadedEvents);
+
+        setSelectedEventId((currentId) => {
+          if (
+            currentId &&
+            loadedEvents.some((activity) => activity.id === currentId)
+          ) {
+            return currentId;
+          }
+
+          return loadedEvents[0]?.id || null;
+        });
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Events loading error:", error);
+
+          setErrorMessage(error.message || "Unable to load events.");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+
+    return () => controller.abort();
+  }, [i18n.language, i18n.resolvedLanguage]);
+
+  const normalizedEvents = useMemo(() => {
+    return events
+      .map((activity) => {
+        const translation = getTranslation(activity);
+
+        const sortedSessions = [...(activity.sessions || [])].sort(
+          (firstSession, secondSession) =>
+            new Date(firstSession.startAt) - new Date(secondSession.startAt),
+        );
+
+        const firstSession = sortedSessions[0] || null;
+
+        return {
+          ...activity,
+          sessions: sortedSessions,
+
+          title: translation?.title || "Cultural Event",
+
+          description: translation?.summary || translation?.description || "",
+
+          fullDescription:
+            translation?.description || translation?.summary || "",
+
+          image:
+            activity.bannerUrl ||
+            activity.imageUrl ||
+            "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
+
+          firstSession,
+        };
+      })
+      .sort((firstEvent, secondEvent) => {
+        if (!firstEvent.firstSession && !secondEvent.firstSession) {
+          return 0;
+        }
+
+        if (!firstEvent.firstSession) {
+          return 1;
+        }
+
+        if (!secondEvent.firstSession) {
+          return -1;
+        }
+
+        return (
+          new Date(firstEvent.firstSession.startAt) -
+          new Date(secondEvent.firstSession.startAt)
+        );
+      })
+      .map((event, index) => ({
+        ...event,
+        week: index + 1,
+      }));
+  }, [events, i18n.language, i18n.resolvedLanguage]);
+
+  const selectedEvent =
+    normalizedEvents.find((event) => event.id === selectedEventId) || null;
+
+  const formatCurrency = (value, currency = "EUR") => {
+    return new Intl.NumberFormat(i18n.language || "en", {
+      style: "currency",
+      currency,
+    }).format(Number(value || 0));
+  };
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center text-2xl">
+        Loading events...
+      </div>
+    );
+  }
+
+  if (!selectedEvent) {
+    return (
+      <div className="w-full min-h-screen flex flex-col bg-[#F1EFEE]">
+        <div className="w-full bg-[#186f77]">
+          <div className="mx-auto lg:w-[1200px]">
+            <NavBar />
+          </div>
+        </div>
+
+        <div className="flex-1 flex flex-col items-center justify-center gap-3 text-xl px-6">
+          <p>No published events are currently available.</p>
+
+          {errorMessage && (
+            <p className="text-red-700 text-base">{errorMessage}</p>
+          )}
+        </div>
+
+        <Footer />
+      </div>
+    );
+  }
+
+  const session = selectedEvent.firstSession;
+
+  const location =
+    session?.location?.name ||
+    session?.location?.city ||
+    (session?.mode === "ONLINE" ? "Online" : "To be announced");
+
+  const formattedPrice = selectedEvent.isFree
+    ? "Free"
+    : formatCurrency(selectedEvent.price, selectedEvent.currency);
 
   return (
     <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
@@ -77,45 +210,36 @@ const OurEvents = () => {
         <img
           className="w-full h-[300px] lg:h-[700px] object-cover"
           src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785350850/over_event_ib9eqk.png"
-          alt="Film Festival"
+          alt="Cultural Events"
         />
-        <p className="absolute pb-8 text-gray-100 text-4xl font-bold">
+
+        <p className="absolute pb-8 text-gray-100 text-4xl font-bold text-center px-6">
           Upcoming Cultural Events
         </p>
       </div>
 
       {/* Introduction */}
       <div className="py-6 px-6">
-        <p className="text-5xl font-bold">Film Festival</p>
+        <p className="text-5xl font-bold">{selectedEvent.title}</p>
 
-        <p className="text-xl mt-5">
-          A film festival for the period of September to October centered on the
-          theme of{" "}
-          <span className="font-bold">"Women, Migration, and Identity."</span>{" "}
-          The program will feature films by Iranian female directors,
-          accompanied by conversations, panel discussions, and cultural exchange
-          activities addressing issues of identity, belonging, gender, and
-          migration.
-        </p>
+        <p className="text-xl mt-5">{selectedEvent.description}</p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-5 py-16">
-        {/* Week Buttons */}
+      <div className="max-w-7xl mx-auto px-5 py-16 w-full">
+        {/* Event Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
-          {movies.map((movie) => (
+          {normalizedEvents.map((event) => (
             <button
-              key={movie.id}
-              onClick={() => {
-                setSelectedMovie(movie);
-                setTicketCount(1);
-              }}
+              key={event.id}
+              type="button"
+              onClick={() => setSelectedEventId(event.id)}
               className={`px-6 py-3 rounded-lg font-semibold transition ${
-                selectedMovie.id === movie.id
+                selectedEvent.id === event.id
                   ? "bg-[#186f77] text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
             >
-              Week {movie.week}
+              Event {event.week}
             </button>
           ))}
         </div>
@@ -124,112 +248,73 @@ const OurEvents = () => {
           {/* Poster */}
           <div>
             <img
-              src={selectedMovie.image}
-              alt={selectedMovie.title}
+              src={selectedEvent.image}
+              alt={selectedEvent.title}
               className="rounded-xl shadow-xl w-full h-[550px] object-cover"
             />
           </div>
 
-          {/* Movie Details */}
+          {/* Event Details */}
+          {/* Event Details */}
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold">{selectedMovie.title}</h1>
-
-            <p className="text-gray-600 leading-7">
-              {selectedMovie.description}
-            </p>
+            {selectedEvent.fullDescription && (
+              <p className="text-gray-600 leading-7 whitespace-pre-line">
+                {selectedEvent.fullDescription}
+              </p>
+            )}
 
             <div className="flex flex-wrap gap-8 text-lg">
-              <p>
-                📅 <strong>{selectedMovie.date}</strong>
-              </p>
+              {session && (
+                <>
+                  <p>
+                    📅{" "}
+                    <strong>
+                      {new Date(session.startAt).toLocaleDateString(
+                        i18n.language,
+                      )}
+                    </strong>
+                  </p>
+
+                  <p>
+                    🕖{" "}
+                    <strong>
+                      {new Date(session.startAt).toLocaleTimeString(
+                        i18n.language,
+                        {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        },
+                      )}
+                    </strong>
+                  </p>
+                </>
+              )}
 
               <p>
-                🕖 <strong>{selectedMovie.time}</strong>
+                📍 <strong>{location}</strong>
               </p>
             </div>
 
             <div className="text-3xl font-bold text-[#186f77]">
-              €{selectedMovie.price}
+              {formattedPrice}
             </div>
 
             <p className="font-semibold">
-              Remaining Seats:{" "}
-              {selectedMovie.totalSeats - selectedMovie.bookedSeats.length}/
-              {selectedMovie.totalSeats}
+              Capacity: {selectedEvent.capacity ?? "Unlimited"}
             </p>
 
-            {/* Ticket Quantity */}
-            <div className="space-y-2">
-              <label
-                htmlFor="ticketCount"
-                className="block text-lg font-semibold"
-              >
-                Number of Tickets
-              </label>
-
-              <select
-                id="ticketCount"
-                value={ticketCount}
-                onChange={(e) => setTicketCount(Number(e.target.value))}
-                className="w-full max-w-xs border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#186f77]"
-              >
-                {[1, 2, 3, 4, 5].map((count) => (
-                  <option key={count} value={count}>
-                    {count}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Booking Summary */}
-            {/* Booking Summary */}
-
-            <div className="border rounded-xl p-5 bg-gray-100">
-              <h2 className="text-xl font-bold mb-3">Booking Summary</h2>
-
-              <p>
-                <strong>Movie:</strong> {selectedMovie.title}
-              </p>
-
-              <p>
-                <strong>Date:</strong> {selectedMovie.date}
-              </p>
-
-              <p>
-                <strong>Time:</strong> {selectedMovie.time}
-              </p>
-
-              <p>
-                <strong>Tickets:</strong> {ticketCount}
-              </p>
-
-              <hr className="my-4" />
-
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Subtotal</span>
-                  <span>€{(ticketCount * selectedMovie.price).toFixed(2)}</span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>Tax (7%)</span>
-                  <span>
-                    €{(ticketCount * selectedMovie.price * 0.07).toFixed(2)}
-                  </span>
-                </div>
-
-                <div className="border-t pt-3 flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span>
-                    €{(ticketCount * selectedMovie.price * 1.07).toFixed(2)}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <button className="w-full bg-[#186f77] hover:bg-[#27b4c1] text-white py-4 rounded-xl text-lg font-semibold transition">
-              {ticketCount > 1 ? "Buy Tickets" : "Buy Ticket"}
-            </button>
+            <ActivityBooking
+              key={selectedEvent.id}
+              activity={selectedEvent}
+              activityLabel="Event"
+              sessionMode="SINGLE"
+              title="Book this Event"
+              description="Select the number of participants and complete the booking information."
+              submitLabel={
+                selectedEvent.isFree ? "Reserve Event Places" : undefined
+              }
+              className="mt-6"
+            />
           </div>
         </div>
       </div>

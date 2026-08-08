@@ -1,92 +1,137 @@
-// import NavBar from "../../NavigationBar/NavBar";
-// import Footer from "../Footer/Footer";
-// import CoursesCard from "./CoursesCard";
-// import AllEventsData from "../Events/AllEventsData";
-
-// const Courses = () => {
-//   return (
-//     <div className="w-full lg:w-[100%] h-full flex flex-col justify-center ">
-//       <div className="hidden lg:flex lg:w-[100%] bg-gradient-to-b from-indigo-700 via-purple-600 to-purple-500">
-//         <div className="px-2 lg:w-[1200px]">
-//           <NavBar />
-//         </div>
-//       </div>
-//       <div className="w-full bg-white flex flex-col lg:py-8 px-6 gap-4">
-//         <div className="flex flex-col lg:grid lg:grid-cols-4 gap-12 my-12 lg:gap-6  ">
-//           {AllEventsData.map((data) => (
-//             <CoursesCard
-//               key={data.id}
-//               title={data.title}
-//               explanation={data.workshopExplanation}
-//               date={data.date}
-//               image={data.image}
-//               location={data.location}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default Courses;
 import NavBar from "../../NavigationBar/NavBar";
 import Footer from "../Footer/Footer";
 import CoursesCard from "./CoursesCard";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import CourseImage from "../../../../public/CourseImage.png";
 import DonationSection from "../Home/DonationSection";
+import { BASE_URL } from "../../../constants/constants";
 
 const Courses = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
   const [monthcloser, setMonthcloser] = useState({});
-  const { i18n } = useTranslation();
-  const lang = i18n.language;
-  // 🔥 FETCH DATA FROM BACKEND
+
+  const getCurrentLanguage = () => {
+    const currentLanguage = i18n.resolvedLanguage || i18n.language || "en";
+
+    const languageCode = currentLanguage.split("-")[0].toUpperCase();
+
+    return ["EN", "DE", "FA"].includes(languageCode) ? languageCode : "EN";
+  };
+
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchCourses = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:8800/api/courses?lang=${i18n.language}`,
-        );
-        const data = await res.json();
+        setLoading(true);
+        setErrorMessage("");
 
-        setCourses(data);
-      } catch (err) {
-        console.error("Failed to fetch courses:", err);
+        const language = getCurrentLanguage();
+
+        const response = await fetch(
+          `${BASE_URL}activities?type=COURSE&language=${language}&limit=50`,
+          {
+            signal: controller.signal,
+          },
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to load courses.");
+        }
+
+        setCourses(data.activities || []);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Failed to fetch courses:", error);
+
+          setErrorMessage(error.message || "Failed to load courses.");
+        }
       } finally {
         setLoading(false);
       }
     };
 
     fetchCourses();
+
+    return () => controller.abort();
   }, [i18n.language]);
 
-  console.log(courses);
-  // 🧠 GROUP BY YEAR + MONTH
-  const grouped = courses.reduce((acc, course) => {
-    const date = new Date(course.date);
-    const year = date.getFullYear();
-    const month = date.getMonth(); // 0-11
+  const getTranslation = (activity) => {
+    const language = getCurrentLanguage();
 
-    if (!acc[year]) acc[year] = {};
-    if (!acc[year][month]) acc[year][month] = [];
+    return (
+      activity.translations?.find(
+        (translation) => translation.language === language,
+      ) ||
+      activity.translations?.find(
+        (translation) => translation.language === "EN",
+      ) ||
+      activity.translations?.[0] ||
+      null
+    );
+  };
 
-    acc[year][month].push(course);
+  const normalizedCourses = useMemo(() => {
+    return courses
+      .map((activity) => {
+        const translation = getTranslation(activity);
+        const firstSession = activity.sessions?.[0] || null;
 
-    return acc;
-  }, {});
+        return {
+          id: activity.id,
+          slug: activity.slug,
+          title: translation?.title || "Course",
+          explanation: translation?.summary || translation?.description || "",
+          date: firstSession?.startAt || activity.publishedAt,
+          image:
+            activity.imageUrl ||
+            activity.bannerUrl ||
+            "https://images.stockcake.com/public/4/c/7/4c70a9b3-eff2-4ece-9bb1-719754c48a90_large/innovative-workshop-activity-stockcake.jpg",
+          price: activity.price,
+          currency: activity.currency,
+          isFree: activity.isFree,
+          sessions: activity.sessions || [],
+        };
+      })
+      .filter((course) => course.date);
+  }, [courses, i18n.language]);
 
-  // ⏳ LOADING STATE
+  const grouped = useMemo(() => {
+    return normalizedCourses.reduce((accumulator, course) => {
+      const date = new Date(course.date);
+
+      if (Number.isNaN(date.getTime())) {
+        return accumulator;
+      }
+
+      const year = date.getFullYear();
+      const month = date.getMonth();
+
+      if (!accumulator[year]) {
+        accumulator[year] = {};
+      }
+
+      if (!accumulator[year][month]) {
+        accumulator[year][month] = [];
+      }
+
+      accumulator[year][month].push(course);
+
+      return accumulator;
+    }, {});
+  }, [normalizedCourses]);
+
   if (loading) {
     return (
-      <div className="w-full h-screen flex items-center justify-center text-white text-2xl">
+      <div className="w-full h-screen flex items-center justify-center text-[#1B6269] text-2xl">
         Loading courses...
       </div>
     );
@@ -95,54 +140,23 @@ const Courses = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center bg-[#F1EFEE]">
       {/* NAVBAR */}
-      <div className=" w-full bg-[#186f77] ">
+      <div className="w-full bg-[#186f77]">
         <div className="mx-auto lg:w-[1200px]">
           <NavBar />
         </div>
       </div>
-      {/* Only for netlify */}
-      {/* <div className="flex flex-col lg:grid lg:grid-cols-3 gap-3 lg:gap-6 pl-4 bg-white py-12">
-        <CoursesCard
-          key={40}
-          id={40}
-          title={"Course one"}
-          explanation={
-            "Wenn Sie schon mal eine neue Maus, einen Drucker oder ein anderes Peripheriegerät zu Ihrem Computer hinzugefügt..."
-          }
-          date={"12.12.2026"}
-          image={
-            "https://images.stockcake.com/public/4/c/7/4c70a9b3-eff2-4ece-9bb1-719754c48a90_large/innovative-workshop-activity-stockcake.jpg"
-          }
-          paragraphs={"Course.paragraphs"}
-        />
-        <CoursesCard
-          key={41}
-          id={41}
-          title={"Course two"}
-          explanation={
-            "Wenn Sie schon mal eine neue Maus, einen Drucker oder ein anderes Peripheriegerät zu Ihrem Computer hinzugefügt..."
-          }
-          date={"12.12.2026"}
-          image={
-            "https://images.stockcake.com/public/4/c/7/4c70a9b3-eff2-4ece-9bb1-719754c48a90_large/innovative-workshop-activity-stockcake.jpg"
-          }
-          paragraphs={"Course.paragraphs"}
-        />
-        <CoursesCard
-          key={42}
-          id={42}
-          title={"Course three"}
-          explanation={
-            "Wenn Sie schon mal eine neue Maus, einen Drucker oder ein anderes Peripheriegerät zu Ihrem Computer hinzugefügt..."
-          }
-          date={"12.12.2026"}
-          image={
-            "https://images.stockcake.com/public/4/c/7/4c70a9b3-eff2-4ece-9bb1-719754c48a90_large/innovative-workshop-activity-stockcake.jpg"
-          }
-          paragraphs={"Course.paragraphs"}
-        />
-      </div> */}
-      {/* WORKSHOPS LIST */}
+
+      {errorMessage && (
+        <p className="text-center text-red-700 py-10">{errorMessage}</p>
+      )}
+
+      {!errorMessage && normalizedCourses.length === 0 && (
+        <p className="text-center text-[#1B6269] text-xl py-16">
+          No published courses are currently available.
+        </p>
+      )}
+
+      {/* COURSES LIST */}
       <div className="w-full flex flex-col mt-12 lg:mt-0 py-2 px-6 gap-4">
         {Object.entries(grouped).map(([year, months]) => (
           <div key={year}>
@@ -159,25 +173,35 @@ const Courses = () => {
             {Object.entries(months).map(([month, items]) => {
               const key = `${year}-${month}`;
 
+              const monthName = new Date(
+                Number(year),
+                Number(month),
+                1,
+              ).toLocaleString(i18n.language || "en", {
+                month: "long",
+              });
+
               return (
                 <div key={key}>
                   {/* MONTH HEADER */}
                   <div
                     onClick={() => {
-                      setMonthcloser((prev) => ({
-                        ...prev,
-                        [key]: !prev[key],
+                      setMonthcloser((previousState) => ({
+                        ...previousState,
+                        [key]: !previousState[key],
                       }));
                     }}
                     className="w-full mb-5 mt-12 gap-3 flex justify-center items-center"
                   >
                     <h3 className="text-4xl font-bold text-gray-700 cursor-pointer">
-                      Courses in{" "}
-                      {new Date(0, month).toLocaleString("default", {
-                        month: "long",
-                      })}
+                      Courses in {monthName}
                     </h3>
-                    <ChevronDown className="mt-1 cursor-pointer" />
+
+                    <ChevronDown
+                      className={`mt-1 cursor-pointer transition-transform ${
+                        monthcloser[key] === false ? "-rotate-90" : ""
+                      }`}
+                    />
                   </div>
 
                   {/* MONTH CONTENT */}
@@ -187,11 +211,14 @@ const Courses = () => {
                         <CoursesCard
                           key={course.id}
                           id={course.id}
+                          slug={course.slug}
                           title={course.title}
                           explanation={course.explanation}
                           date={course.date}
                           image={course.image}
-                          paragraphs={course.paragraphs}
+                          price={course.price}
+                          currency={course.currency}
+                          isFree={course.isFree}
                         />
                       ))}
                   </div>
@@ -201,8 +228,8 @@ const Courses = () => {
           </div>
         ))}
       </div>
+
       <DonationSection />
-      {/* FOOTER */}
       <Footer />
     </div>
   );

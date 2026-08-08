@@ -166,7 +166,7 @@ const ContactUs = () => {
       {/* Hero */}
       <div className="relative flex items-center justify-center">
         <img
-          src="https://res.cloudinary.com/r4pnipqe/image/upload/v1783763648/ContactUsImage_lx1k6w.png"
+          src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785183105/Joins_us1_uvfe9d.jpg"
           alt="Contact Us"
           className="w-full h-[280px] lg:h-[450px] object-cover"
         />

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import GolestanIcon from "../../../../public/Golestan_Logo_KulutrHub_farbe.svg";
 import { useTranslation } from "react-i18next";
 import { BASE_URL } from "../../../constants/constants";
 
@@ -166,7 +165,10 @@ const DonationSection = () => {
             <p className="leading-8">{t("donation_description")}</p>
 
             <div className="mt-10 px-10 py-10 flex justify-center">
-              <img src={GolestanIcon} alt="Golestan Cultural Hub" />
+              <img
+                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1786282344/Golestan_Logo_KulutrHub_farbe_m6ezej.svg"
+                alt="Golestan Cultural Hub"
+              />
             </div>
           </div>
 

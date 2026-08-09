@@ -4,7 +4,6 @@ import Mainworkshop from "./Mainworkshop";
 import Otherworkshops from "./Otherworkshops";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import WorkshopsImage from "../../../../public/WorkshopsImage.png";
 import { useTranslation } from "react-i18next";
 import DonationSection from "../Home/DonationSection";
 import { BASE_URL } from "../../../constants/constants";
@@ -192,7 +191,11 @@ const Workshops = () => {
           <div key={year}>
             {/* YEAR TITLE */}
             <div className="w-full relative flex justify-center items-center my-32">
-              <img className="absolute w-96" src={WorkshopsImage} alt="" />
+              <img
+                className="absolute w-96"
+                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1786281271/WorkshopsImage_xmcl8h.png"
+                alt="WorkshopsImage"
+              />
 
               <h2 className="absolute text-4xl font-bold text-teal-900">
                 {year}

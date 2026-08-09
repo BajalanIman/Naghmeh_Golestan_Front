@@ -4,7 +4,6 @@ import CoursesCard from "./CoursesCard";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import CourseImage from "../../../../public/CourseImage.png";
 import DonationSection from "../Home/DonationSection";
 import { BASE_URL } from "../../../constants/constants";
 
@@ -162,7 +161,11 @@ const Courses = () => {
           <div key={year}>
             {/* YEAR TITLE */}
             <div className="w-full relative flex justify-center items-center my-32">
-              <img className="absolute w-96" src={CourseImage} alt="" />
+              <img
+                className="absolute w-96"
+                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1786281410/CourseImage_rq39cs.png"
+                alt="CourseImage"
+              />
 
               <h2 className="absolute text-2xl font-bold text-teal-900 mb-16">
                 {year}

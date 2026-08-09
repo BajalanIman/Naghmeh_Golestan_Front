@@ -84,21 +84,10 @@ const NavBar = () => {
             </span>
           </div>
           <div className="flex gap-5">
-            {/* {localUser && localUser.role !== "user" ? (
-              <Link
-                to="/setting"
-                className="bg-white py-2 px-4 rounded-md hover:bg-gray-300"
-              >
-                Einstellung
-              </Link>
-            ) : (
-              ""
-            )} */}
-
             {!localUser ? (
               <Link
                 to="/login"
-                className="bg-[#ECEAD3] w-20 h-10 pt-1 pl-4 border rounded-md text-cyan-900 hover:bg-yellow-200"
+                className="bg-[#ECEAD3] px-3 h-8 text-center border rounded-md text-cyan-900 hover:bg-yellow-200"
               >
                 Login
               </Link>

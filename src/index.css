@@ -1,6 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html[lang^="fa"] body {
   font-family: "Vazirmatn", sans-serif;
+}
+
+/* Hide cards outside the visible area */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Contains the two identical card groups */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left-to-right 25s linear infinite;
+  will-change: transform;
+}
+
+/* Each identical card collection */
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Continuous movement from left to right */
+@keyframes marquee-left-to-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Pause when the user places the mouse over the cards */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
 }

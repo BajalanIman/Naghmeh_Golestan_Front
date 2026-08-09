@@ -28,20 +28,22 @@ const home = () => {
           homePageInfoBoxTitleOne={t("homePageInfoBoxTitleOne")}
           // homePageInfoBoxTextOne={t("homePageInfoBoxTextOne")}
           image={
-            "https://static.vecteezy.com/system/resources/thumbnails/039/593/345/small_2x/ai-generated-young-women-in-traditional-clothing-celebrate-a-colorful-cultural-parade-generated-by-ai-free-photo.jpg"
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/Persische_Literatur_enxh81.png"
           }
         />
         <InfoBox
           homePageInfoBoxTitleTwo={t("homePageInfoBoxTitleTwo")}
           // homePageInfoBoxTextTwo={t("homePageInfoBoxTextTwo")}
           image={
-            "https://img.freepik.com/premium-photo/cultural-exchange-event-where-people-share-traditi_1148322-51124.jpg"
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/culture_poqwcc.png"
           }
         />
         <InfoBox
           homePageInfoBoxTitleThree={t("homePageInfoBoxTitleThree")}
           // homePageInfoBoxTextThree={t("homePageInfoBoxTextThree")}
-          image={"https://wallpaperaccess.com/full/2633589.jpg"}
+          image={
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177262/film_ccvffj.png"
+          }
         />
       </div>
       <Mainworkshop
@@ -53,16 +55,9 @@ const home = () => {
         HomepageTextAndImageTitle={t("HomepageMissionTitle")}
         HomepageTextAndImageText={t("HomepageMissionText")}
         image={
-          "https://static.vecteezy.com/system/resources/previews/026/481/532/large_2x/serenity-and-peace-with-this-breathtaking-4k-wallpaper-depicting-a-tranquil-natural-landscape-free-photo.jpg"
+          "https://res.cloudinary.com/r4pnipqe/image/upload/v1785183105/Joins_us1_uvfe9d.jpg"
         }
       />
-      {/* <TextAndImage
-        HomepageTextAndImageTitle={t("HomepageOurProgramsTitle")}
-        HomepageTextAndImageText={t("HomepageOurProgramsText")}
-        image={
-          "https://4kwallpapers.com/images/wallpapers/mushroom-forest-3840x2160-10854.jpg"
-        }
-      /> */}
       <FourItems />
       <NewsletterSubscription showFormat={1} />
       <DonationSection />

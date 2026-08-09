@@ -43,7 +43,8 @@ const Mainworkshop = ({
       >
         <img
           src={
-            workshop?.image || "https://wallpaperaccess.com/full/1315404.jpg"
+            workshop?.image ||
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785709866/About_us_3_de8kau.png"
           }
           className="w-full h-full object-cover rounded-t-lg lg:rounded-lg"
           alt={title}

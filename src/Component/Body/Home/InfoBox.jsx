@@ -1,5 +1,6 @@
 import { ExternalLink, MapPinPlus, NotepadText, UserRound } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const InfoBox = ({
   homePageInfoBoxTitleOne,
@@ -10,6 +11,8 @@ const InfoBox = ({
   // homePageInfoBoxTextThree,
   image,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="relative w-full lg:w-[370px] h-[380px]  mb-8 lg:mb-0 rounded-md">
       <img src={image} className="w-full h-full object-cover" />
@@ -65,7 +68,10 @@ const InfoBox = ({
           <p className="text-sm">Location: Pankow, Berlin</p>
         </div> */}
         <div className=" flex gap-3 mt-6">
-          <p className="text-xl font-bold  text-[#ECEAD3]"> More details</p>
+          <p className="text-xl font-bold  text-[#ECEAD3]">
+            {" "}
+            {t("homePageInfoBoxBTN")}
+          </p>
           <ExternalLink color="#ECEAD3" />
         </div>
       </div>

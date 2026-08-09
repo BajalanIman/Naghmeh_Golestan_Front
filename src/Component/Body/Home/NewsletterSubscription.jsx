@@ -106,18 +106,22 @@ const NewsletterSubscription = ({ showFormat }) => {
           <div className="w-full lg:w-1/2 bg-[#BCDEDC] h-full px-10 py-12 lg:pb-0">
             <div className="flex gap-6">
               <div className="flex flex-col">
-                <h1 className="text-4xl font-bold mb-1">Newsletter</h1>
+                <h1 className="text-4xl font-bold mb-1">
+                  {t("Homepage_newsletter_title_one")}
+                </h1>
 
-                <h1 className="text-4xl font-bold">Subscription</h1>
+                <h1 className="text-4xl font-bold">
+                  {t("Homepage_newsletter_title_two")}
+                </h1>
               </div>
 
               <Send className="w-20 h-20" />
             </div>
 
             <div className="text-2xl flex flex-col gap-2 mt-12 mb-12">
-              <p>History told up to date:</p>
-              <p>If you want to stay up to date,</p>
-              <p>subscribe to our newsletter.</p>
+              <p></p>
+              <p>{t("Homepage_newsletter_text_one")}</p>
+              <p>{t("Homepage_newsletter_text_two")}</p>
             </div>
 
             {/* email */}
@@ -135,17 +139,17 @@ const NewsletterSubscription = ({ showFormat }) => {
                 }}
                 onKeyDown={handleKeyDown}
                 disabled={isLoading}
-                placeholder="Your email address"
+                placeholder={t("Homepage_newsletter_email")}
                 autoComplete="email"
-                className="bg-[#CAE0DF] border border-[#1B6269] rounded-3xl h-12 w-72 lg:w-96 pl-4"
+                className="bg-[#CAE0DF] border border-[#1B6269] rounded-3xl h-12 w-72 lg:w-96 pl-4 pr-5"
               />
 
               <span className="text-[11px] pl-8 mt-3">
-                I would like to receive your newsletter
+                {t("Homepage_newsletter_text_three")}
               </span>
 
               <span className="text-[11px] pl-8">
-                and accept the privacy policy.
+                {t("Homepage_newsletter_text_four")}
               </span>
 
               <button
@@ -156,7 +160,9 @@ const NewsletterSubscription = ({ showFormat }) => {
                   isLoading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
-                <p>{isLoading ? "Sending..." : "Send"}</p>
+                <p>
+                  {isLoading ? "Sending..." : t("Homepage_newsletter_send_btn")}
+                </p>
                 <Send className="w-6 h-6" />
               </button>
 
@@ -177,7 +183,7 @@ const NewsletterSubscription = ({ showFormat }) => {
           {/* right */}
           <img
             className="h-96 w-full lg:w-1/2 lg:h-[700px]"
-            src="https://wallpaperaccess.com/full/167767.jpg"
+            src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785183231/Home_P_Newsletter_2_mji7ow.jpg"
             alt="Newsletter"
           />
         </div>

@@ -14,10 +14,11 @@ function Mainbody() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source
+        <img src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785182988/Aount_Us_jgyvqi.jpg" />
+        {/* <source
           src="https://www.deutschlandmuseum.de/wp-content/uploads/2024/09/deutschlandmuseum.mp4"
           type="video/mp4"
-        />
+        /> */}
       </video>
 
       {/* Dark Overlay */}

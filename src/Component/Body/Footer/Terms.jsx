@@ -1,7 +1,6 @@
 import NavBar from "../../NavigationBar/NavBar";
 import DonationSection from "../Home/DonationSection";
 import Footer from "../Footer/Footer";
-import TermeConditionsImage from "../../../../public/TermeConditionsImage.png";
 import { useTranslation } from "react-i18next";
 
 const Terms = () => {

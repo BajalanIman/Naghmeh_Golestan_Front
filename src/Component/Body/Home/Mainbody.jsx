@@ -15,10 +15,10 @@ function Mainbody() {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <img src="https://res.cloudinary.com/r4pnipqe/image/upload/v1785182988/Aount_Us_jgyvqi.jpg" />
-        {/* <source
-          src="https://www.deutschlandmuseum.de/wp-content/uploads/2024/09/deutschlandmuseum.mp4"
+        <source
+          src="https://res.cloudinary.com/r4pnipqe/video/upload/v1786711554/homepage_main_wd1mme.mp4"
           type="video/mp4"
-        /> */}
+        />
       </video>
 
       {/* Dark Overlay */}

@@ -28,21 +28,21 @@ const home = () => {
           homePageInfoBoxTitleOne={t("homePageInfoBoxTitleOne")}
           // homePageInfoBoxTextOne={t("homePageInfoBoxTextOne")}
           image={
-            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/Persische_Literatur_enxh81.png"
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/culture_poqwcc.png"
           }
         />
         <InfoBox
           homePageInfoBoxTitleTwo={t("homePageInfoBoxTitleTwo")}
           // homePageInfoBoxTextTwo={t("homePageInfoBoxTextTwo")}
           image={
-            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/culture_poqwcc.png"
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177262/film_ccvffj.png "
           }
         />
         <InfoBox
           homePageInfoBoxTitleThree={t("homePageInfoBoxTitleThree")}
           // homePageInfoBoxTextThree={t("homePageInfoBoxTextThree")}
           image={
-            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177262/film_ccvffj.png"
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/Persische_Literatur_enxh81.png"
           }
         />
       </div>

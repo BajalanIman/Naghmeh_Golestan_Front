@@ -22,3 +22,15 @@ If you are developing a production application, we recommend using TypeScript wi
 
 If adding new table to database:
 -npx prisma migrate dev --name add-tree-plot
+
+# https://console.cloudinary.com/
+
+kultur.atelier2020@gmail.com
+
+# https://github.com/golestanhub
+
+admin@github.de
+God0121N0s1e2p1t$#
+
+server: git push client master & git push
+front: git push client Develop & git push

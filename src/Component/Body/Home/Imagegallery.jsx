@@ -49,7 +49,7 @@ function Imagegallery() {
 
   return (
     <section
-      className="relative flex min-h-[500px] w-full items-center justify-center overflow-hidden py-10 lg:min-h-screen bg-red-600"
+      className="relative flex min-h-[500px] w-full items-center justify-center overflow-hidden py-10 lg:min-h-screen"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Image gallery"

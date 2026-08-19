@@ -217,7 +217,7 @@
     "Development of educational and cultural initiatives"
   ],
 
-  "teachers_instructors_title": "Teachers, guest Instructors and Artists",
+  "teachers_instructors_title": "Teachers, Guest Instructors and Artists",
   "team_members_pegah_khadish_name": "Pegah Khadish",
   "team_members_pegah_khadish_role": "Instructor",
   "team_members_pegah_khadish_description": "Pegah Khadish has completed training in Persian language and literature. She completed her PhD at the University of Tehran (2005). Her doctoral thesis was on the morphology of Persian folk tales, which was written under the supervision of Prof. Ulrich Marzloph at the University of Göttingen. This dissertation was published in 2008 and was selected as the top cultural research of the year in Iran. She worked as an assistant professor for about 15 years at the Dehkhoda Lexicon Institute and the International Center for Persian Studies at the University of Tehran. Her main research area is Iranian myths and narratives. She has published nine books so far, most of them on Persian folk literature and narrative elements, two of which are considered textbooks. She has been a member of the ISFNR (The International Society for Folk Narrative Research) since 2017. She is currently working on a voluntary basis on cataloging some unknown Persian manuscripts in the Berlin State Library.",
@@ -235,12 +235,51 @@
   "team_members_zhaleh_ahmadi_iraei_interests": ["Singing", "Music theory"],
   "team_members_mahdi_gholi_zadeh_name": "Mahdi Gholi Zadeh",
   "team_members_mahdi_gholi_zadeh_role": "Instructor",
-  "team_members_mahdi_gholi_zadeh_description": "Mahdi Gholi Zadeh (born in 1979 in Amol, Iran) is an outstanding multi-percussionist, teacher, and musician who has been living in Germany since 2022. Although he holds a degree in IT engineering, he discovered his lifelong passion for music at a young age, having grown up in a family of musicians. He gained his first musical experience with Middle Eastern percussion instruments such as the daf, tombak, and darbuka. From 2000 to 2005, Mahdi formally studied Latin American percussion, focusing on instruments such as congas, bongos, cajón, and djembe. His constant curiosity about rhythm led him to learn the Indian instrument tabla in 2013. In 2014, he began taking advanced master classes, where he refined his skills on congas and bongos as well as in a variety of global techniques and styles, such as Afro-Cuban, Afro-Brazilian, and timbales. He also mastered smaller percussion instruments such as shakers, cabassa, and maracas, with a strong focus on world grooves and ensemble playing. He continued this professional training through 2018. Mahdi’s professional career began in 1997 and spans more than two decades. He has performed both as a soloist and as an ensemble musician in various genres—including folk, pop, flamenco, and classical music—and has collaborated with the Philharmonic Orchestra as well as on numerous music projects and albums since 2002. Since 2002, he has devoted himself with great passion to teaching, instructing rhythm and percussion at various institutions for children, teenagers, and adults. Between 2015 and 2021, he was In 2019, he published a book about the desarketen, a traditional percussion instrument from the Mazandaran region. The book documents its history and includes an educational repertoire aimed at preserving the Iranian folk music tradition. Today, Mahdi teaches percussion at the Berlin Musikschule Zehlendorf and performs with two ensembles: the Just Mad Big Band and a Latin band. He is also the founder and director of the Romak Music Band, which, together with singer Zhaleh Ahmadi, has given numerous concerts in various cities across Germany and Austria. Mahdi Gholi Zadeh’s remarkable career as a musician and educator reflects his lifelong dedication to rhythm, cultural exchange, and the art of percussion.",
+  "team_members_mahdi_gholi_zadeh_description": "Mahdi Gholi Zadeh (born 1979 in Amol, Iran) is a percussionist, educator, and researcher specializing in percussion instruments who has been living in Germany since 2022. He began his professional career in 1997 and, with more than two decades of experience, has performed as both a soloist and ensemble musician in folk, pop, flamenco, classical, and Latin music. His mastery of a wide range of percussion instruments—including the daf, tombak, darbuka, congas, bongos, cajón, and djembe—has established him as a versatile multi-percussionist. Since 2002, Mahdi has been teaching music to children, teenagers, and adults, and regularly leads percussion workshops in Berlin. He is the founder of the Romak Music Band and the author of a book on the traditional Mazandarani percussion instrument Desarketen. He currently performs extensively in Berlin with Barrio Latino and the Just Mad Big Band.",
   "team_members_mahdi_gholi_zadeh_interests": ["Percussion", "Daf", "Tombak"],
   "team_members_mitra_nasayehi_name": "Mitra Nasayehi",
   "team_members_mitra_nasayehi_role": "Instructor",
   "team_members_mitra_nasayehi_description": "Mitra Nasayehi earned her bachelor’s degree in graphic design and subsequently began her professional career as a graphic designer. She worked for two years at an advertising agency and later founded her own advertising agency to work as a freelancer and pursue her interest in painting and drawing. To cultivate her interest in the arts, she studied painting and drawing at the university for about two years. Drawing on her experience as a graphic designer, she began her career as a painter and draftsman. She has painted and sold many works of art to date and continued her work after immigrating. She believes that people can express their feelings, emotions, and view of the world through art and artistic creation, particularly through painting. This will help them overcome their problems by calming their minds. I would like to share my experiences through painting and drawing workshops at the KulturAtelier for both young people and adults.",
   "team_members_mitra_nasayehi_interests": ["Painting", "Graphic design"],
+
+  "team_members_shamloo_name": "Zi Shamloo",
+  "team_members_shamloo_role": "Instructor",
+  "team_members_shamloo_description": "Art has been part of my life for as long as I can remember. It's how I observe the world, express ideas and connect with people. With a Master's degree in Visual Experience Design and over ten years of experience as an artist and educator, I've built my practice through exhibitions, teaching and creative collaborations across different countries. I believe creativity belongs to everyone. You don't have to be an artist to enjoy making art. Sometimes all it takes is the right environment, a little guidance and the confidence to begin. That's the approach behind my classes. Rather than focusing only on techniques, I encourage curiosity, experimentation and personal expression. I want my students to feel comfortable exploring ideas, making mistakes and discovering their own creative voice. My hope is that every student leaves with more than a finished piece. I want them to leave with greater confidence, fresh ideas and a lasting desire to keep creating. ",
+  "team_members_shamloo_interests": ["Painting "],
+
+  "team_members_kamkar_name": "Hana Kamkar",
+  "team_members_kamkar_role": "Instructor",
+  "team_members_kamkar_description": "Hana Kamkar (born in 1980 in Tehran) is an Iranian vocalist, actress, filmmaker, daf player, educator, and member of the renowned Kamkars Ensemble. She holds a Bachelor's degree in Film Directing from Soore University in Tehran and a Master's degree in Art Research from the National University of Mazandaran. Hana began her professional career in 1998 as a singer and daf player in theatre productions. Since 2003, she has performed with the Kamkars Ensemble and various Iranian and international music groups at concerts and festivals in Iran and abroad. Her artistic work extends beyond performance to filmmaking, acting, and music. She has appeared as an actress and singer in theatre and cinema and has recorded vocals for albums by the Kamkars Ensemble and prominent Iranian composers and musicians, including Soodabeh Salem, Fardin Khalatbari, Siavash Kamkar, Siamak Kalantari, and others. Since 2001, Hana has taught the daf. She later developed and began teaching her own original vocal-training method, Bazi-Khani (Playful Singing), which she now also offers in Berlin. Despite the many restrictions placed on female singers in Iran, Hana has continued her artistic career with remarkable determination. In recent years, she appeared as an actress and singer in the film The Witness, presented at the 2024 Venice International Film Festival. Her notable performances also include the first public solo singing performance without compulsory hijab in Iran during the ceremony marking Abbas Kiarostami's 83rd birthday, a solo concert at the Babylon International Festival of Arts in Iraq, an underground concert in Iran attended by more than 300 people, and a series of concerts in Berlin in 2025 with the Hana Kamkar Ensemble. She continues to pursue her artistic work internationally while living and performing outside Iran.",
+  "team_members_kamkar_interests": [
+    "Vocal Music",
+    "Daf",
+    "Acting",
+    "Filmmaking",
+    "Music Education"
+  ],
+
+  "team_members_fozizadeh_name": "Nasrin Fozizadeh",
+  "team_members_fozizadeh_role": "Instructor",
+  "team_members_fozizadeh_description": "My name is Nasrin Fozizadeh, and I am an experienced arts and crafts instructor from Iran. I hold a Bachelor's degree in Family Studies and speak Persian, Kurdish, and Arabic. I teach children, teenagers, and adults, helping them develop practical skills, creativity, and confidence through hands-on artistic practice. My areas of expertise include fabric doll making, felt doll making, leather crafting, patchwork and quilting, jewellery making, sewing, and a wide range of traditional and contemporary handicrafts. With many years of teaching experience, I am passionate about sharing both technical skills and the joy of making things by hand. Through my courses in Berlin, I aim to inspire creativity, strengthen fine motor skills, and encourage people of all ages to discover the satisfaction of creating beautiful, high-quality handmade works of their own.",
+  "team_members_fozizadeh_interests": [
+    "Arts and Crafts",
+    "Doll Making",
+    "Leather Crafting",
+    "Patchwork",
+    "Jewellery Making",
+    "Sewing"
+  ],
+
+  "team_members_khabazian_name": "Kosar Khabazian",
+  "team_members_khabazian_role": "Instructor",
+  "team_members_khabazian_description": "After nine years of university study, ten years of professional experience, navigating regulations, and writing academic papers, I have arrived at one core belief: the residents of a neighborhood are themselves its most knowledgeable decision-makers. The main task of an urban planner is to turn the local community's vision into reality at the right time and in the best possible way. I hold a Bachelor's degree in Surveying Engineering (Geodesy) from Isfahan University of Technology (2009), a Master's degree in Urban and Regional Planning from the University of Tehran (2013), and a second Master's degree in Urban Management from the Technical University of Berlin (2019). Cities and urban studies are not merely my profession; they are my greatest passion.",
+  "team_members_khabazian_interests": [
+    "Participatory Urban Planning",
+    "Urban Management",
+    "Community Development",
+    "Geodesy"
+  ],
+
   "team_members_mohamad_tavakoli_targhi_name": "Prof. Mohamad Tavakoli-Targhi",
   "team_members_mohamad_tavakoli_targhi_role": "History Nights: Critical Re-Readings of Historical and Political Narratives in Contemporary Iran",
   "team_members_mohamad_tavakoli_targhi_description": "Mohamad Tavakoli-Targhi is Professor of History and Near and Middle Eastern Civilizations at the University of Toronto. His areas of specialization encompass Middle Eastern History, Modernity, Nationalism, Gender Studies, Orientalism, and Occidentalism. He is the author of two books, Refashioning Iran: Orientalism, Occidentalism and Nationalist Historiography (Palgrave, 2001) and Tajaddud-i Bumi [Vernacular Modernity] (in Persian, Nashr-i Tarikh, 2003). He has authored numerous articles.",
@@ -262,8 +301,11 @@
     "Contemporary Middle Eastern societies"
   ],
 
-  "team_members_kiarash_name": "Kiarash Moham",
-  "team_members_kiarash_description": "",
+  "team_members_kiarash_name": "Nasser (Kiarash) Mohammadi",
+  "team_members_kiarash_role": "Operational Director",
+  "team_members_kiarash_description": "Nasser (Kiarash) Mohammadi is an Industrial Engineer and international business development professional with more than 20 years of experience in project management, business development, commercial operations, and supply chain management across Iran, the United Arab Emirates, and China. He holds a B.Sc. in Industrial Engineering from Amirkabir University of Technology (Tehran Polytechnic) and an MBA from the American University of Sharjah. Throughout his career, he has led international projects, managed complex commercial negotiations, coordinated logistics and cross-functional operations, and developed strategic partnerships in industries including industrial manufacturing, technology, oil trading, and medical devices. His strong analytical mindset, combined with extensive international experience and fluency in Persian and English, enables him to build effective cross-cultural collaborations and identify sustainable business opportunities. He is committed to innovation, operational excellence, and creating long-term value through strategic planning and international cooperation.",
+  "team_members_kiarash_interests": [""],
+
   "team_members_sara_name": "Sara Assadi",
   "team_members_sara_description": "",
   "team_members_nafiseh_name": "Nafiseh Mirzaei",

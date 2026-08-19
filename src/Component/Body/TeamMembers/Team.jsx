@@ -4,6 +4,7 @@ import NavBar from "../../NavigationBar/NavBar";
 import VisitingTeachers from "./visitingTeachers";
 import Footer from "../Footer/Footer";
 import { useTranslation } from "react-i18next";
+import HonorayGuests from "./HonorayGuests";
 
 export default function TeamSection() {
   const { i18n } = useTranslation();
@@ -24,23 +25,24 @@ export default function TeamSection() {
     {
       id: 2,
       name: "Kiarash Moham",
-      role: "Kiarash Moham",
-      image: "",
-      bio: "Kiarash Moham",
-      // expertise: t("team_members_naghmeh_interests", {
-      //   returnObjects: true,
-      // }),
+      role: t("team_members_kiarash_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1786635957/kiarash_apozjv.jpg",
+      bio: t("team_members_kiarash_description"),
+      expertise: t("team_members_kiarash_interests", {
+        returnObjects: true,
+      }),
     },
-    {
-      id: 3,
-      name: "Sara Assadi",
-      role: "Sara Assadi",
-      image: "",
-      bio: "Sara Assadi",
-      // expertise: t("team_members_naghmeh_interests", {
-      //   returnObjects: true,
-      // }),
-    },
+    // {
+    //   id: 3,
+    //   name: "Sara Assadi",
+    //   role: "Sara Assadi",
+    //   image: "",
+    //   bio: "Sara Assadi",
+    //   expertise: t("team_members_naghmeh_interests", {
+    //     returnObjects: true,
+    //   }),
+    // },
     // {
     //   id: 4,
     //   name: "Nafiseh Mirzaei",
@@ -121,14 +123,47 @@ export default function TeamSection() {
     },
     {
       id: 6,
-      name: "Hana_Kamkar",
-      // role: t("team_members_mitra_nasayehi_role"),
+      name: t("team_members_shamloo_name"),
+      role: t("team_members_shamloo_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1785612600/Zi_Shamloo_ubllct.jpg",
+      bio: t("team_members_shamloo_description"),
+      expertise: t("team_members_shamloo_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 7,
+      name: t("team_members_kamkar_name"),
+      role: t("team_members_kamkar_role"),
       image:
         "https://res.cloudinary.com/r4pnipqe/image/upload/v1785446680/Hana_Kamkar.JPG_mpf9hh.jpg",
-      // bio: t("team_members_mitra_nasayehi_description"),
-      // expertise: t("team_members_mitra_nasayehi_interests", {
-      //   returnObjects: true,
-      // }),
+      bio: t("team_members_kamkar_description"),
+      expertise: t("team_members_kamkar_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 8,
+      name: t("team_members_fozizadeh_name"),
+      role: t("team_members_fozizadeh_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1786719950/female_uttp0r.png",
+      bio: t("team_members_fozizadeh_description"),
+      expertise: t("team_members_fozizadeh_interests", {
+        returnObjects: true,
+      }),
+    },
+    {
+      id: 9,
+      name: t("team_members_khabazian_name"),
+      role: t("team_members_khabazian_role"),
+      image:
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1786719950/female_uttp0r.png",
+      bio: t("team_members_khabazian_description"),
+      expertise: t("team_members_khabazian_interests", {
+        returnObjects: true,
+      }),
     },
   ];
 
@@ -165,7 +200,7 @@ export default function TeamSection() {
           <NavBar />
         </div>
       </div>
-      <section className="py-20">
+      <section className="py-20 ">
         <div className="max-w-6xl mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-20">
@@ -202,7 +237,7 @@ export default function TeamSection() {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full max-w-md mx-auto rounded-2xl object-cover shadow-lg"
+                    className="w-full max-w-md mx-auto rounded-2xl object-cover shadow-lg h-96"
                   />
                 </div>
 
@@ -248,7 +283,7 @@ export default function TeamSection() {
         title={t("teachers_instructors_title")}
         visitingTeachers={teachersInstructors}
       />
-      <VisitingTeachers
+      <HonorayGuests
         title={t("team_members_guests_title")}
         visitingTeachers={visitingTeachers}
       />

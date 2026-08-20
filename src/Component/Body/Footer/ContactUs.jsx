@@ -220,7 +220,7 @@ const ContactUs = () => {
                     {t("contact_email_label")}
                   </h3>
 
-                  <p className="text-gray-600">kontakt@kultur-atelier.de</p>
+                  <p className="text-gray-600">kontakt@golestanhub.de</p>
                 </div>
               </div>
 

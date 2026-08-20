@@ -24,7 +24,7 @@ export default function TeamSection() {
     },
     {
       id: 2,
-      name: "Kiarash Moham",
+      name: t("team_members_kiarash_name"),
       role: t("team_members_kiarash_role"),
       image:
         "https://res.cloudinary.com/r4pnipqe/image/upload/v1786635957/kiarash_apozjv.jpg",

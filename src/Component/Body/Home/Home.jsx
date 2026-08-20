@@ -10,6 +10,7 @@ import TextAndImage from "./TextAndImage";
 import { useTranslation } from "react-i18next";
 import DonationSection from "./DonationSection";
 import FourItems from "./FourItems";
+import { Link } from "react-router-dom";
 
 const home = () => {
   const { t } = useTranslation();
@@ -22,29 +23,36 @@ const home = () => {
         aboutUsTitle={t("aboutUsTitle")}
         aboutUsText={t("aboutUsText")}
       />
+
       <Imagegallery />
       <div className="px-6 lg:px-12 py-12 w-full flex flex-col lg:flex-row lg:justify-between">
-        <InfoBox
-          homePageInfoBoxTitleOne={t("homePageInfoBoxTitleOne")}
-          // homePageInfoBoxTextOne={t("homePageInfoBoxTextOne")}
-          image={
-            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/culture_poqwcc.png"
-          }
-        />
-        <InfoBox
-          homePageInfoBoxTitleTwo={t("homePageInfoBoxTitleTwo")}
-          // homePageInfoBoxTextTwo={t("homePageInfoBoxTextTwo")}
-          image={
-            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177262/film_ccvffj.png "
-          }
-        />
-        <InfoBox
-          homePageInfoBoxTitleThree={t("homePageInfoBoxTitleThree")}
-          // homePageInfoBoxTextThree={t("homePageInfoBoxTextThree")}
-          image={
-            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/Persische_Literatur_enxh81.png"
-          }
-        />
+        <Link to="/courses">
+          <InfoBox
+            homePageInfoBoxTitleOne={t("homePageInfoBoxTitleOne")}
+            // homePageInfoBoxTextOne={t("homePageInfoBoxTextOne")}
+            image={
+              "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/culture_poqwcc.png"
+            }
+          />
+        </Link>
+        <Link to="/courses">
+          <InfoBox
+            homePageInfoBoxTitleTwo={t("homePageInfoBoxTitleTwo")}
+            // homePageInfoBoxTextTwo={t("homePageInfoBoxTextTwo")}
+            image={
+              "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177262/film_ccvffj.png "
+            }
+          />
+        </Link>
+        <Link to="/courses">
+          <InfoBox
+            homePageInfoBoxTitleThree={t("homePageInfoBoxTitleThree")}
+            // homePageInfoBoxTextThree={t("homePageInfoBoxTextThree")}
+            image={
+              "https://res.cloudinary.com/r4pnipqe/image/upload/v1785177263/Persische_Literatur_enxh81.png"
+            }
+          />
+        </Link>
       </div>
       <Mainworkshop
         HomepageMainWorkshopTitle={t("HomepageMainWorkshopTitle")}

@@ -250,7 +250,7 @@ const OurEvents = () => {
             <img
               src={selectedEvent.image}
               alt={selectedEvent.title}
-              className="rounded-xl shadow-xl w-full h-[550px] object-cover"
+              className="rounded-xl shadow-xl w-full h-[550px] object-fit"
             />
           </div>
 
@@ -291,7 +291,9 @@ const OurEvents = () => {
               )}
 
               <p>
-                📍 <strong>{location}</strong>
+                {/* <strong>{location}</strong> */}
+                <strong>Kunst-Stoffe- Materialmarkt Pankow</strong>
+                <strong>Berliner Str. 17, 13189 Berlin</strong>
               </p>
             </div>
 

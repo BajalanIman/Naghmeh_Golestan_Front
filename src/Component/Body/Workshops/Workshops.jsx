@@ -157,8 +157,8 @@ const Workshops = () => {
       {/* HERO IMAGE */}
       <div className="relative flex justify-center items-center ">
         <img
-          className="lg:w-full object-cover lg:rounded-lg lg:shadow-lg shadow-black max-h-[500px]"
-          src="https://res.cloudinary.com/r4pnipqe/image/upload/v1783760353/HelpCenterImage_dlqhle.jpg"
+          className="lg:w-full object-cover lg:rounded-lg lg:shadow-lg shadow-black max-h-[600px]"
+          src="https://res.cloudinary.com/r4pnipqe/image/upload/v1787212473/92c5b7ff-0021-4f07-912e-1e73a015fc28.png"
           alt="Workshops"
         />
       </div>

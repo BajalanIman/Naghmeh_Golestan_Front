@@ -46,10 +46,10 @@ const Leafletmap = () => {
           <p>
             Email:{" "}
             <a
-              href="mailto:kontakt@kultur-atelier.de"
+              href="mailto:kontakt@golestanhub.de"
               className="hover:text-[#186f77] underline"
             >
-              kontakt@kultur-atelier.de
+              kontakt@golestanhub.de
             </a>
           </p>
 

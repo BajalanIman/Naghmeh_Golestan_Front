@@ -39,9 +39,9 @@ function App() {
         <Route path="/login" index element={<Login />} />
         <Route path="/singUp" index element={<SingUp />} />
         <Route path="/workshops" element={<Workshops />} />
-        <Route path="/workshops/:id" element={<WorkshopDetails />} />
+        <Route path="/workshops/:slug" element={<WorkshopDetails />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/:id" element={<CourseDetails />} />
+        <Route path="/courses/:slug" element={<CourseDetails />} />
         <Route path="/aboutus" index element={<Aboutus />} />
         <Route path="/ourEvents" index element={<OurEvents />} />
         <Route path="/team" index element={<Team />} />

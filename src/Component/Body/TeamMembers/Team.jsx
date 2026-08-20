@@ -255,23 +255,26 @@ export default function TeamSection() {
                     {member.bio}
                   </p>
 
-                  <div className="mt-8">
-                    <h4 className="text-sm uppercase tracking-wider text-stone-500 mb-4">
-                      Areas of Expertise
-                    </h4>
+                  {Array.isArray(member.expertise) &&
+                    member.expertise.length > 1 && (
+                      <div className="mt-8">
+                        <h4 className="text-sm uppercase tracking-wider text-stone-500 mb-4">
+                          Areas of Expertises
+                        </h4>
 
-                    <div className="flex flex-wrap gap-3">
-                      {Array.isArray(member.expertise) &&
-                        member.expertise.map((item) => (
-                          <span
-                            key={item}
-                            className="px-4 py-2 rounded-full bg-white border border-stone-200 text-sm text-stone-700"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                    </div>
-                  </div>
+                        <div className="flex flex-wrap gap-3">
+                          {Array.isArray(member.expertise) &&
+                            member.expertise.map((item) => (
+                              <span
+                                key={item}
+                                className="px-4 py-2 rounded-full bg-white border border-stone-200 text-sm text-stone-700"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                        </div>
+                      </div>
+                    )}
                 </div>
               </div>
             ))}

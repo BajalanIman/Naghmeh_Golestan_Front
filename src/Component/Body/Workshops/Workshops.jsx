@@ -95,7 +95,7 @@ const Workshops = () => {
           image:
             activity.imageUrl ||
             activity.bannerUrl ||
-            "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg",
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1783760353/HelpCenterImage_dlqhle.jpg",
           price: activity.price,
           currency: activity.currency,
           isFree: activity.isFree,
@@ -158,7 +158,7 @@ const Workshops = () => {
       <div className="relative flex justify-center items-center h-64 lg:h-96 lg:pt-6">
         <img
           className="lg:w-3/4 absolute mt-32 lg:mt-40 lg:rounded-lg lg:shadow-lg shadow-black"
-          src="https://i.etsystatic.com/44190086/r/il/003dc0/5358431678/il_fullxfull.5358431678_4d25.jpg"
+          src="https://res.cloudinary.com/r4pnipqe/image/upload/v1783760353/HelpCenterImage_dlqhle.jpg"
           alt="Workshops"
         />
       </div>
@@ -193,7 +193,7 @@ const Workshops = () => {
             <div className="w-full relative flex justify-center items-center my-32">
               <img
                 className="absolute w-96"
-                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1786281271/WorkshopsImage_xmcl8h.png"
+                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1787209461/WorkshopsImage-background-F1EFEE_iqulyg.png"
                 alt="WorkshopsImage"
               />
 

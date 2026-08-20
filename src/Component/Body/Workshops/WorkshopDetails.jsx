@@ -116,7 +116,7 @@ const WorkshopDetails = () => {
   const mainImage =
     workshop.bannerUrl ||
     workshop.imageUrl ||
-    "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg";
+    "https://res.cloudinary.com/r4pnipqe/image/upload/v1785446488/innerself_Pinting_xwjqh4.avif";
 
   const formattedPrice = workshop.isFree
     ? "Free"

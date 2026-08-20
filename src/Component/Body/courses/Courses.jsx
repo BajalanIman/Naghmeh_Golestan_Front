@@ -93,7 +93,7 @@ const Courses = () => {
           image:
             activity.imageUrl ||
             activity.bannerUrl ||
-            "https://images.stockcake.com/public/4/c/7/4c70a9b3-eff2-4ece-9bb1-719754c48a90_large/innovative-workshop-activity-stockcake.jpg",
+            "https://res.cloudinary.com/r4pnipqe/image/upload/v1785446488/innerself_Pinting_xwjqh4.avif",
           price: activity.price,
           currency: activity.currency,
           isFree: activity.isFree,
@@ -163,7 +163,7 @@ const Courses = () => {
             <div className="w-full relative flex justify-center items-center my-32">
               <img
                 className="absolute w-96"
-                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1786281410/CourseImage_rq39cs.png"
+                src="https://res.cloudinary.com/r4pnipqe/image/upload/v1787209205/courses_logo_fli338.png"
                 alt="CourseImage"
               />
 

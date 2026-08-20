@@ -114,7 +114,7 @@ const CourseDetails = () => {
   const mainImage =
     course.bannerUrl ||
     course.imageUrl ||
-    "https://images.stockcake.com/public/4/c/7/4c70a9b3-eff2-4ece-9bb1-719754c48a90_large/innovative-workshop-activity-stockcake.jpg";
+    "https://res.cloudinary.com/r4pnipqe/image/upload/v1785446488/innerself_Pinting_xwjqh4.avif";
 
   const formattedPrice = course.isFree
     ? "Free"
@@ -130,7 +130,7 @@ const CourseDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-b from-indigo-700 via-purple-600 to-purple-500">
+      <div className="w-full bg-[#186f77]">
         <div className="mx-auto max-w-[1200px] px-4">
           <NavBar />
         </div>

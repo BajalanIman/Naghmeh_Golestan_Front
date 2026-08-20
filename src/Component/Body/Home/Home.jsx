@@ -25,6 +25,7 @@ const home = () => {
       />
 
       <Imagegallery />
+
       <div className="px-6 lg:px-12 py-12 w-full flex flex-col lg:flex-row lg:justify-between">
         <Link to="/courses">
           <InfoBox

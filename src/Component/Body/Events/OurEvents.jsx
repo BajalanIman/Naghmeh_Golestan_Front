@@ -290,11 +290,19 @@ const OurEvents = () => {
                 </>
               )}
 
-              <div className="flex flex-row">
-                {/* <strong>{location}</strong> */}
-                <strong>Kunst-Stoffe- Materialmarkt Pankow</strong>
-                <strong>Berliner Str. 17, 13189 Berlin</strong>
+              <div className="flex flex-row justify-center items-center gap-3">
+                📍
+                <div className="flex flex-col">
+                  {/* <strong>{location}</strong> */}
+
+                  <strong>Kunst-Stoffe- Materialmarkt Pankow</strong>
+                  <strong>Berliner Str. 17, 13189 Berlin</strong>
+                </div>
               </div>
+
+              {/* <p>
+                📍 <strong>{location}</strong>
+              </p> */}
             </div>
 
             <div className="text-3xl font-bold text-[#186f77]">

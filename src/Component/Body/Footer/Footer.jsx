@@ -75,6 +75,12 @@ const Footer = () => {
                 {t("footer_terms_link")}
               </li>
             </Link>
+
+            <Link to="/impressum">
+              <li className="hover:text-[#E4F8F7] cursor-pointer mt-2">
+                {t("impressum_title")}
+              </li>
+            </Link>
           </ul>
         </div>
 

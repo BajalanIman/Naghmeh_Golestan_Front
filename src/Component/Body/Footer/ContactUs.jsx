@@ -203,9 +203,9 @@ const ContactUs = () => {
                   </h3>
 
                   <p className="text-gray-600">
-                    Kunst-Stoffe- Materialmarkt Pankow
+                    Kunst-Stoffe e.V.
                     <br />
-                    Berliner Str. 17, 13189 Berlin
+                    Berliner Str. 17, 13189 Berlin-Pankow
                   </p>
                 </div>
               </div>

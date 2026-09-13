@@ -18,6 +18,7 @@ import PrivacyPolicy from "./Component/Body/Footer/PrivacyPolicy";
 import HelpCenter from "./Component/Body/Footer/HelpCenter";
 import Terms from "./Component/Body/Footer/Terms";
 import JoinUs from "./Component/Body/JoinUs/JoinUs";
+import Impressum from "./Component/Body/Footer/Impressum";
 
 function App() {
   const { i18n } = useTranslation();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/helpCenter" index element={<HelpCenter />} />
         <Route path="/terms" index element={<Terms />} />
         <Route path="/joinUs" index element={<JoinUs />} />
+        <Route path="/impressum" index element={<Impressum />} />
       </Routes>
     </Router>
   );

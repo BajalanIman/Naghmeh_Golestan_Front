@@ -21,6 +21,10 @@ export default function TeamSection() {
       expertise: t("team_members_naghmeh_interests", {
         returnObjects: true,
       }),
+      email: "Naghmeh.Es@golestanhub.de",
+      instagram:
+        "https://www.instagram.com/naghmeh.narratives?igsi=MXcydmZyN216bzJhMQ==",
+      instashort: "naghmeh.narratives",
     },
     {
       id: 2,
@@ -32,6 +36,10 @@ export default function TeamSection() {
       expertise: t("team_members_kiarash_interests", {
         returnObjects: true,
       }),
+      email: "kiarash.mo@golestanhub.de",
+      instagram:
+        "https://www.instagram.com/kiarash_m?igsi=MWNld2hqbHcxdWU4OQ==",
+      instashort: "kiarash_m",
     },
     // {
     //   id: 3,
@@ -76,6 +84,9 @@ export default function TeamSection() {
       expertise: t("team_members_pegah_khadish_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "https://www.instagram.com/pegahkhadish/#",
+      instashort: "pegahkhadish",
     },
     {
       id: 2,
@@ -87,6 +98,9 @@ export default function TeamSection() {
       expertise: t("team_members_sanaz_pahlevan_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "https://www.instagram.com/gandom.dolls/#",
+      instashort: "gandom.dolls",
     },
     {
       id: 3,
@@ -98,6 +112,9 @@ export default function TeamSection() {
       expertise: t("team_members_zhaleh_ahmadi_iraei_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "https://www.instagram.com/zhaleahmadi/#",
+      instashort: "zhaleahmadi",
     },
     {
       id: 4,
@@ -109,6 +126,9 @@ export default function TeamSection() {
       expertise: t("team_members_mahdi_gholi_zadeh_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "https://www.instagram.com/mehdi_gholizadeh/#",
+      instashort: "mehdi_gholizadeh",
     },
     {
       id: 5,
@@ -120,6 +140,9 @@ export default function TeamSection() {
       expertise: t("team_members_mitra_nasayehi_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "",
+      instashort: "",
     },
     {
       id: 6,
@@ -131,6 +154,9 @@ export default function TeamSection() {
       expertise: t("team_members_shamloo_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "https://www.instagram.com/zi.shamloo/#",
+      instashort: "zi.shamloo",
     },
     {
       id: 7,
@@ -142,6 +168,9 @@ export default function TeamSection() {
       expertise: t("team_members_kamkar_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "https://www.instagram.com/hanakamkar/#",
+      instashort: "hanakamkar",
     },
     {
       id: 8,
@@ -153,17 +182,23 @@ export default function TeamSection() {
       expertise: t("team_members_fozizadeh_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "",
+      instashort: "",
     },
     {
       id: 9,
       name: t("team_members_khabazian_name"),
       role: t("team_members_khabazian_role"),
       image:
-        "https://res.cloudinary.com/r4pnipqe/image/upload/v1786719950/female_uttp0r.png",
+        "https://res.cloudinary.com/r4pnipqe/image/upload/v1788188606/Kousar_b6frcq.jpg",
       bio: t("team_members_khabazian_description"),
       expertise: t("team_members_khabazian_interests", {
         returnObjects: true,
       }),
+      email: "",
+      instagram: "",
+      instashort: "",
     },
   ];
 
@@ -246,14 +281,47 @@ export default function TeamSection() {
                   <h3 className="text-3xl font-serif text-stone-900">
                     {member.name}
                   </h3>
-
                   <p className="mt-2 text-amber-700 font-medium">
                     {member.role}
                   </p>
-
                   <p className="mt-6 text-stone-600 leading-relaxed">
                     {member.bio}
                   </p>
+                  {(member.email || member.instagram) && (
+                    <div className="mt-6 space-y-3">
+                      {member.email && (
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                          <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
+                            Email
+                          </span>
+
+                          <a
+                            href={`mailto:${member.email}`}
+                            className="break-all text-blue-600 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
+                          >
+                            {member.email}
+                          </a>
+                        </div>
+                      )}
+
+                      {member.instagram && (
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                          <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
+                            Instagram
+                          </span>
+
+                          <a
+                            href={member.instagram}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="break-all text-blue-600 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
+                          >
+                            @{member.instashort}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   {Array.isArray(member.expertise) &&
                     member.expertise.length > 1 && (

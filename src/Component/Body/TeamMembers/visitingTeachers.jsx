@@ -106,7 +106,41 @@ export default function VisitingTeachers({ title, visitingTeachers = [] }) {
               <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-stone-600 lg:mx-0">
                 {activeTeacher.bio}
               </p>
+              {(activeTeacher.email || activeTeacher.instagram) && (
+                <div className="mt-6 space-y-3">
+                  {activeTeacher.email && (
+                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                      <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
+                        Email
+                      </span>
 
+                      <a
+                        href={`mailto:${activeTeacher.email}`}
+                        className="break-all text-blue-600 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
+                      >
+                        {activeTeacher.email}
+                      </a>
+                    </div>
+                  )}
+
+                  {activeTeacher.instagram && (
+                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                      <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
+                        Instagram
+                      </span>
+
+                      <a
+                        href={activeTeacher.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="break-all text-blue-600 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
+                      >
+                        @{activeTeacher.instashort}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
               {Array.isArray(activeTeacher.expertise) &&
                 activeTeacher.expertise.length > 0 && (
                   <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">

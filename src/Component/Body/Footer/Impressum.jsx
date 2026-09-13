@@ -30,13 +30,13 @@ const Impressum = () => {
       lang={isFarsi ? "fa" : i18n.resolvedLanguage || "de"}
       className="min-h-screen bg-[#F1EFEE] "
     >
-      <div className="w-full bg-[#186f77] mb-5">
+      <div className="w-full bg-[#186f77] mb-5 ">
         <div className="mx-auto lg:w-[1200px]">
           <NavBar />
         </div>
       </div>
-      <div className="max-w-5xl mx-auto px-4 py-10">
-        <article className="rounded-3xl shadow-xl overflow-hidden bg-white px-4 ring-1 ring-stone-200 sm:p-8 lg:p-12">
+      <div className="max-w-5xl mx-auto lg:px-4 py-14 lg:py-10  ">
+        <article className="lg:rounded-3xl shadow-xl overflow-hidden bg-white px-4 ring-1 ring-stone-200 sm:p-8 lg:p-12 py-5">
           <header className="mb-9 sm:mb-12">
             <h1 className="text-3xl font-bold tracking-tight text-stone-950 sm:text-4xl">
               {t("impressum_title")}

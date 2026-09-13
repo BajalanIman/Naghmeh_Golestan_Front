@@ -162,7 +162,10 @@ const NavBar = () => {
                 {t("teamMembers")}
               </Link>
               <Link to="/joinUs" onClick={closeMenu}>
-                Join Us
+                {t("joinus_title")}
+              </Link>
+              <Link to="/impressum" onClick={closeMenu}>
+                {t("impressum_title")}
               </Link>
               {/* <span>{t("news")}</span> */}
 

@@ -20,6 +20,9 @@ import Terms from "./Component/Body/Footer/Terms";
 import JoinUs from "./Component/Body/JoinUs/JoinUs";
 import Impressum from "./Component/Body/Footer/Impressum";
 
+import DonationSection from "./Component/Body/Home/DonationSection";
+import DonationResult from "./Component/Body/Home/DonationResult";
+
 function App() {
   const { i18n } = useTranslation();
 
@@ -37,6 +40,12 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route index element={<Home />} />
+        <Route path="/donation" element={<DonationSection />} />
+        <Route path="/donation/success" element={<DonationResult />} />
+        <Route
+          path="/donation/cancelled"
+          element={<DonationResult cancelled />}
+        />
         <Route path="/login" index element={<Login />} />
         <Route path="/singUp" index element={<SingUp />} />
         <Route path="/workshops" element={<Workshops />} />

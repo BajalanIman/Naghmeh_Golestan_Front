@@ -198,11 +198,23 @@ const ActivityBooking = ({
   }, [activity?.id]);
 
   /*
-    با تغییر تعداد نفرات، Quote جدید از Backend می‌گیریم.
+    با تغییر تعداد نفرات یا Sessionهای انتخاب‌شده،
+    Quote جدید از Backend می‌گیریم.
+
+    برای SINGLE و MULTIPLE تا قبل از انتخاب Session
+    قیمت نمایش داده نمی‌شود.
   */
   useEffect(() => {
-    if (!activity?.id || !quantity) {
+    const selectionRequired =
+      sessions.length > 0 && sessionMode !== "ALL";
+
+    if (
+      !activity?.id ||
+      !quantity ||
+      (selectionRequired && selectedSessionIds.length === 0)
+    ) {
       setQuote(null);
+      setQuoteLoading(false);
       return undefined;
     }
 
@@ -215,6 +227,7 @@ const ActivityBooking = ({
         const result = await fetchActivityQuote(
           {
             activityId: activity.id,
+            sessionIds: selectedSessionIds,
             quantity,
           },
           {
@@ -242,7 +255,13 @@ const ActivityBooking = ({
     loadQuote();
 
     return () => controller.abort();
-  }, [activity?.id, quantity]);
+  }, [
+    activity?.id,
+    quantity,
+    sessionMode,
+    sessions.length,
+    selectedSessionIds,
+  ]);
 
   /*
     اگر ظرفیت تغییر کند و تعداد انتخاب‌شده بیشتر از

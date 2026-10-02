@@ -59,7 +59,7 @@ export async function fetchActivityAvailability(activityId, options = {}) {
  * به Backend تحمیل کند.
  */
 export async function fetchActivityQuote(
-  { activityId, quantity },
+  { activityId, sessionIds = [], quantity },
   options = {},
 ) {
   const response = await fetch(`${BASE_URL}orders/quote`, {
@@ -73,6 +73,7 @@ export async function fetchActivityQuote(
 
     body: JSON.stringify({
       activityId,
+      sessionIds,
       quantity,
     }),
   });

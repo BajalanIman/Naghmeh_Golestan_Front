@@ -238,7 +238,7 @@ const WorkshopDetails = () => {
           key={workshop.id}
           activity={normalizedWorkshop}
           activityLabel="Workshop"
-          sessionMode="SINGLE"
+          sessionMode={workshop.sessionSelectionMode || "SINGLE"}
           title="Enrol in this Workshop"
           description="Choose the number of participants and complete the booking information."
           submitLabel={workshop.isFree ? "Enrol Now" : undefined}

@@ -281,7 +281,7 @@ const CourseDetails = () => {
               key={course.id}
               activity={normalizedCourse}
               activityLabel="Course"
-              sessionMode="ALL"
+              sessionMode={course.sessionSelectionMode || "ALL"}
               requireConsent
               title="Enrol in this Course"
               description="Reserve your place and join our creative community."

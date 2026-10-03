@@ -261,7 +261,7 @@ const CourseDetails = () => {
 
               <div className="border-t border-violet-700 pt-5">
                 <p className="text-sm text-violet-200">
-                  Course Fee per Participant
+                  Price per Session / Participant
                 </p>
 
                 <p className="text-3xl font-bold">{formattedPrice}</p>
@@ -281,7 +281,7 @@ const CourseDetails = () => {
               key={course.id}
               activity={normalizedCourse}
               activityLabel="Course"
-              sessionMode={course.sessionSelectionMode || "ALL"}
+              sessionMode="ALL"
               requireConsent
               title="Enrol in this Course"
               description="Reserve your place and join our creative community."

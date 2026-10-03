@@ -22,6 +22,8 @@ import Impressum from "./Component/Body/Footer/Impressum";
 
 import DonationSection from "./Component/Body/Home/DonationSection";
 import DonationResult from "./Component/Body/Home/DonationResult";
+import PaymentSuccess from "./Component/Booking/PaymentSuccess.jsx";
+import PaymentCancelled from "./Component/Booking/PaymentCancelled.jsx";
 
 function App() {
   const { i18n } = useTranslation();
@@ -46,6 +48,8 @@ function App() {
           path="/donation/cancelled"
           element={<DonationResult cancelled />}
         />
+        <Route path="/payment/success" element={<PaymentSuccess />} />
+        <Route path="/payment/cancelled" element={<PaymentCancelled />} />
         <Route path="/login" index element={<Login />} />
         <Route path="/singUp" index element={<SingUp />} />
         <Route path="/workshops" element={<Workshops />} />

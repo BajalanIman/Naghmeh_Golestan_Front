@@ -28,7 +28,7 @@ import {
 const ActivityBooking = ({
   activity,
   activityLabel = "Activity",
-  sessionMode = "SINGLE",
+  sessionMode: requestedSessionMode,
   requireConsent = false,
   consentText = "I agree to be contacted regarding this registration.",
   title,
@@ -38,6 +38,8 @@ const ActivityBooking = ({
   onBookingCompleted,
 }) => {
   const { i18n } = useTranslation();
+
+  const sessionMode = activity?.sessionSelectionMode || requestedSessionMode || "SINGLE";
 
   const [availability, setAvailability] = useState(null);
 
@@ -222,6 +224,7 @@ const ActivityBooking = ({
 
     const loadQuote = async () => {
       try {
+        setQuote(null);
         setQuoteLoading(true);
 
         const result = await fetchActivityQuote(
@@ -235,7 +238,7 @@ const ActivityBooking = ({
           },
         );
 
-        setQuote(result);
+        if (!controller.signal.aborted) setQuote(result);
       } catch (error) {
         if (error.name !== "AbortError") {
           console.error("Quote loading error:", error);
@@ -248,7 +251,7 @@ const ActivityBooking = ({
           );
         }
       } finally {
-        setQuoteLoading(false);
+        if (!controller.signal.aborted) setQuoteLoading(false);
       }
     };
 
@@ -426,7 +429,7 @@ const ActivityBooking = ({
   const handleBooking = async (event) => {
     event.preventDefault();
 
-    if (isSubmitting || quoteLoading || isFullyBooked) {
+    if (isSubmitting || quoteLoading || isFullyBooked || !quote) {
       return;
     }
 
@@ -498,6 +501,10 @@ const ActivityBooking = ({
         را بررسی کند.
       */
       sessionStorage.setItem(
+        `activity_checkout:${orderId}`,
+        JSON.stringify({ orderId, guestAccessToken, activityId: activity.id }),
+      );
+      sessionStorage.setItem(
         "activity_checkout",
         JSON.stringify({
           orderId,
@@ -516,6 +523,11 @@ const ActivityBooking = ({
         orderId,
         guestAccessToken,
       });
+
+      sessionStorage.setItem(
+        `activity_checkout_session:${checkoutResult.checkoutSessionId}`,
+        JSON.stringify({ orderId, guestAccessToken, activityId: activity.id }),
+      );
 
       if (!checkoutResult.checkoutUrl) {
         throw new Error("The payment checkout URL was not returned.");
@@ -786,9 +798,14 @@ const ActivityBooking = ({
             ) : quote ? (
               <>
                 <div className="flex justify-between">
-                  <span>Unit price</span>
+                  <span>Price per session / participant</span>
 
                   <span>{formatCurrency(quote.unitPrice, quote.currency)}</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span>Sessions</span>
+                  <span>{quote.sessionCount}</span>
                 </div>
 
                 <div className="flex justify-between">

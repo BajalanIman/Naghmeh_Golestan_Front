@@ -305,8 +305,19 @@ const OurEvents = () => {
               </p> */}
             </div>
 
-            <div className="text-3xl font-bold text-[#186f77]">
-              {formattedPrice}
+            <div>
+              {!selectedEvent.isFree && (
+                <p className="text-sm text-gray-600 mb-1">
+                  {{
+                    EN: "Price per session / participant",
+                    DE: "Preis pro Termin / Person",
+                    FA: "قیمت هر جلسه برای هر نفر",
+                  }[getCurrentLanguage()]}
+                </p>
+              )}
+              <div className="text-3xl font-bold text-[#186f77]">
+                {formattedPrice}
+              </div>
             </div>
 
             <p className="font-semibold">

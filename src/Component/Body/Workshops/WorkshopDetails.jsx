@@ -162,7 +162,7 @@ const WorkshopDetails = () => {
           </p>
 
           <p>
-            <strong>Price per Participant:</strong> {formattedPrice}
+            <strong>Price per Session / Participant:</strong> {formattedPrice}
           </p>
 
           <p>
@@ -238,7 +238,7 @@ const WorkshopDetails = () => {
           key={workshop.id}
           activity={normalizedWorkshop}
           activityLabel="Workshop"
-          sessionMode={workshop.sessionSelectionMode || "SINGLE"}
+          sessionMode="SINGLE"
           title="Enrol in this Workshop"
           description="Choose the number of participants and complete the booking information."
           submitLabel={workshop.isFree ? "Enrol Now" : undefined}

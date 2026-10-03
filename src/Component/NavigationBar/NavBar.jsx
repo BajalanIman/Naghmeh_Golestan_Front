@@ -80,7 +80,7 @@ const NavBar = () => {
               onClick={() => i18n.changeLanguage("fa")}
               className={navStyle}
             >
-              Fa
+              FA
             </span>
           </div>
           <div className="flex gap-5">

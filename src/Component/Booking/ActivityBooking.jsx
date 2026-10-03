@@ -46,9 +46,17 @@ const ActivityBooking = ({
   // - ordinary course: every session is included automatically
   // - course with alternative time slots: user chooses ONE time slot and
   //   all dates that belong to that slot are included automatically
+  const isWorkshop = activity?.type === "WORKSHOP";
+
+  // Courses use the special complete-course / time-slot logic below.
+  // Workshops always allow the user to choose one or more listed sessions.
+  // Do not let a stale/missing sessionSelectionMode from the database turn a
+  // workshop into ALL and break quote calculation.
   const sessionMode = isCourse
     ? "ALL"
-    : activity?.sessionSelectionMode || requestedSessionMode || "SINGLE";
+    : isWorkshop
+      ? "MULTIPLE"
+      : activity?.sessionSelectionMode || requestedSessionMode || "SINGLE";
 
   const [availability, setAvailability] = useState(null);
 

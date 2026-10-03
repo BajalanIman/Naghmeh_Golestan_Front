@@ -3,6 +3,8 @@ import {
   ArrowRightFromLine,
   ChevronLeft,
   ChevronRight,
+  Instagram,
+  InstagramIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -124,10 +126,8 @@ export default function VisitingTeachers({ title, visitingTeachers = [] }) {
                   )}
 
                   {activeTeacher.instagram && (
-                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
-                      <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
-                        Instagram
-                      </span>
+                    <div className="flex flex-row gap-5">
+                      <Instagram className="text-orange-800" />
 
                       <a
                         href={activeTeacher.instagram}

@@ -5,6 +5,7 @@ import VisitingTeachers from "./visitingTeachers";
 import Footer from "../Footer/Footer";
 import { useTranslation } from "react-i18next";
 import HonorayGuests from "./HonorayGuests";
+import { Instagram, Mail } from "lucide-react";
 
 export default function TeamSection() {
   const { i18n } = useTranslation();
@@ -290,11 +291,8 @@ export default function TeamSection() {
                   {(member.email || member.instagram) && (
                     <div className="mt-6 space-y-3">
                       {member.email && (
-                        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
-                          <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
-                            Email
-                          </span>
-
+                        <div className="flex flex-row gap-5 ">
+                          <Mail className="text-gray-500" />
                           <a
                             href={`mailto:${member.email}`}
                             className="break-all text-blue-600 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
@@ -305,11 +303,8 @@ export default function TeamSection() {
                       )}
 
                       {member.instagram && (
-                        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
-                          <span className="shrink-0 text-sm font-medium uppercase tracking-wider text-stone-500 sm:w-24">
-                            Instagram
-                          </span>
-
+                        <div className="flex flex-row gap-5">
+                          <Instagram className="text-orange-800" />
                           <a
                             href={member.instagram}
                             target="_blank"

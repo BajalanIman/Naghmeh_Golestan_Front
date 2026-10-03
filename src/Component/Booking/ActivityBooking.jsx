@@ -39,7 +39,13 @@ const ActivityBooking = ({
 }) => {
   const { i18n } = useTranslation();
 
-  const sessionMode = activity?.sessionSelectionMode || requestedSessionMode || "SINGLE";
+  const isCourse = activity?.type === "COURSE";
+
+  // Courses always include every session. A course cannot switch back to
+  // SINGLE/MULTIPLE because of a stored sessionSelectionMode value.
+  const sessionMode = isCourse
+    ? "ALL"
+    : activity?.sessionSelectionMode || requestedSessionMode || "SINGLE";
 
   const [availability, setAvailability] = useState(null);
 
@@ -87,6 +93,14 @@ const ActivityBooking = ({
   }, [i18n.language, i18n.resolvedLanguage]);
 
   const sessions = useMemo(() => activity?.sessions || [], [activity]);
+
+  const effectiveSessionIds = useMemo(() => {
+    if (sessionMode === "ALL") {
+      return sessions.map((session) => session.id).filter(Boolean);
+    }
+
+    return selectedSessionIds;
+  }, [sessionMode, sessions, selectedSessionIds]);
 
   const isFree = Boolean(activity?.isFree);
 
@@ -148,10 +162,9 @@ const ActivityBooking = ({
     }
 
     if (sessionMode === "ALL") {
-      setSelectedSessionIds(
-        activity.sessions?.map((session) => session.id) || [],
-      );
-
+      // No visible/manual selection is needed for a course.
+      // effectiveSessionIds always derives all session IDs automatically.
+      setSelectedSessionIds([]);
       return;
     }
 
@@ -207,8 +220,7 @@ const ActivityBooking = ({
     قیمت نمایش داده نمی‌شود.
   */
   useEffect(() => {
-    const selectionRequired =
-      sessions.length > 0 && sessionMode !== "ALL";
+    const selectionRequired = sessions.length > 0 && sessionMode !== "ALL";
 
     if (
       !activity?.id ||
@@ -230,7 +242,7 @@ const ActivityBooking = ({
         const result = await fetchActivityQuote(
           {
             activityId: activity.id,
-            sessionIds: selectedSessionIds,
+            sessionIds: effectiveSessionIds,
             quantity,
           },
           {
@@ -263,7 +275,7 @@ const ActivityBooking = ({
     quantity,
     sessionMode,
     sessions.length,
-    selectedSessionIds,
+    effectiveSessionIds,
   ]);
 
   /*
@@ -364,7 +376,11 @@ const ActivityBooking = ({
       return null;
     }
 
-    if (sessions.length > 0 && selectedSessionIds.length === 0) {
+    if (
+      sessions.length > 0 &&
+      sessionMode !== "ALL" &&
+      selectedSessionIds.length === 0
+    ) {
       showMessage("Please select a session.", "error");
 
       return null;
@@ -447,7 +463,7 @@ const ActivityBooking = ({
 
       const bookingPayload = {
         activityId: activity.id,
-        sessionIds: selectedSessionIds,
+        sessionIds: effectiveSessionIds,
         quantity,
         language: currentLanguage,
         firstName: customer.firstName,
@@ -688,12 +704,10 @@ const ActivityBooking = ({
           </select>
         </div>
 
-        {/* انتخاب Session */}
-        {sessions.length > 0 && (
+        {/* انتخاب Session فقط برای Activityهایی که انتخاب جلسه دارند */}
+        {sessions.length > 0 && sessionMode !== "ALL" && (
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="font-semibold">
-              {sessionMode === "ALL" ? "Included sessions" : "Select session"}
-            </h3>
+            <h3 className="font-semibold">Select session</h3>
 
             {sessions.map((session) => {
               const sessionAvailability = availability?.sessions?.find(
@@ -798,15 +812,21 @@ const ActivityBooking = ({
             ) : quote ? (
               <>
                 <div className="flex justify-between">
-                  <span>Price per session / participant</span>
+                  <span>
+                    {isCourse
+                      ? "Course price / participant"
+                      : "Price per session / participant"}
+                  </span>
 
                   <span>{formatCurrency(quote.unitPrice, quote.currency)}</span>
                 </div>
 
-                <div className="flex justify-between">
-                  <span>Sessions</span>
-                  <span>{quote.sessionCount}</span>
-                </div>
+                {!isCourse && (
+                  <div className="flex justify-between">
+                    <span>Sessions</span>
+                    <span>{quote.sessionCount}</span>
+                  </div>
+                )}
 
                 <div className="flex justify-between">
                   <span>Subtotal</span>

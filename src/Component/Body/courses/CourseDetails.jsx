@@ -260,9 +260,7 @@ const CourseDetails = () => {
               </div>
 
               <div className="border-t border-violet-700 pt-5">
-                <p className="text-sm text-violet-200">
-                  Price per Session / Participant
-                </p>
+                <p className="text-sm text-violet-200">Course Price</p>
 
                 <p className="text-3xl font-bold">{formattedPrice}</p>
               </div>
@@ -270,7 +268,8 @@ const CourseDetails = () => {
 
             <div className="mt-8 border-t border-violet-700 pt-6">
               <p className="text-sm text-violet-200">
-                Complete the form to reserve up to five places in this course.
+                Registration covers the complete course and all included
+                sessions. You can reserve up to five places.
               </p>
             </div>
           </div>
@@ -284,7 +283,7 @@ const CourseDetails = () => {
               sessionMode="ALL"
               requireConsent
               title="Enrol in this Course"
-              description="Reserve your place and join our creative community."
+              description="Register once for the complete course. All sessions are included."
               consentText="I agree to be contacted regarding this course registration."
               className="rounded-3xl"
             />

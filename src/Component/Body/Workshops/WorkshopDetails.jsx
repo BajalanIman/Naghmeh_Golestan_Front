@@ -157,9 +157,9 @@ const WorkshopDetails = () => {
             </p>
           )}
 
-          <p>
+          {/* <p>
             <strong>Location:</strong> {location}
-          </p>
+          </p> */}
 
           <p>
             <strong>Price per Session / Participant:</strong> {formattedPrice}
@@ -168,6 +168,14 @@ const WorkshopDetails = () => {
           <p>
             <strong>Capacity:</strong> {workshop.capacity ?? "Unlimited"}
           </p>
+        </div>
+        <div className="space-y-4 text-lg leading-4 my-8 flex flex-col items-center">
+          <h3 className="font-bold text-red-600">
+            Children under 6 years old do not need to register or pay!
+          </h3>
+          <h3 className=" font-bold">
+            For children up to 10 years old, we have a special surprise box 🎁
+          </h3>
         </div>
 
         <div className="space-y-10 text-lg leading-8">

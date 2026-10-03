@@ -108,7 +108,8 @@ const ActivityBooking = ({
   const sessions = useMemo(() => activity?.sessions || [], [activity]);
 
   const courseSchedule = useMemo(
-    () => analyzeCourseSessions(isCourse ? sessions : [], i18n.language || "en"),
+    () =>
+      analyzeCourseSessions(isCourse ? sessions : [], i18n.language || "en"),
     [isCourse, sessions, i18n.language],
   );
 
@@ -117,7 +118,9 @@ const ActivityBooking = ({
   const selectedCourseSlot = useMemo(
     () =>
       courseHasTimeSlots
-        ? courseSchedule.groups.find((group) => group.key === selectedCourseSlotKey) || null
+        ? courseSchedule.groups.find(
+            (group) => group.key === selectedCourseSlotKey,
+          ) || null
         : null,
     [courseHasTimeSlots, courseSchedule.groups, selectedCourseSlotKey],
   );
@@ -145,8 +148,7 @@ const ActivityBooking = ({
     selectedSessionIds,
   ]);
 
-  const timeSlotSelectionMissing =
-    courseHasTimeSlots && !selectedCourseSlotKey;
+  const timeSlotSelectionMissing = courseHasTimeSlots && !selectedCourseSlotKey;
 
   const isFree = Boolean(activity?.isFree);
 
@@ -271,19 +273,18 @@ const ActivityBooking = ({
     قیمت نمایش داده نمی‌شود.
   */
   useEffect(() => {
+    // A selection is required only while no selectable session/time slot has
+    // actually been chosen. The previous condition treated every WORKSHOP in
+    // SINGLE/MULTIPLE mode as permanently "selectionRequired", so the quote
+    // request never ran even after the user checked a session.
     const selectionRequired = courseHasTimeSlots
       ? !selectedCourseSlotKey
-      : sessions.length > 0 && !isCourse && sessionMode !== "ALL";
-
-    if (
-      !activity?.id ||
-      !quantity ||
-      selectionRequired ||
-      (!isCourse &&
+      : !isCourse &&
         sessions.length > 0 &&
         sessionMode !== "ALL" &&
-        selectedSessionIds.length === 0)
-    ) {
+        selectedSessionIds.length === 0;
+
+    if (!activity?.id || !quantity || selectionRequired) {
       setQuote(null);
       setQuoteLoading(false);
       return undefined;
@@ -344,8 +345,10 @@ const ActivityBooking = ({
     }
 
     const remainingValues = effectiveSessionIds
-      .map((sessionId) =>
-        availability?.sessions?.find((item) => item.id === sessionId)?.remaining,
+      .map(
+        (sessionId) =>
+          availability?.sessions?.find((item) => item.id === sessionId)
+            ?.remaining,
       )
       .filter((value) => value !== null && value !== undefined)
       .map(Number);
@@ -366,16 +369,14 @@ const ActivityBooking = ({
       .map(Number);
 
     return values.length > 0 ? Math.min(...values) : null;
-  }, [
-    courseHasTimeSlots,
-    availability?.remaining,
-    selectedSessionsRemaining,
-  ]);
+  }, [courseHasTimeSlots, availability?.remaining, selectedSessionsRemaining]);
 
   const getTimeSlotRemaining = (group) => {
     const remainingValues = group.sessionIds
-      .map((sessionId) =>
-        availability?.sessions?.find((item) => item.id === sessionId)?.remaining,
+      .map(
+        (sessionId) =>
+          availability?.sessions?.find((item) => item.id === sessionId)
+            ?.remaining,
       )
       .filter((value) => value !== null && value !== undefined)
       .map(Number);
@@ -820,8 +821,8 @@ const ActivityBooking = ({
             <div>
               <h3 className="font-semibold">Choose a time slot</h3>
               <p className="text-sm text-gray-500 mt-1">
-                Your registration includes all {courseSchedule.sessionCount} course
-                sessions at the time slot you choose.
+                Your registration includes all {courseSchedule.sessionCount}{" "}
+                course sessions at the time slot you choose.
               </p>
             </div>
 
@@ -855,7 +856,9 @@ const ActivityBooking = ({
                     {remaining !== null && remaining !== undefined && (
                       <>
                         <br />
-                        <span className="text-sm">Remaining places: {remaining}</span>
+                        <span className="text-sm">
+                          Remaining places: {remaining}
+                        </span>
                       </>
                     )}
                     {slotIsFull && (

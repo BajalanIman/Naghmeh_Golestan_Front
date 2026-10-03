@@ -346,12 +346,23 @@ const ActivityBooking = ({
   }, [availability?.sessions, effectiveSessionIds]);
 
   const effectiveRemaining = useMemo(() => {
+    // For a course with alternative time slots, capacity belongs to the
+    // selected slot. The activity-level remaining value must not be used as
+    // a global cap across all alternative slots.
+    if (courseHasTimeSlots) {
+      return selectedSessionsRemaining;
+    }
+
     const values = [availability?.remaining, selectedSessionsRemaining]
       .filter((value) => value !== null && value !== undefined)
       .map(Number);
 
     return values.length > 0 ? Math.min(...values) : null;
-  }, [availability?.remaining, selectedSessionsRemaining]);
+  }, [
+    courseHasTimeSlots,
+    availability?.remaining,
+    selectedSessionsRemaining,
+  ]);
 
   const getTimeSlotRemaining = (group) => {
     const remainingValues = group.sessionIds
@@ -366,6 +377,12 @@ const ActivityBooking = ({
     }
 
     const sessionRemaining = Math.min(...remainingValues);
+
+    // Alternative course time slots are independent groups. Do not reduce a
+    // slot's availability by the activity-level remaining count.
+    if (courseHasTimeSlots) {
+      return sessionRemaining;
+    }
 
     return availability?.remaining === null ||
       availability?.remaining === undefined
@@ -415,10 +432,11 @@ const ActivityBooking = ({
     }
   }, [timeSlotSelectionMissing, maximumSelectable, quantity]);
 
-  const isFullyBooked =
-    availability?.isFull ||
-    allCourseTimeSlotsFull ||
-    (!timeSlotSelectionMissing && maximumSelectable === 0);
+  const isFullyBooked = courseHasTimeSlots
+    ? allCourseTimeSlotsFull ||
+      (!timeSlotSelectionMissing && maximumSelectable === 0)
+    : availability?.isFull ||
+      (!timeSlotSelectionMissing && maximumSelectable === 0);
 
   const handleCourseTimeSlotSelection = (group) => {
     if (!group || getTimeSlotRemaining(group) === 0) {

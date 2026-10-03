@@ -9,6 +9,7 @@ import {
   fetchActivityAvailability,
   fetchActivityQuote,
 } from "./bookingApi";
+import { analyzeCourseSessions } from "./courseSessionUtils.js";
 
 /**
  * sessionMode:
@@ -41,8 +42,10 @@ const ActivityBooking = ({
 
   const isCourse = activity?.type === "COURSE";
 
-  // Courses always include every session. A course cannot switch back to
-  // SINGLE/MULTIPLE because of a stored sessionSelectionMode value.
+  // Course session handling is special:
+  // - ordinary course: every session is included automatically
+  // - course with alternative time slots: user chooses ONE time slot and
+  //   all dates that belong to that slot are included automatically
   const sessionMode = isCourse
     ? "ALL"
     : activity?.sessionSelectionMode || requestedSessionMode || "SINGLE";
@@ -52,6 +55,8 @@ const ActivityBooking = ({
   const [quantity, setQuantity] = useState(1);
 
   const [selectedSessionIds, setSelectedSessionIds] = useState([]);
+
+  const [selectedCourseSlotKey, setSelectedCourseSlotKey] = useState("");
 
   const [guestForm, setGuestForm] = useState({
     firstName: "",
@@ -94,13 +99,46 @@ const ActivityBooking = ({
 
   const sessions = useMemo(() => activity?.sessions || [], [activity]);
 
+  const courseSchedule = useMemo(
+    () => analyzeCourseSessions(isCourse ? sessions : [], i18n.language || "en"),
+    [isCourse, sessions, i18n.language],
+  );
+
+  const courseHasTimeSlots = isCourse && courseSchedule.hasTimeSlots;
+
+  const selectedCourseSlot = useMemo(
+    () =>
+      courseHasTimeSlots
+        ? courseSchedule.groups.find((group) => group.key === selectedCourseSlotKey) || null
+        : null,
+    [courseHasTimeSlots, courseSchedule.groups, selectedCourseSlotKey],
+  );
+
   const effectiveSessionIds = useMemo(() => {
+    if (isCourse) {
+      if (courseHasTimeSlots) {
+        return selectedCourseSlot?.sessionIds || [];
+      }
+
+      return sessions.map((session) => session.id).filter(Boolean);
+    }
+
     if (sessionMode === "ALL") {
       return sessions.map((session) => session.id).filter(Boolean);
     }
 
     return selectedSessionIds;
-  }, [sessionMode, sessions, selectedSessionIds]);
+  }, [
+    isCourse,
+    courseHasTimeSlots,
+    selectedCourseSlot,
+    sessionMode,
+    sessions,
+    selectedSessionIds,
+  ]);
+
+  const timeSlotSelectionMissing =
+    courseHasTimeSlots && !selectedCourseSlotKey;
 
   const isFree = Boolean(activity?.isFree);
 
@@ -156,14 +194,19 @@ const ActivityBooking = ({
     setMessage("");
     setMessageType("");
 
+    setSelectedCourseSlotKey("");
+
     if (!activity) {
       setSelectedSessionIds([]);
       return;
     }
 
+    if (isCourse) {
+      setSelectedSessionIds([]);
+      return;
+    }
+
     if (sessionMode === "ALL") {
-      // No visible/manual selection is needed for a course.
-      // effectiveSessionIds always derives all session IDs automatically.
       setSelectedSessionIds([]);
       return;
     }
@@ -175,7 +218,7 @@ const ActivityBooking = ({
     }
 
     setSelectedSessionIds([]);
-  }, [activity?.id, sessionMode]);
+  }, [activity?.id, isCourse, sessionMode]);
 
   /*
     دریافت ظرفیت Activity و Sessionها.
@@ -220,12 +263,18 @@ const ActivityBooking = ({
     قیمت نمایش داده نمی‌شود.
   */
   useEffect(() => {
-    const selectionRequired = sessions.length > 0 && sessionMode !== "ALL";
+    const selectionRequired = courseHasTimeSlots
+      ? !selectedCourseSlotKey
+      : sessions.length > 0 && !isCourse && sessionMode !== "ALL";
 
     if (
       !activity?.id ||
       !quantity ||
-      (selectionRequired && selectedSessionIds.length === 0)
+      selectionRequired ||
+      (!isCourse &&
+        sessions.length > 0 &&
+        sessionMode !== "ALL" &&
+        selectedSessionIds.length === 0)
     ) {
       setQuote(null);
       setQuoteLoading(false);
@@ -276,48 +325,110 @@ const ActivityBooking = ({
     sessionMode,
     sessions.length,
     effectiveSessionIds,
+    isCourse,
+    courseHasTimeSlots,
+    selectedCourseSlotKey,
   ]);
 
-  /*
-    اگر ظرفیت تغییر کند و تعداد انتخاب‌شده بیشتر از
-    ظرفیت باقی‌مانده باشد، quantity اصلاح می‌شود.
-  */
-  useEffect(() => {
-    if (
-      availability?.remaining === null ||
-      availability?.remaining === undefined
-    ) {
-      return;
+  const selectedSessionsRemaining = useMemo(() => {
+    if (effectiveSessionIds.length === 0) {
+      return null;
     }
 
-    if (availability.remaining > 0 && quantity > availability.remaining) {
-      setQuantity(
-        Math.min(availability.remaining, activity?.maxTicketsPerOrder || 5),
-      );
+    const remainingValues = effectiveSessionIds
+      .map((sessionId) =>
+        availability?.sessions?.find((item) => item.id === sessionId)?.remaining,
+      )
+      .filter((value) => value !== null && value !== undefined)
+      .map(Number);
+
+    return remainingValues.length > 0 ? Math.min(...remainingValues) : null;
+  }, [availability?.sessions, effectiveSessionIds]);
+
+  const effectiveRemaining = useMemo(() => {
+    const values = [availability?.remaining, selectedSessionsRemaining]
+      .filter((value) => value !== null && value !== undefined)
+      .map(Number);
+
+    return values.length > 0 ? Math.min(...values) : null;
+  }, [availability?.remaining, selectedSessionsRemaining]);
+
+  const getTimeSlotRemaining = (group) => {
+    const remainingValues = group.sessionIds
+      .map((sessionId) =>
+        availability?.sessions?.find((item) => item.id === sessionId)?.remaining,
+      )
+      .filter((value) => value !== null && value !== undefined)
+      .map(Number);
+
+    if (remainingValues.length === 0) {
+      return availability?.remaining ?? null;
     }
-  }, [availability?.remaining, activity?.maxTicketsPerOrder, quantity]);
+
+    const sessionRemaining = Math.min(...remainingValues);
+
+    return availability?.remaining === null ||
+      availability?.remaining === undefined
+      ? sessionRemaining
+      : Math.min(sessionRemaining, Number(availability.remaining));
+  };
+
+  const allCourseTimeSlotsFull =
+    courseHasTimeSlots &&
+    courseSchedule.groups.length > 0 &&
+    courseSchedule.groups.every((group) => getTimeSlotRemaining(group) === 0);
 
   const maximumSelectable = useMemo(() => {
+    if (timeSlotSelectionMissing) {
+      return 0;
+    }
+
     const backendMaximum =
       availability?.maxTicketsPerOrder || activity?.maxTicketsPerOrder || 5;
 
     const configuredMaximum = Math.min(Number(backendMaximum) || 5, 5);
 
-    if (
-      availability?.remaining === null ||
-      availability?.remaining === undefined
-    ) {
+    if (effectiveRemaining === null || effectiveRemaining === undefined) {
       return configuredMaximum;
     }
 
-    return Math.max(Math.min(configuredMaximum, availability.remaining), 0);
+    return Math.max(Math.min(configuredMaximum, effectiveRemaining), 0);
   }, [
+    timeSlotSelectionMissing,
     availability?.maxTicketsPerOrder,
-    availability?.remaining,
     activity?.maxTicketsPerOrder,
+    effectiveRemaining,
   ]);
 
-  const isFullyBooked = availability?.isFull || maximumSelectable === 0;
+  /*
+    اگر ظرفیت Slot/Session انتخاب‌شده تغییر کند و تعداد نفرات
+    بیشتر از ظرفیت باقی‌مانده باشد، quantity اصلاح می‌شود.
+  */
+  useEffect(() => {
+    if (timeSlotSelectionMissing) {
+      setQuantity(1);
+      return;
+    }
+
+    if (maximumSelectable > 0 && quantity > maximumSelectable) {
+      setQuantity(maximumSelectable);
+    }
+  }, [timeSlotSelectionMissing, maximumSelectable, quantity]);
+
+  const isFullyBooked =
+    availability?.isFull ||
+    allCourseTimeSlotsFull ||
+    (!timeSlotSelectionMissing && maximumSelectable === 0);
+
+  const handleCourseTimeSlotSelection = (group) => {
+    if (!group || getTimeSlotRemaining(group) === 0) {
+      return;
+    }
+
+    setSelectedCourseSlotKey(group.key);
+    setQuantity(1);
+    clearMessage();
+  };
 
   const handleGuestChange = (event) => {
     const { name, value } = event.target;
@@ -363,6 +474,12 @@ const ActivityBooking = ({
       return null;
     }
 
+    if (courseHasTimeSlots && !selectedCourseSlotKey) {
+      showMessage("Please select a course time slot.", "error");
+
+      return null;
+    }
+
     if (
       !Number.isInteger(quantity) ||
       quantity < 1 ||
@@ -377,6 +494,7 @@ const ActivityBooking = ({
     }
 
     if (
+      !isCourse &&
       sessions.length > 0 &&
       sessionMode !== "ALL" &&
       selectedSessionIds.length === 0
@@ -671,6 +789,62 @@ const ActivityBooking = ({
           </>
         )}
 
+        {courseHasTimeSlots && (
+          <div className="lg:col-span-2 space-y-3">
+            <div>
+              <h3 className="font-semibold">Choose a time slot</h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Your registration includes all {courseSchedule.sessionCount} course
+                sessions at the time slot you choose.
+              </p>
+            </div>
+
+            {courseSchedule.groups.map((group) => {
+              const remaining = getTimeSlotRemaining(group);
+              const slotIsFull = remaining === 0;
+              const checked = selectedCourseSlotKey === group.key;
+
+              return (
+                <label
+                  key={group.key}
+                  className={`flex items-start gap-3 border rounded-xl p-4 ${
+                    slotIsFull ? "opacity-60" : "cursor-pointer"
+                  } ${checked ? "ring-2 ring-[#186f77]" : ""}`}
+                >
+                  <input
+                    type="radio"
+                    name={`course-slot-${activity.id}`}
+                    checked={checked}
+                    onChange={() => handleCourseTimeSlotSelection(group)}
+                    disabled={isSubmitting || availabilityLoading || slotIsFull}
+                    className="mt-1"
+                  />
+
+                  <span>
+                    <strong>{group.label}</strong>
+                    <br />
+                    <span className="text-sm text-gray-600">
+                      {group.sessions.length} sessions
+                    </span>
+                    {remaining !== null && remaining !== undefined && (
+                      <>
+                        <br />
+                        <span className="text-sm">Remaining places: {remaining}</span>
+                      </>
+                    )}
+                    {slotIsFull && (
+                      <>
+                        <br />
+                        <span className="text-red-600">Fully booked</span>
+                      </>
+                    )}
+                  </span>
+                </label>
+              );
+            })}
+          </div>
+        )}
+
         {/* تعداد شرکت‌کنندگان */}
         <div className="lg:col-span-2">
           <label
@@ -684,7 +858,12 @@ const ActivityBooking = ({
             id={`quantity-${activity.id}`}
             value={quantity}
             onChange={handleQuantityChange}
-            disabled={isSubmitting || availabilityLoading || isFullyBooked}
+            disabled={
+              isSubmitting ||
+              availabilityLoading ||
+              isFullyBooked ||
+              timeSlotSelectionMissing
+            }
             className="w-full border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#186f77]"
           >
             {maximumSelectable > 0 ? (
@@ -698,6 +877,8 @@ const ActivityBooking = ({
                   {number}
                 </option>
               ))
+            ) : timeSlotSelectionMissing ? (
+              <option value={1}>Choose a time slot first</option>
             ) : (
               <option value={1}>No places available</option>
             )}
@@ -705,7 +886,7 @@ const ActivityBooking = ({
         </div>
 
         {/* انتخاب Session فقط برای Activityهایی که انتخاب جلسه دارند */}
-        {sessions.length > 0 && sessionMode !== "ALL" && (
+        {!isCourse && sessions.length > 0 && sessionMode !== "ALL" && (
           <div className="lg:col-span-2 space-y-3">
             <h3 className="font-semibold">Select session</h3>
 
@@ -792,16 +973,25 @@ const ActivityBooking = ({
               <span>{quantity}</span>
             </div>
 
+            {courseHasTimeSlots && selectedCourseSlot && (
+              <div className="flex justify-between gap-4">
+                <span>Time slot</span>
+                <span className="text-right">{selectedCourseSlot.label}</span>
+              </div>
+            )}
+
             <div className="flex justify-between">
               <span>Remaining places</span>
 
               <span>
                 {availabilityLoading
                   ? "Loading..."
-                  : availability?.remaining === null ||
-                      availability?.remaining === undefined
-                    ? "Unlimited"
-                    : availability.remaining}
+                  : timeSlotSelectionMissing
+                    ? "Choose a time slot"
+                    : effectiveRemaining === null ||
+                        effectiveRemaining === undefined
+                      ? "Unlimited"
+                      : effectiveRemaining}
               </span>
             </div>
 
@@ -893,14 +1083,16 @@ const ActivityBooking = ({
             quoteLoading ||
             availabilityLoading ||
             !quote ||
-            isFullyBooked
+            isFullyBooked ||
+            timeSlotSelectionMissing
           }
           className={`lg:col-span-2 bg-[#186f77] hover:bg-[#27b4c1] text-white font-semibold py-4 rounded-xl transition ${
             isSubmitting ||
             quoteLoading ||
             availabilityLoading ||
             !quote ||
-            isFullyBooked
+            isFullyBooked ||
+            timeSlotSelectionMissing
               ? "opacity-60 cursor-not-allowed"
               : "cursor-pointer"
           }`}

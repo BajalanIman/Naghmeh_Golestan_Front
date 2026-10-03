@@ -6,6 +6,7 @@ import NavBar from "../../NavigationBar/NavBar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import DonationSection from "../Home/DonationSection.jsx";
 import ActivityBooking from "../../Booking/ActivityBooking.jsx";
+import { analyzeCourseSessions } from "../../Booking/courseSessionUtils.js";
 
 import { BASE_URL } from "../../../constants/constants.js";
 
@@ -110,6 +111,13 @@ const CourseDetails = () => {
   };
 
   const firstSession = sortedSessions[0] || null;
+
+  const courseSchedule = analyzeCourseSessions(
+    sortedSessions,
+    i18n.language || "en",
+  );
+
+  const courseSessionCount = courseSchedule.sessionCount;
 
   const mainImage =
     course.bannerUrl ||
@@ -246,8 +254,8 @@ const CourseDetails = () => {
                 <p className="text-violet-200 text-sm">Duration</p>
 
                 <p className="font-semibold">
-                  {course.sessions?.length || 0}{" "}
-                  {course.sessions?.length === 1 ? "Session" : "Sessions"}
+                  {courseSessionCount}{" "}
+                  {courseSessionCount === 1 ? "Session" : "Sessions"}
                 </p>
               </div>
 
@@ -260,7 +268,9 @@ const CourseDetails = () => {
               </div>
 
               <div className="border-t border-violet-700 pt-5">
-                <p className="text-sm text-violet-200">Course Price</p>
+                <p className="text-sm text-violet-200">
+                  Course Price
+                </p>
 
                 <p className="text-3xl font-bold">{formattedPrice}</p>
               </div>
@@ -268,8 +278,9 @@ const CourseDetails = () => {
 
             <div className="mt-8 border-t border-violet-700 pt-6">
               <p className="text-sm text-violet-200">
-                Registration covers the complete course and all included
-                sessions. You can reserve up to five places.
+                {courseSchedule.hasTimeSlots
+                  ? `Choose one time slot. Registration covers all ${courseSessionCount} course sessions at that time.`
+                  : "Registration covers the complete course and all included sessions. You can reserve up to five places."}
               </p>
             </div>
           </div>
@@ -283,7 +294,11 @@ const CourseDetails = () => {
               sessionMode="ALL"
               requireConsent
               title="Enrol in this Course"
-              description="Register once for the complete course. All sessions are included."
+              description={
+                courseSchedule.hasTimeSlots
+                  ? `Choose one time slot. Your registration includes all ${courseSessionCount} course sessions at that time.`
+                  : "Register once for the complete course. All sessions are included."
+              }
               consentText="I agree to be contacted regarding this course registration."
               className="rounded-3xl"
             />

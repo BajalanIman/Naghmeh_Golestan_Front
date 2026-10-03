@@ -5,6 +5,7 @@ import DonationSection from "../Home/DonationSection.jsx";
 import ActivityBooking from "../../Booking/ActivityBooking.jsx";
 import { useTranslation } from "react-i18next";
 import { BASE_URL } from "../../../constants/constants.js";
+import { MapPinIcon } from "lucide-react";
 
 const OurEvents = () => {
   const { i18n } = useTranslation();
@@ -291,7 +292,7 @@ const OurEvents = () => {
               )}
 
               <div className="flex flex-row justify-center items-center gap-3">
-                📍
+                <MapPinIcon />
                 <div className="flex flex-col">
                   {/* <strong>{location}</strong> */}
 
@@ -308,11 +309,13 @@ const OurEvents = () => {
             <div>
               {!selectedEvent.isFree && (
                 <p className="text-sm text-gray-600 mb-1">
-                  {{
-                    EN: "Price per session / participant",
-                    DE: "Preis pro Termin / Person",
-                    FA: "قیمت هر جلسه برای هر نفر",
-                  }[getCurrentLanguage()]}
+                  {
+                    {
+                      EN: "Price per session / participant",
+                      DE: "Preis pro Termin / Person",
+                      FA: "قیمت هر جلسه برای هر نفر",
+                    }[getCurrentLanguage()]
+                  }
                 </p>
               )}
               <div className="text-3xl font-bold text-[#186f77]">

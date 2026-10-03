@@ -9,6 +9,7 @@ import ActivityBooking from "../../Booking/ActivityBooking.jsx";
 import { analyzeCourseSessions } from "../../Booking/courseSessionUtils.js";
 
 import { BASE_URL } from "../../../constants/constants.js";
+import { MapIcon, MapPin, MapPinIcon } from "lucide-react";
 
 const CourseDetails = () => {
   const { slug } = useParams();
@@ -166,7 +167,7 @@ const CourseDetails = () => {
               )}
 
               <span className="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium">
-                📍 {location}
+                <MapPinIcon /> {location}
               </span>
             </div>
 
@@ -268,9 +269,7 @@ const CourseDetails = () => {
               </div>
 
               <div className="border-t border-violet-700 pt-5">
-                <p className="text-sm text-violet-200">
-                  Course Price
-                </p>
+                <p className="text-sm text-violet-200">Course Price</p>
 
                 <p className="text-3xl font-bold">{formattedPrice}</p>
               </div>

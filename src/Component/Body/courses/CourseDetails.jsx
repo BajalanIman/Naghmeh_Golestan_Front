@@ -13,7 +13,7 @@ import { MapIcon, MapPin, MapPinIcon } from "lucide-react";
 
 const CourseDetails = () => {
   const { slug } = useParams();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -229,7 +229,12 @@ const CourseDetails = () => {
       <div className="max-w-6xl mx-auto px-4 pb-20">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Course Info Card */}
-          <div className="bg-violet-900 text-white rounded-3xl p-8 shadow-xl">
+          <div className="bg-violet-900 text-white font-bold rounded-3xl p-8 shadow-xl">
+            <div className="bg-white mb-6 text-center p-2 rounded-lg ">
+              <p className="text-red-500  animate-pulse">
+                {t("off_the_courses")}
+              </p>
+            </div>
             <h3 className="text-2xl font-bold mb-6">Course Information</h3>
 
             <div className="space-y-5">

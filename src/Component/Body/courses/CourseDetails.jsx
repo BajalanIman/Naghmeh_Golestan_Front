@@ -230,11 +230,13 @@ const CourseDetails = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Course Info Card */}
           <div className="bg-violet-900 text-white font-bold rounded-3xl p-8 shadow-xl">
-            <div className="bg-white mb-6 text-center p-2 rounded-lg ">
-              <p className="text-red-500  animate-pulse">
-                {t("off_the_courses")}
-              </p>
-            </div>
+            {formattedPrice && formattedPrice.length !== 4 && (
+              <div className="bg-white mb-6 text-center p-2 rounded-lg ">
+                <p className="text-red-500  animate-pulse">
+                  {t("off_the_courses")}
+                </p>
+              </div>
+            )}
             <h3 className="text-2xl font-bold mb-6">Course Information</h3>
 
             <div className="space-y-5">

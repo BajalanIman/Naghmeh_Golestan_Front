@@ -21,21 +21,31 @@ const Footer = () => {
   return (
     <footer className="bg-[#1B6269] text[#1B6269]">
       {/* Logos */}
+
       <div className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h1 className="mb-8 text-center text-2xl font-bold">Our Partners</h1>
+          <h2 className="mb-8 text-center text-2xl font-bold">Our Partners</h2>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 ">
+          <div className="flex flex-wrap items-center justify-center gap-6">
             {partners.map((partner) => (
               <div
                 key={partner.name}
-                className="flex h-24 w-full max-w-44 items-center justify-center p-3"
+                className="group flex h-24 w-full max-w-44 items-center justify-center p-3"
               >
                 <img
                   src={partner.logo}
                   alt={`${partner.name} logo`}
                   loading="lazy"
-                  className="max-h-20 max-w-full object-contain"
+                  className="
+              max-h-20 max-w-full object-contain
+              grayscale-[40%] opacity-80
+              transition-all duration-300 ease-out
+              group-hover:-translate-y-1.5
+              group-hover:scale-110
+              group-hover:grayscale-0
+              group-hover:opacity-100
+              motion-reduce:transform-none
+            "
                 />
               </div>
             ))}

@@ -7,8 +7,42 @@ const Footer = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation();
 
+  const partners = [
+    {
+      name: "KulturAtelier",
+      logo: "https://res.cloudinary.com/r4pnipqe/image/upload/v1793542584/KulturAtelier_paq1td.jpg",
+    },
+    {
+      name: "IGD",
+      logo: "https://res.cloudinary.com/r4pnipqe/image/upload/v1793542573/IGD_mfalfs.jpg",
+    },
+  ];
+
   return (
     <footer className="bg-[#1B6269] text[#1B6269]">
+      {/* Logos */}
+      <div className="bg-white py-10 md:py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h1 className="mb-8 text-center text-2xl font-bold">Our Partners</h1>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 ">
+            {partners.map((partner) => (
+              <div
+                key={partner.name}
+                className="flex h-24 w-full max-w-44 items-center justify-center p-3"
+              >
+                <img
+                  src={partner.logo}
+                  alt={`${partner.name} logo`}
+                  loading="lazy"
+                  className="max-h-20 max-w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Top section */}
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* Brand */}

@@ -1,6 +1,7 @@
 import { Send } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/+$/, "");
 
 const NewsletterSubscription = ({ showFormat }) => {
   const { t, i18n } = useTranslation();
@@ -58,7 +59,7 @@ const NewsletterSubscription = ({ showFormat }) => {
     try {
       setIsLoading(true);
 
-      const response = await fetch("http://localhost:8800/api/subscribers", {
+      const response = await fetch(`${API_URL}/subscribers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

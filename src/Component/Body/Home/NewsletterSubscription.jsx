@@ -77,7 +77,7 @@ const NewsletterSubscription = ({ showFormat }) => {
       }
 
       setMessage(
-        "Thank you! You have successfully subscribed to our newsletter!",
+        "Thank you! Your newsletter subscription request has been received",
       );
       setMessageType("success");
       setEmail("");

@@ -1,0 +1,33 @@
+/* Carousel and modal animations without extra dependencies */
+.event-film-hero { isolation: isolate; }
+.event-film-stage { isolation: isolate; }
+.event-film-slide { width: 100%; }
+.event-film-slide--out {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.event-film-slide--in { position: relative; z-index: 2; }
+.event-film-slide--in.event-film-slide--next { animation: event-film-enter-next .52s cubic-bezier(.2,.75,.2,1) both; }
+.event-film-slide--in.event-film-slide--previous { animation: event-film-enter-previous .52s cubic-bezier(.2,.75,.2,1) both; }
+.event-film-slide--out.event-film-slide--next { animation: event-film-exit-next .52s cubic-bezier(.2,.75,.2,1) both; }
+.event-film-slide--out.event-film-slide--previous { animation: event-film-exit-previous .52s cubic-bezier(.2,.75,.2,1) both; }
+.event-film-tile { -webkit-tap-highlight-color: transparent; }
+.event-film-poster-placeholder {
+  background: radial-gradient(circle at 68% 22%, rgba(221,177,138,.32), transparent 37%),
+    linear-gradient(140deg, #0c4852 10%, #17606a 50%, #0a3039 100%);
+}
+.event-film-modal-backdrop { animation: event-film-backdrop .25s ease both; }
+.event-film-modal-panel { animation: event-film-modal-enter .35s cubic-bezier(.2,.75,.2,1) both; }
+@keyframes event-film-enter-next { from { opacity: 0; transform: translateX(64px) scale(.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes event-film-exit-next { from { opacity: 1; transform: translateX(0) scale(1); } to { opacity: 0; transform: translateX(-64px) scale(.98); } }
+@keyframes event-film-enter-previous { from { opacity: 0; transform: translateX(-64px) scale(.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes event-film-exit-previous { from { opacity: 1; transform: translateX(0) scale(1); } to { opacity: 0; transform: translateX(64px) scale(.98); } }
+@keyframes event-film-backdrop { from { opacity: 0; } to { opacity: 1; } }
+@keyframes event-film-modal-enter { from { opacity: 0; transform: translateY(25px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .event-film-slide--in, .event-film-slide--out,
+  .event-film-modal-backdrop, .event-film-modal-panel { animation: none !important; }
+  .event-film-tile { transition: none !important; }
+}

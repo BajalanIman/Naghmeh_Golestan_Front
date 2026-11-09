@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import DonationSection from "./DonationSection";
 import FourItems from "./FourItems";
 import { Link } from "react-router-dom";
+import EventFilmHomepage from "../Events/EventFilmHomepage";
 
 const home = () => {
   const { t } = useTranslation();
@@ -19,6 +20,8 @@ const home = () => {
     <div className="bg-[#F1EFEE] text-[#1B6269]">
       <Mainbody />
       <Linktonews />
+
+      <EventFilmHomepage />
       <SmallInformation
         aboutUsTitle={t("aboutUsTitle")}
         aboutUsText={t("aboutUsText")}

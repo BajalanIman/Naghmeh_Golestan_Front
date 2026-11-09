@@ -6,6 +6,8 @@ import ActivityBooking from "../../Booking/ActivityBooking.jsx";
 import { useTranslation } from "react-i18next";
 import { BASE_URL } from "../../../constants/constants.js";
 import { MapPinIcon } from "lucide-react";
+import EventFilmCard from "./EventFilmCard.jsx";
+import filmFestival from "./golestan_film_festiva.json";
 
 const OurEvents = () => {
   const { i18n } = useTranslation();
@@ -218,7 +220,7 @@ const OurEvents = () => {
           Upcoming Cultural Events
         </p>
       </div>
-
+      <EventFilmCard festival={filmFestival} />
       {/* Introduction */}
       <div className="py-6 px-6">
         <p className="text-5xl font-bold">{selectedEvent.title}</p>

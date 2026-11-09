@@ -1,0 +1,146 @@
+{
+  "type": "EVENT",
+  "status": "PUBLISHED",
+  "slug": "film-festival-women-migration-identity-2027",
+  "imageUrl": "https://res.cloudinary.com/r4pnipqe/image/upload/v1785349577/Me_Maryam_The_Children_And_26_Others_sg5udx.webp",
+  "bannerUrl": null,
+  "isFree": false,
+  "price": null,
+  "currency": "EUR",
+  "capacity": null,
+  "isFeatured": false,
+  "translations": [
+    {
+      "language": "EN",
+      "title": "Film Festival",
+      "summary": "A film festival for the period of January to February centered on the theme of \"Women, Migration, and Identity.\" The program will feature films by Iranian female directors, accompanied…",
+      "description": "A film festival for the period of January to February centered on the theme of \"Women, Migration, and Identity.\" The program will feature films by Iranian female directors, accompanied…\n\nLocation: Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin\n\nAbout the festival\n\nGolestan Cultural Hub presents a film festival exploring the themes of women, migration, and identity. The program features acclaimed films by Iranian women directors, offering diverse perspectives on displacement, belonging, memory, resilience, and social change. Selected screenings will be accompanied by conversations with filmmakers, scholars, and audiences, creating a space for dialogue, reflection, and intercultural exchange through the powerful language of cinema."
+    },
+    {
+      "language": "DE",
+      "title": "Filmfestival",
+      "summary": "Ein Filmfestival im Zeitraum von Januar bis Februar, das sich auf das Thema „Frauen, Migration und Identität“ konzentriert. Das Programm umfasst Filme iranischer Regisseurinnen, begleitet von…",
+      "description": "Ein Filmfestival im Zeitraum von Januar bis Februar, das sich auf das Thema „Frauen, Migration und Identität“ konzentriert. Das Programm umfasst Filme iranischer Regisseurinnen, begleitet von…\n\nOrt: Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin\n\nÜber das Festival\n\nDas Golestan Cultural Hub veranstaltet ein Filmfestival zum Thema Frauen, Migration und Identität. Gezeigt werden ausgewählte Filme iranischer Regisseurinnen, die sich mit Fragen von Heimat, Zugehörigkeit, Erinnerung, Widerstandskraft und gesellschaftlichem Wandel auseinandersetzen. Begleitende Filmgespräche mit Filmschaffenden, Wissenschaftlerinnen und Wissenschaftlern sowie dem Publikum schaffen Raum für Austausch, Reflexion und interkulturellen Dialog durch die Sprache des Films."
+    },
+    {
+      "language": "FA",
+      "title": "جشنواره فیلم",
+      "summary": "جشنواره فیلمی از ژانویه تا فوریه با موضوع «زنان، مهاجرت و هویت» برگزار می‌شود. این برنامه شامل نمایش فیلم‌هایی از کارگردانان زن ایرانی خواهد بود.",
+      "description": "جشنواره فیلمی از ژانویه تا فوریه با موضوع «زنان، مهاجرت و هویت» برگزار می‌شود. این برنامه شامل نمایش فیلم‌هایی از کارگردانان زن ایرانی خواهد بود.\n\nمکان: Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin\n\nدرباره جشنواره\n\nپاتوق فرهنگی گلستان از ژانویه تا فوریه میزبان جشنواره‌ای با محوریت زنان، مهاجرت و هویت خواهد بود. در این برنامه، مجموعه‌ای از فیلم‌های منتخب کارگردانان زن ایرانی به نمایش درمی‌آید که به موضوعاتی چون مهاجرت، تعلق، خاطره، تاب‌آوری و دگرگونی‌های اجتماعی می‌پردازند. نمایش فیلم‌ها با نشست‌های گفت‌وگو و نقد و بررسی همراه خواهد بود تا فضایی برای تبادل اندیشه، گفت‌وگو و تعامل میان فرهنگ‌ها فراهم شود."
+    }
+  ],
+  "categoryIds": [],
+  "instructors": [],
+  "sessions": [
+    {
+      "title": "Me, Maryam, The other Children and 26 Others",
+      "titleTranslations": {
+        "EN": "Me, Maryam, The other Children and 26 Others",
+        "DE": "Me, Maryam, The other Children and 26 Others",
+        "FA": "من مریم و بچه ها و ۲۶ نفر دیگر    فرشاد هاشمی"
+      },
+      "timezone": "Europe/Berlin",
+      "mode": "IN_PERSON",
+      "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+      "capacity": 50,
+      "discountPercent": 5,
+      "imageUrl": "https://res.cloudinary.com/r4pnipqe/image/upload/v1785349577/Me_Maryam_The_Children_And_26_Others_sg5udx.webp",
+      "price": null,
+      "startAt": "2027-01-16T18:00:00+01:00",
+      "endAt": "2027-01-16T20:00:00+01:00"
+    },
+    {
+      "title": "Second Souffle",
+      "titleTranslations": {
+        "EN": "Second Souffle",
+        "DE": "Second Souffle",
+        "FA": "نفس دوم ( مستند ' زن زندگی ازادی )  مژ گان ایلانلو"
+      },
+      "timezone": "Europe/Berlin",
+      "mode": "IN_PERSON",
+      "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+      "capacity": 45,
+      "discountPercent": 10,
+      "imageUrl": "https://res.cloudinary.com/r4pnipqe/image/upload/v1785349587/Nafs_Dovoum_y0sbsv.jpg",
+      "price": null,
+      "startAt": "2027-01-23T18:00:00+01:00",
+      "endAt": "2027-01-23T20:00:00+01:00"
+    },
+    {
+      "title": "We Are Normal People (2026)",
+      "titleTranslations": {
+        "EN": "We Are Normal People (2026)",
+        "DE": "Wir sind Normale Leute (2026)",
+        "FA": "We Are Normal People (2026) – Bahar Ebrahim"
+      },
+      "timezone": "Europe/Berlin",
+      "mode": "IN_PERSON",
+      "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+      "capacity": null,
+      "discountPercent": null,
+      "imageUrl": null,
+      "price": null,
+      "startAt": "2027-01-30T18:00:00+01:00",
+      "endAt": "2027-01-30T20:00:00+01:00"
+    }
+  ],
+  "pendingSessions": [
+    {
+      "title": "Rainbow's Tale",
+      "titleTranslations": {
+        "EN": "Rainbow's Tale",
+        "DE": "Rainbow's Tale",
+        "FA": "قصه های رنگین کمان   صالح علوی"
+      },
+      "timezone": "Europe/Berlin",
+      "mode": "IN_PERSON",
+      "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+      "capacity": 60,
+      "discountPercent": 5,
+      "imageUrl": "https://res.cloudinary.com/r4pnipqe/image/upload/v1785349588/Rainbow_s_tale_aykyq6.jpg",
+      "price": null,
+      "dateStatus": "TBC",
+      "dateRaw": "TBC",
+      "plannedTime": "18:00–20:00"
+    },
+    {
+      "title": "Moon Shadow",
+      "titleTranslations": {
+        "EN": "Moon Shadow",
+        "DE": "Moon Shadow",
+        "FA": "ماه سایه (‌مستند زندگی \r\nفهمیه اکبر ) آزاده بیزار گیتی"
+      },
+      "timezone": "Europe/Berlin",
+      "mode": "IN_PERSON",
+      "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+      "capacity": 53,
+      "discountPercent": 12,
+      "imageUrl": "https://res.cloudinary.com/r4pnipqe/image/upload/v1785349588/Moon_Shadow_jnmhet.jpg",
+      "price": null,
+      "dateStatus": "TBC",
+      "dateRaw": "TBC",
+      "plannedTime": "18:00–20:00"
+    },
+    {
+      "title": "Screening 6 – title to be announced",
+      "titleTranslations": {
+        "EN": "",
+        "DE": "",
+        "FA": ""
+      },
+      "timezone": "Europe/Berlin",
+      "mode": "IN_PERSON",
+      "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+      "capacity": 50,
+      "discountPercent": 5,
+      "imageUrl": null,
+      "price": null,
+      "dateStatus": "AMBIGUOUS",
+      "dateRaw": "1/8/2027",
+      "plannedTime": "18:00–20:00"
+    }
+  ],
+  "declaredSessionCount": 6,
+  "locationAddress": "Babylon Berlin-Mitte, Rosa-Luxemburg-Str. 30, 10178 Berlin",
+  "priceStatus": "NOT_PROVIDED"
+}

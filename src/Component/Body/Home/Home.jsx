@@ -21,13 +21,13 @@ const home = () => {
       <Mainbody />
       <Linktonews />
 
-      <EventFilmHomepage />
       <SmallInformation
         aboutUsTitle={t("aboutUsTitle")}
         aboutUsText={t("aboutUsText")}
       />
 
       <Imagegallery />
+      <EventFilmHomepage />
 
       <div className="px-6 lg:px-12 py-12 w-full flex flex-col lg:flex-row lg:justify-between">
         <Link to="/courses">
